@@ -8,123 +8,24 @@ const homepage = defineCollection({
 	type: 'content',
 	schema: z.object({
 		hero: z.object({
-			label: z.string(),
-			heading: z.string(),
-			description: z.string(),
-			buttonText: z.string(),
 			buttonLink: z.string(),
 			trustBadge: z.string().optional(),
 		}),
-		proofPoints: z.object({
-			items: z.array(z.object({
-				text: z.string(),
-				icon: z.string().optional(),
-			})),
-		}),
 		skills: z.object({
-			sectionLabel: z.string(),
-			heading: z.string(),
-			description: z.string(),
 			items: z.array(z.object({
 				title: z.string(),
 				icon: z.string(),
 				description: z.string(),
 			})),
-		}),
-		features: z.object({
-			sectionLabel: z.string(),
-			heading: z.string(),
-			description: z.string(),
-			items: z.array(z.object({
-				title: z.string(),
-				icon: z.string(),
-				description: z.string(),
-			})),
-		}),
-		solutions: z.object({
-			sectionLabel: z.string(),
-			heading: z.string(),
-			description: z.string(),
-			items: z.array(z.object({
-				title: z.string(),
-				icon: z.string(),
-				features: z.array(z.string()),
-				ctaText: z.string(),
-				ctaLink: z.string(),
-			})),
-		}),
-		callouts: z.array(z.object({
-			label: z.string(),
-			heading: z.string(),
-			description: z.string(),
-			image: z.string(),
-			buttonText: z.string(),
-			buttonLink: z.string(),
-		})),
-		process: z.object({
-			sectionLabel: z.string(),
-			heading: z.string(),
-			description: z.string(),
-			steps: z.array(z.object({
-				title: z.string(),
-				icon: z.string(),
-				description: z.string(),
-			})),
-		}),
-		about: z.object({
-			sectionLabel: z.string(),
-			heading: z.string(),
-			subheading: z.string(),
-			description: z.string(),
-			features: z.array(z.string()),
-			image: z.string().optional(),
 		}),
 		testimonials: z.object({
-			sectionLabel: z.string(),
-			heading: z.string(),
-			description: z.string(),
 			items: z.array(z.object({
-				rating: z.number(),
 				quote: z.string(),
 				authorName: z.string(),
 				authorTitle: z.string(),
-				authorImage: z.string(),
-			})),
-		}),
-		comparison: z.object({
-			sectionLabel: z.string(),
-			heading: z.string(),
-			description: z.string(),
-			columnHeaders: z.array(z.string()),
-			rows: z.array(z.object({
-				feature: z.string(),
-				subtitle: z.string(),
-				weMakeSmall: z.string(),
-				webAgency: z.string(),
-				websiteBuilder: z.string(),
-			})),
-		}),
-		templates: z.object({
-			sectionLabel: z.string(),
-			heading: z.string(),
-			description: z.string(),
-			ctaText: z.string(),
-			ctaLink: z.string(),
-		}),
-		faq: z.object({
-			sectionLabel: z.string(),
-			heading: z.string(),
-			description: z.string(),
-			items: z.array(z.object({
-				question: z.string(),
-				answer: z.string(),
 			})),
 		}),
 		contactForm: z.object({
-			sectionLabel: z.string(),
-			heading: z.string(),
-			description: z.string(),
-			responseTime: z.string(),
 			successMessage: z.object({
 				title: z.string(),
 				description: z.string(),
