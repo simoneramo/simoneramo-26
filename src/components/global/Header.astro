@@ -30,10 +30,11 @@ const { hideMenu = false, showPhoneButton = false } = Astro.props;
         <div class="shrink-0">
             <a
                 href="/"
-                class="text-2xl font-black border-2 border-transparent rounded-sm hover:border-black dark:hover:border-white p-1 transition-colors"
+                class="text-2xl font-black border-2 border-transparent rounded-sm hover:border-black dark:hover:border-white p-1 transition-colors relative"
                 aria-label="Homepage"
             >
                 👋 <span class="hidden">Simon Eramo</span>
+                <span class="absolute -right-8 -top-2 text-[0.6rem] font-bold bg-neutral-100 dark:bg-neutral-800 px-1.5 py-0.5 rounded text-neutral-500 dark:text-neutral-400 border border-neutral-200 dark:border-neutral-700">BETA</span>
             </a>
         </div>
 
