@@ -1,0 +1,51 @@
+---
+interface Props {
+    heading: string;
+    label?: string;
+    description: string;
+    actions?: {
+        label: string;
+        link: string;
+        variant: "primary" | "secondary";
+    }[];
+}
+
+const { heading, label, description, actions } = Astro.props;
+---
+
+<section class="py-20 text-center">
+    <div class="mx-auto px-4 max-w-4xl">
+        {
+            label && (
+                <p class="text-sm font-bold uppercase tracking-widest text-neutral-500 mb-4">
+                    {label}
+                </p>
+            )
+        }
+        <h1 class="text-5xl md:text-7xl font-black mb-6">{heading}</h1>
+        <p
+            class="text-xl text-neutral-600 dark:text-neutral-400 mb-10 max-w-2xl mx-auto"
+        >
+            {description}
+        </p>
+
+        {
+            actions && (
+                <div class="flex flex-wrap gap-4 justify-center">
+                    {actions.map((action) => (
+                        <a
+                            href={action.link}
+                            class={`px-8 py-3 rounded-md font-bold transition-all ${
+                                action.variant === "primary"
+                                    ? "bg-black text-white dark:bg-white dark:text-black hover:scale-105"
+                                    : "bg-neutral-100 text-black dark:bg-neutral-800 dark:text-white hover:bg-neutral-200"
+                            }`}
+                        >
+                            {action.label}
+                        </a>
+                    ))}
+                </div>
+            )
+        }
+    </div>
+</section>

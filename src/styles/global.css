@@ -1,0 +1,113 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+/* Enable class-based dark mode for Tailwind CSS 4 */
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  /* Custom Colors */
+  --color-primary: #000000;
+  --color-secondary: #ffffff;
+
+
+  /* Custom Animation */
+  @keyframes fade-in-up {
+    0% {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  --animate-fade-in-up: fade-in-up 0.5s ease-out forwards;
+}
+
+[x-cloak] {
+  display: none !important;
+}
+
+body {
+  font-family: 'Onest Variable', sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+  font-variation-settings:
+    "slnt" 0,
+    "wdth" 100,
+    "GRAD" 0,
+    "ROND" 0;
+}
+
+
+
+
+@layer base {
+  *:focus-visible {
+    outline: 3px solid #000000;
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+
+  .bg-black *:focus-visible,
+  .dark .dark\:bg-black *:focus-visible,
+  html.dark *:focus-visible {
+    outline-color: #ffffff;
+  }
+
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+  }
+
+
+
+  body,
+  header,
+  section,
+  footer,
+  div,
+  a,
+  button,
+  input,
+  textarea {
+    transition-property: background-color, border-color, color;
+    transition-duration: 300ms;
+  }
+}
+
+@layer components {
+
+  .comparison-table td,
+  .comparison-table th {
+    padding: 1rem;
+    border-bottom: 1px solid #000;
+    border-right: 1px solid #000;
+  }
+
+  .dark .comparison-table td,
+  .dark .comparison-table th {
+    border-bottom: 1px solid #fff;
+    border-right: 1px solid #fff;
+  }
+
+  .comparison-table th:first-child,
+  .comparison-table td:first-child {
+    border-left: 1px solid #000;
+    font-weight: 600;
+  }
+
+  .dark .comparison-table th:first-child,
+  .dark .comparison-table td:first-child {
+    border-left: 1px solid #fff;
+  }
+}

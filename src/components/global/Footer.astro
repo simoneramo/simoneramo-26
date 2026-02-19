@@ -1,0 +1,72 @@
+---
+interface Social {
+    platform: string;
+    url: string;
+    icon: string;
+    visible?: boolean;
+}
+
+interface Link {
+    label: string;
+    url: string;
+}
+
+interface Column {
+    heading: string;
+    links: Link[];
+}
+
+const socials: Social[] = [
+    // { platform: "twitter", url: "#", icon: "..." }
+];
+const columns: Column[] = [
+    // { heading: "Product", links: [{ label: "Features", url: "#" }] }
+];
+const copyright = "© 2026 Simon Eramo";
+
+const legalLinks: Link[] = [
+    // { label: "Privacy Policy", url: "#" }
+];
+---
+
+<footer class="bg-white text-black dark:bg-black dark:text-white pt-6 pb-10">
+    <div class="mx-auto px-8">
+        <div
+            class="flex flex-col md:flex-row justify-between items-center text-sm text-neutral-600 dark:text-neutral-400 font-bold"
+        >
+            <p class="mb-4 md:mb-0">
+                &copy; {new Date().getFullYear()}
+                {copyright.replace(/^©\s*\d{4}\s*/, "")}
+            </p>
+            <div class="flex gap-8">
+                {
+                    legalLinks.map((link) => (
+                        <a
+                            href={link.url}
+                            class="hover:text-black dark:hover:text-white transition-colors relative inline-block hover:after:content-[''] hover:after:absolute hover:after:left-0 hover:after:bottom-0 hover:after:w-full hover:after:h-[2px] hover:after:bg-black dark:hover:after:bg-white"
+                        >
+                            {link.label}
+                        </a>
+                    ))
+                }
+                <a
+                    href="#"
+                    class="hover:text-black dark:hover:text-white transition-colors"
+                >
+                    Back to top &uarr;
+                </a>
+            </div>
+        </div>
+
+        <div class="mt-8 max-w-4xl">
+            <p class="text-sm font-bold text-neutral-600 dark:text-neutral-400">
+                I am located on the traditional lands of the Bunurong people,
+                part of the Kulin Nation, whose country extends across
+                southeastern Victoria, including the Mornington Peninsula,
+                Westernport Bay, and Wilson's Promontory. I pay my respects to
+                Elders both past and present, and recognise and respect their
+                abiding connection to this land, its waterways and community.
+            </p>
+        </div>
+    </div>
+</footer>

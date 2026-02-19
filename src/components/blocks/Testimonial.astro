@@ -1,0 +1,21 @@
+---
+interface Props {
+    quote: string;
+    author: string;
+}
+
+const { quote, author } = Astro.props;
+---
+
+<section class="py-20 bg-indigo-50 dark:bg-zinc-800">
+    <div class="mx-auto px-4 max-w-4xl text-center">
+        <blockquote class="text-3xl md:text-5xl font-black mb-8 leading-tight">
+            "{quote}"
+        </blockquote>
+        <cite
+            class="not-italic font-bold text-lg text-neutral-600 dark:text-neutral-400"
+        >
+            — {author}
+        </cite>
+    </div>
+</section>
