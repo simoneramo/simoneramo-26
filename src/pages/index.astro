@@ -412,7 +412,7 @@ const professionalExperience = [
                 {
                     professionalExperience.map((job, index) => (
                         <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active">
-                            <div class="flex items-center justify-center w-6 h-6 rounded-full shrink-0 md:order-1 ml-2 md:ml-0 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 text-xl bg-zinc-500 dark:bg-white" />
+                            <div class="flex items-center justify-center w-6 h-6 rounded-full shrink-0 md:order-1 ml-2 md:ml-0 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 text-xl bg-zinc-500 dark:bg-zinc-600" />
                             <div class="w-[calc(100%-4rem)] md:w-[calc(50%-1.5rem)] p-6 rounded-xl bg-zinc-50 dark:bg-zinc-900/50 rounded-xls">
                                 <img
                                     src={job.logo}
@@ -628,7 +628,7 @@ const professionalExperience = [
             </div>
 
             <form
-                class="text-left space-y-6 border-2 border-neutral-100 dark:border-zinc-700/40 bg-white dark:bg-black p-6 md:p-8 rounded-xl"
+                class="text-left space-y-6 border-2 border-neutral-100 dark:border-zinc-800 bg-white dark:bg-zinc-800 p-6 md:p-8 rounded-xl"
                 x-data="{
                         name: '',
                         email: '',
@@ -751,8 +751,8 @@ const professionalExperience = [
                         x-model="name"
                         @blur="touched.name = true; validateName()"
                         @input="touched.name && validateName()"
-                        class="w-full p-4 bg-transparent border-2 focus:bg-white focus:text-black focus:border-black dark:focus:bg-black dark:focus:text-white dark:focus:border-white transition-colors outline-none focus:ring-0 placeholder-neutral-500 rounded-md"
-                        :class="errors.name ? 'border-red-600' : 'border-neutral-200 dark:border-zinc-700/40'"
+                        class="w-full p-4 bg-transparent border-2 focus:bg-white focus:text-black focus:border-black dark:focus:bg-zinc-800 dark:focus:text-white dark:focus:border-zinc-200 transition-colors outline-none focus:ring-0 placeholder-neutral-500 rounded-md"
+                        :class="errors.name ? 'border-red-600' : 'border-neutral-200 dark:border-zinc-600'"
                         :aria-invalid="errors.name"
                         aria-describedby="name-error"
                         placeholder={contactForm.nameField.placeholder}
@@ -777,8 +777,8 @@ const professionalExperience = [
                         x-model="email"
                         @blur="touched.email = true; validateEmail()"
                         @input="touched.email && validateEmail()"
-                        class="w-full p-4 bg-transparent border-2 focus:bg-white focus:text-black focus:border-black dark:focus:bg-black dark:focus:text-white dark:focus:border-white transition-colors outline-none focus:ring-0 placeholder-neutral-500 rounded-md"
-                        :class="errors.email ? 'border-red-600' : 'border-neutral-200 dark:border-zinc-700/40'"
+                        class="w-full p-4 bg-transparent border-2 focus:bg-white focus:text-black focus:border-black dark:focus:bg-zinc-800 dark:focus:text-white dark:focus:border-zinc-200 transition-colors outline-none focus:ring-0 placeholder-neutral-500 rounded-md"
+                        :class="errors.email ? 'border-red-600' : 'border-neutral-200 dark:border-zinc-600'"
                         :aria-invalid="errors.email"
                         aria-describedby="email-error"
                         placeholder={contactForm.emailField.placeholder}
@@ -803,8 +803,8 @@ const professionalExperience = [
                         x-model="message"
                         @blur="touched.message = true; validateMessage()"
                         @input="touched.message && validateMessage()"
-                        class="w-full p-4 bg-transparent border-2 focus:bg-white focus:text-black focus:border-black dark:focus:bg-black dark:focus:text-white dark:focus:border-white transition-colors outline-none focus:ring-0 placeholder-neutral-500 rounded-md"
-                        :class="errors.message ? 'border-red-600' : 'border-neutral-200 dark:border-zinc-700/40'"
+                        class="w-full p-4 bg-transparent border-2 focus:bg-white focus:text-black focus:border-black dark:focus:bg-zinc-800 dark:focus:text-white dark:focus:border-zinc-200 transition-colors outline-none focus:ring-0 placeholder-neutral-500 rounded-md"
+                        :class="errors.message ? 'border-red-600' : 'border-neutral-200 dark:border-zinc-600'"
                         :aria-invalid="errors.message"
                         aria-describedby="message-error"
                         placeholder={contactForm.messageField.placeholder}
