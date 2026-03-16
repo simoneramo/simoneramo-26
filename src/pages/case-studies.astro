@@ -1,0 +1,313 @@
+---
+import MainLayout from "../layouts/MainLayout.astro";
+
+const caseStudies = [
+    {
+        id: "launch-local-dashboard",
+        title: "Launch Local Dashboard",
+        subtitle: "Product Design · Full-Stack Development · DX Tools",
+        description:
+            "Building a premium command center that eliminates \"terminal fatigue\" for web developers—one-click project launching, real-time server monitoring, and deep process detection across Next.js, Astro, Vite, and more.",
+        tags: ["Developer Tools", "React", "Node.js"],
+        year: "2026",
+        client: "Personal Project",
+        color: "#6366f1",
+        gradient: "from-indigo-600/20 to-indigo-900/5",
+        emoji: "🚀",
+        status: "available",
+        href: "/case-studies/launch-local-dashboard",
+        highlights: ["~2–3 min saved per project switch", "Real-time process monitoring", "One-click launch + auto-open browser"],
+    },
+    {
+        id: "design-prompt-builder",
+        title: "Design Prompt Builder",
+        subtitle: "Product Design · Prompt Engineering · Alpine.js",
+        description:
+            "A reactive, zero-dependency tool that eliminates the repetitive overhead of writing AI design prompts from scratch—generating a complete, structured system prompt in real-time as you fill in the brief.",
+        tags: ["Developer Tools", "UI/UX", "Prompt Engineering"],
+        year: "2026",
+        client: "Personal Project",
+        color: "#a855f7",
+        gradient: "from-purple-600/20 to-purple-900/5",
+        emoji: "🤖",
+        status: "available",
+        href: "/case-studies/design-prompt-builder",
+        highlights: ["30 sec from blank to full prompt", "Zero repeated prompt writing", "100% consistent output structure"],
+    },
+    {
+        id: "paul-jeffers-photography",
+        title: "Paul Jeffers Photography",
+        subtitle: "Website Redesign · Astro · Headless CMS",
+        description:
+            "Migrating a high-end Melbourne photography portfolio from Squarespace to a headless Astro architecture — achieving perfect Lighthouse scores and eliminating ~$540 AUD per year in platform costs.",
+        tags: ["Website Redesign", "Astro", "Headless CMS"],
+        year: "2025",
+        client: "Paul Jeffers",
+        color: "#0ea5e9",
+        gradient: "from-sky-500/20 to-sky-900/5",
+        emoji: "📷",
+        status: "available",
+        href: "/case-studies/paul-jeffers-photography",
+        highlights: ["100/100 Lighthouse score", "~$540 AUD/yr saved", "1.1s LCP (Desktop)"],
+    },
+    {
+        id: "worksafe-design-system",
+        title: "WorkSafe Design System",
+        subtitle: "Design Systems · Figma · Component Library",
+        description:
+            "Modernising the WSV Figma design system from a fragmented, legacy-heavy library to a living component framework — reducing design iteration time by 40% and eliminating legacy debt across a government-scale platform.",
+        tags: ["Design System", "Accessibility", "Gov"],
+        year: "2023–2024",
+        client: "WorkSafe Victoria",
+        color: "#FDB813",
+        gradient: "from-yellow-500/20 to-yellow-900/5",
+        emoji: "🏗️",
+        status: "available",
+        href: "/case-studies/worksafe-design-system",
+        highlights: ["~40% faster design iteration", "80% badge library reduction", "Zero legacy components in production"],
+    },
+    {
+        id: "lead-gen-campaigns",
+        title: "Lead Generation Redesign",
+        subtitle: "CRO · Visual Design · Campaign Strategy",
+        description:
+            "Rebuilding a high-volume campaign machine from the ground up — lifting average conversion rates from 1.5% to above 5% across 200+ property and education campaigns for clients including Mirvac, Woodlea, Melbourne Uni, and Swinburne.",
+        tags: ["Conversion", "Web Design", "Strategy"],
+        year: "2017–2020",
+        client: "Social Garden",
+        color: "#20E28F",
+        gradient: "from-emerald-500/20 to-emerald-900/5",
+        emoji: "📈",
+        status: "available",
+        href: "/case-studies/lead-gen-campaigns",
+        highlights: ["1.5% → 5%+ conversion rate", "200+ campaigns designed", "8-person team trained in CRO"],
+    },
+    {
+        id: "headless-website",
+        title: "Headless Website Platform",
+        subtitle: "Full-Stack Design · Astro · TinaCMS",
+        description:
+            "Architecting and building a blazing-fast, headless website platform for small businesses—combining Astro, TinaCMS, Tailwind CSS, and Vercel for edge-deployed perfection.",
+        tags: ["Development", "Astro", "Headless CMS"],
+        year: "2026",
+        client: "Simon Eramo Studio",
+        color: "#FF6B6B",
+        gradient: "from-red-500/20 to-red-900/5",
+        emoji: "🚀",
+        status: "coming-soon",
+        href: "#",
+    },
+];
+
+const tagColors: Record<string, string> = {
+    "Product Design": "bg-violet-100 text-violet-800 dark:bg-violet-900/30 dark:text-violet-300",
+    "AI/ML": "bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-300",
+    Mobile: "bg-teal-100 text-teal-800 dark:bg-teal-900/30 dark:text-teal-300",
+    "Design System": "bg-yellow-100 text-yellow-800 dark:bg-yellow-900/30 dark:text-yellow-300",
+    Accessibility: "bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-300",
+    Gov: "bg-slate-100 text-slate-800 dark:bg-slate-900/30 dark:text-slate-300",
+    Conversion: "bg-emerald-100 text-emerald-800 dark:bg-emerald-900/30 dark:text-emerald-300",
+    "Web Design": "bg-cyan-100 text-cyan-800 dark:bg-cyan-900/30 dark:text-cyan-300",
+    Strategy: "bg-orange-100 text-orange-800 dark:bg-orange-900/30 dark:text-orange-300",
+    Development: "bg-pink-100 text-pink-800 dark:bg-pink-900/30 dark:text-pink-300",
+    Astro: "bg-indigo-100 text-indigo-800 dark:bg-indigo-900/30 dark:text-indigo-300",
+    "Headless CMS": "bg-rose-100 text-rose-800 dark:bg-rose-900/30 dark:text-rose-300",
+    "UX Research": "bg-purple-100 text-purple-800 dark:bg-purple-900/30 dark:text-purple-300",
+    Prototyping: "bg-fuchsia-100 text-fuchsia-800 dark:bg-fuchsia-900/30 dark:text-fuchsia-300",
+    "A/B Testing": "bg-lime-100 text-lime-800 dark:bg-lime-900/30 dark:text-lime-300",
+    Figma: "bg-amber-100 text-amber-800 dark:bg-amber-900/30 dark:text-amber-300",
+    "Developer Tools": "bg-indigo-100 text-indigo-800 dark:bg-indigo-900/30 dark:text-indigo-300",
+    React: "bg-sky-100 text-sky-800 dark:bg-sky-900/30 dark:text-sky-300",
+    "Node.js": "bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-300",
+    "Prompt Engineering": "bg-purple-100 text-purple-800 dark:bg-purple-900/30 dark:text-purple-300",
+    "UI/UX": "bg-fuchsia-100 text-fuchsia-800 dark:bg-fuchsia-900/30 dark:text-fuchsia-300",
+    "Website Redesign": "bg-sky-100 text-sky-800 dark:bg-sky-900/30 dark:text-sky-300",
+};
+---
+
+<MainLayout
+    title="Case Studies | Simon Eramo"
+    description="A curated collection of design and development case studies by Simon Eramo—covering product design, design systems, conversion optimisation, and headless web platforms."
+>
+    <!-- Hero Section -->
+    <section class="py-20 md:py-28">
+        <div class="px-4 md:px-8">
+            <div class="max-w-3xl">
+                <p
+                    class="text-xs font-bold uppercase tracking-widest text-neutral-500 dark:text-neutral-400 mb-4"
+                >
+                    Selected Work
+                </p>
+                <h1
+                    id="case-studies-heading"
+                    class="text-5xl md:text-6xl font-black mb-6 text-pretty leading-tighter"
+                >
+                    Work that speaks for itself
+                </h1>
+                <p
+                    class="text-lg md:text-xl font-medium text-neutral-600 dark:text-neutral-400 max-w-2xl leading-relaxed"
+                >
+                    A curated portfolio of real projects—from design systems and AI tools to
+                    conversion campaigns and headless web platforms. Each one grounded in
+                    research, craft, and measurable impact.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Case Studies Grid -->
+    <section class="pb-24" id="case-studies-grid">
+        <div class="px-4 md:px-8">
+            <div class="grid md:grid-cols-2 gap-8">
+                {
+                    caseStudies.map((study, index) => (
+                        <article
+                            class={`relative flex flex-col rounded-2xl border-2 border-zinc-100 dark:border-zinc-700/50 overflow-hidden ${study.status === "coming-soon" ? "opacity-70" : ""}`}
+                        >
+                            <!-- Card Header / Visual -->
+                            <div
+                                class={`relative bg-linear-to-br ${study.gradient} dark:from-zinc-800 dark:to-zinc-900 p-8 md:p-10 flex items-center justify-between min-h-[180px] overflow-hidden`}
+                            >
+                                <!-- Large background text number -->
+                                <span
+                                    class="absolute -right-4 -top-4 text-[120px] font-black opacity-5 select-none leading-none"
+                                    aria-hidden="true"
+                                >
+                                    {String(index + 1).padStart(2, "0")}
+                                </span>
+
+                                <div class="flex flex-col gap-3 relative z-10">
+                                    <span class="text-5xl">{study.emoji}</span>
+                                    <div class="flex flex-wrap gap-2">
+                                        {study.tags.map((tag) => (
+                                            <span
+                                                class={`text-xs font-bold px-2.5 py-1 rounded-full ${tagColors[tag] ?? "bg-zinc-100 text-zinc-800 dark:bg-zinc-700 dark:text-zinc-200"}`}
+                                            >
+                                                {tag}
+                                            </span>
+                                        ))}
+                                    </div>
+                                </div>
+
+                                <div class="relative z-10 text-right shrink-0">
+                                    <span
+                                        class="block text-xs font-bold uppercase tracking-widest text-neutral-500 dark:text-neutral-400 mb-1"
+                                    >
+                                        {study.client}
+                                    </span>
+                                    <span
+                                        class="block text-2xl font-black text-neutral-400 dark:text-zinc-600"
+                                    >
+                                        {study.year}
+                                    </span>
+                                </div>
+                            </div>
+
+                            <!-- Card Body -->
+                            <div class="p-8 md:p-10 flex flex-col flex-1">
+                                <p
+                                    class="text-xs font-bold uppercase tracking-widest text-neutral-500 dark:text-neutral-400 mb-2"
+                                >
+                                    {study.subtitle}
+                                </p>
+                                <h2 class="text-2xl font-black mb-3 text-neutral-900 dark:text-white">
+                                    {study.title}
+                                </h2>
+                                <p class="text-neutral-600 dark:text-neutral-400 font-medium leading-relaxed mb-4 flex-1">
+                                    {study.description}
+                                </p>
+
+                                {/* Highlights / key outcomes */}
+                                {'highlights' in study && study.highlights && (
+                                    <ul class="flex flex-col gap-1.5 mb-6">
+                                        {(study.highlights as string[]).map((h) => (
+                                            <li class="flex items-center gap-2 text-sm font-semibold text-neutral-700 dark:text-neutral-300">
+                                                <span class="w-1.5 h-1.5 rounded-full bg-indigo-500 shrink-0" />
+                                                {h}
+                                            </li>
+                                        ))}
+                                    </ul>
+                                )}
+
+                                <!-- CTA -->
+                                {study.status === "available" ? (
+                                    <a
+                                        href={study.href}
+                                        class="group/btn inline-flex items-center gap-2 font-bold text-black dark:text-white hover:gap-4 transition-all duration-200"
+                                        aria-label={`Read case study: ${study.title}`}
+                                    >
+                                        Read case study
+                                        <svg
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            width="18"
+                                            height="18"
+                                            viewBox="0 0 24 24"
+                                            fill="none"
+                                            stroke="currentColor"
+                                            stroke-width="2.5"
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round"
+                                            class="transition-transform duration-200 group-hover/btn:translate-x-1"
+                                            aria-hidden="true"
+                                        >
+                                            <path d="M5 12h14" />
+                                            <path d="m12 5 7 7-7 7" />
+                                        </svg>
+                                    </a>
+                                ) : (
+                                    <span class="inline-flex items-center gap-2 font-bold text-neutral-400 dark:text-neutral-600 cursor-not-allowed">
+                                        <span class="w-2 h-2 rounded-full bg-yellow-400 animate-pulse" />
+                                        Coming soon
+                                    </span>
+                                )}
+                            </div>
+                        </article>
+                    ))
+                }
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA / More Work Section -->
+    <section class="py-20 bg-zinc-50 dark:bg-neutral-900">
+        <div class="container mx-auto px-4 md:px-8 max-w-3xl text-center">
+           
+            <p
+                class="text-xs font-bold uppercase tracking-widest text-neutral-500 dark:text-neutral-400 mb-3"
+            >
+                More work
+            </p>
+            <h2 class="text-4xl md:text-5xl font-black mb-4">
+                Want to see the full picture?
+            </h2>
+            <p
+                class="text-lg font-medium text-neutral-600 dark:text-neutral-400 mb-10 max-w-xl mx-auto leading-relaxed"
+            >
+                Some projects are available on request—including NDA-protected work from WorkSafe Victoria and client campaigns. Get in touch and I'll share a tailored selection.
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a
+                    href="/#contact"
+                    id="case-studies-contact-cta"
+                    class="group relative inline-flex items-center justify-center overflow-hidden h-14 px-10 font-bold text-white bg-black dark:bg-white dark:text-black transition-all duration-300 rounded-md"
+                >
+                    <span class="transform transition-transform duration-300 group-hover:-translate-x-4">
+                        Request the full folio
+                    </span>
+                    <span
+                        class="absolute right-6 transform -translate-x-4 opacity-0 transition-all duration-300 group-hover:translate-x-0 group-hover:opacity-100"
+                    >
+                        &rarr;
+                    </span>
+                </a>
+                <a
+                    href="/work"
+                    id="case-studies-work-cta"
+                    class="inline-flex items-center justify-center h-14 px-10 font-bold border-2 border-zinc-200 dark:border-zinc-700 rounded-md hover:border-black dark:hover:border-white transition-colors duration-200"
+                >
+                    View my experience
+                </a>
+            </div>
+        </div>
+    </section>
+</MainLayout>

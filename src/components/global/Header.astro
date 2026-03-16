@@ -6,16 +6,15 @@ interface NavLink {
 }
 
 const navLinks: NavLink[] = [
-
-
-    { label: "Skills", url: "#skills" },
-    { label: "Experience", url: "#experience" },
-    { label: "About", url: "#about" },
-    { label: "Contact", url: "#contact" },
-
+    { label: "Home", url: "/" },
+    { label: "Skills", url: "/#skills" },
+    { label: "Experience", url: "/#experience" },
+    { label: "About", url: "/#about" },
+    { label: "Case Studies", url: "/case-studies" },
+    { label: "Contact", url: "/#contact" },
 ];
 
-const ctaButton = { text: "Say Hello", url: "#contact" };
+const ctaButton = { text: "Say Hello", url: "/#contact" };
 const { hideMenu = false, showPhoneButton = false } = Astro.props;
 ---
 
@@ -40,7 +39,7 @@ const { hideMenu = false, showPhoneButton = false } = Astro.props;
 
         {
             !hideMenu && (
-                <nav class="hidden md:flex font-bold justify-center items-center gap-6 sm:gap-4 lg:gap-12 w-2/4">
+                <nav class="hidden md:flex font-medium justify-center items-center gap-6 sm:gap-4 lg:gap-12 w-2/4">
                     {navLinks.map(({ url, label, children }) => {
                         const isActive =
                             Astro.url.pathname === url ||

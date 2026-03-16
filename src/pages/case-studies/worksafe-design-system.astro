@@ -1,0 +1,463 @@
+---
+import MainLayout from "../../layouts/MainLayout.astro";
+
+const caseStudy = {
+    title: "WorkSafe Design System",
+    subtitle: "Modernising a government-scale component library from a fragmented, legacy-heavy system to a living Figma design framework",
+    client: "WorkSafe Victoria",
+    year: "2023–2024",
+    role: "UI/UX & Product Designer",
+    stack: ["Figma", "Auto-Layout v5", "Storybook", "Design Tokens", "Component Variants"],
+    tags: ["Design System", "Accessibility", "Gov"],
+    emoji: "🏗️",
+};
+
+const outcomes = [
+    { value: "40%", label: "Reduction in design iteration time" },
+    { value: "80%", label: "Library size reduction (badge system)" },
+    { value: "0", label: "Legacy 'zombie' components in production" },
+    { value: "6yr", label: "Embedded at WorkSafe Victoria" },
+];
+
+const context = [
+    {
+        title: "worksafe.vic.gov.au",
+        description:
+            "Official online resource and digital service platform for WorkSafe Victoria — the primary body responsible for occupational health and safety (OHS) and workers' compensation insurance in Victoria, Australia.",
+    },
+    {
+        title: "myWorkSafe Portal",
+        description:
+            "WorkSafe Victoria's main online service hub for fast, convenient digital management — serving both individuals and organisations across licensing, claims management, and business interactions.",
+    },
+    {
+        title: "Storybook Component Library",
+        description:
+            "An open-source environment used to build, document, and test UI components in isolation — serving as the live design system reference for the worksafe.vic.gov.au platform.",
+    },
+];
+
+const challenges = [
+    {
+        title: "Manual Effort & Rigid Components",
+        description:
+            "Legacy components were built using static frames and manual layer management. Every text update required manual resizing — a significant drag on velocity.",
+    },
+    {
+        title: "Inconsistency Across Platforms",
+        description:
+            "Without central token control, small padding and margin variations crept into production across the portal, the marketing site, and internal tooling.",
+    },
+    {
+        title: "Style Drift to Legacy Libraries",
+        description:
+            "Components were still referencing the OLD-myWorkSafe DLS file — a library no longer supported by the dev team — causing silent visual regressions.",
+    },
+    {
+        title: "Maintenance Burden",
+        description:
+            "Updating a single brand colour required manual intervention across hundreds of detached instances, a critical risk for government-mandated AA accessibility compliance.",
+    },
+];
+
+const deepDives = [
+    {
+        letter: "A",
+        title: "General Component Modernisation via Auto-Layout v5+",
+        description:
+            "We implemented Figma's advanced Auto-Layout across all core components — buttons, cards, and navigation items now grow or shrink based on text strings or nested content. \"Fill Container\" and \"Hug Contents\" logic creates components that are inherently responsive and require zero manual resizing.",
+        outcome: "Eliminated manual resizing across the component library.",
+    },
+    {
+        letter: "B",
+        title: "Design Token & Style Alignment Audit",
+        description:
+            "A full audit remapped all text and colour variables from the deprecated OLD-myWorkSafe DLS to the current WorkSafe library. Now if a brand colour is updated globally (e.g., for AA accessibility compliance), it propagates through the entire system without a single manual intervention.",
+        outcome: "Zero style drift — one source of truth for all tokens.",
+    },
+    {
+        letter: "C",
+        title: "Badge Component Consolidation (Atomic Design)",
+        description:
+            "Previously, 5+ separate main components existed for different badge types, cluttering the assets panel. We created one Main Default Badge using Component Properties (Boolean, Instance Swap, and Text), collapsing Positive, Negative, Neutral, and Class variants into a single selectable menu.",
+        outcome: "80% reduction in library size. State switching via toggle, not search.",
+    },
+    {
+        letter: "D",
+        title: "Input & Dropdown Standardisation",
+        description:
+            "Inconsistency in form fields led to user confusion and multiple dev code paths for the same functional element. New components feature high-visibility focus states for keyboard navigation, built-in aria-label slots, and a unified logic for error, warning, and success states.",
+        outcome: "Formal deprecation of 'zombie components'. Single code path per element.",
+    },
+    {
+        letter: "E",
+        title: "Tile Page & Card Architecture",
+        description:
+            "An audit of the high-traffic Tile Page revealed that Service, Accounts, and License cards share 80% of their structure with standard Table rows. We explored a unified 'Table-to-Card' data pattern — a headless design approach where the same information architecture powers both card and table views.",
+        outcome: "Unified data architecture for card and table components.",
+    },
+];
+
+const uxFixes = [
+    {
+        icon: "🔔",
+        title: "Global Notifications & Error States",
+        description:
+            "A critical defect was identified where notification assets remained hidden under standard conditions — only triggering during 'Forced Global Errors'. We re-engineered the notification component so visual cues (info, success, warning, error) are persistent and visible across all alert levels, ensuring consistent user feedback.",
+    },
+    {
+        icon: "👤",
+        title: "Business Hero Personalisation",
+        description:
+            "The Business Landing Page now features a dynamic 'Account Role' feature. By placing the user's specific role (e.g., 'Account Admin' or 'Claims Manager') immediately adjacent to their name in the Hero section, we provide instant context and a subtle security confirmation — the user knows they're in the correct account.",
+    },
+    {
+        icon: "🔵",
+        title: "The 'Eclipse Radius' Defect",
+        description:
+            "A production defect caused a circle's border-radius to distort at page heights exceeding 100. The radius was tied to an absolute pixel value that didn't scale with viewport height. Resolution: the radius is now calculated as a percentage relative to the container — a perfect, non-distorted curve at any scale.",
+    },
+];
+
+const futureProofing = [
+    {
+        title: "Variable Modes",
+        description: "Instant switching between Light and Dark modes via Figma Variable Modes — no component duplication required.",
+    },
+    {
+        title: "Dev Mode Annotation",
+        description: "Each component now includes direct links to documentation and code snippets, reducing guesswork for engineers in handoff.",
+    },
+    {
+        title: "Slot-Based Architecture",
+        description: "Complex cards use 'slots' to allow icon or button swapping without detaching the main component, preserving token inheritance.",
+    },
+    {
+        title: "Responsive Breakpoints",
+        description: "One full day allocated per component for Mobile/Tablet/Desktop permutations, Auto-Layout wrapping, and 44×44px minimum touch targets.",
+    },
+];
+
+const responsibilities = [
+    "Champion the user experience to create effective and enjoyable digital products",
+    "Plan and conduct user research and interviews to uncover user needs",
+    "Create and test low and high-fidelity prototypes to validate solutions",
+    "Perform heuristic analysis and usability and accessibility reviews",
+    "Actively contribute to and maintain the WorkSafe Design System",
+    "Create scalable, consistent design libraries to improve developer workflow",
+    "Ensure quality assurance to align development work with the design vision",
+    "Collaborate with product owners, BAs, developers, and testers in agile sprints",
+];
+---
+
+<MainLayout
+    title="WorkSafe Design System — Case Study | Simon Eramo"
+    description="How I modernised the WorkSafe Victoria design system — transitioning from a fragmented, legacy-heavy Figma library to a living component framework that reduced design iteration time by 40%."
+>
+    <!-- Hero -->
+    <section class="py-20 md:py-28 border-b-2 border-zinc-100 dark:border-zinc-800">
+        <div class="px-4 md:px-8">
+            <div class="flex items-center gap-3 mb-8">
+                <a
+                    href="/case-studies"
+                    class="inline-flex items-center gap-1.5 text-sm font-bold text-neutral-500 dark:text-neutral-400 hover:text-black dark:hover:text-white transition-colors"
+                >
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg>
+                    Case Studies
+                </a>
+                <span class="text-neutral-300 dark:text-neutral-600">/</span>
+                <span class="text-xs font-bold uppercase tracking-widest text-neutral-400">Design System</span>
+            </div>
+
+            <div class="max-w-4xl">
+                <p class="text-xs font-bold uppercase tracking-widest text-neutral-500 dark:text-neutral-400 mb-4">
+                    {caseStudy.client} · {caseStudy.year}
+                </p>
+                <div class="flex items-start gap-5 mb-6">
+                    <span class="text-6xl md:text-7xl shrink-0 mt-1" aria-hidden="true">{caseStudy.emoji}</span>
+                    <h1
+                        id="case-study-heading"
+                        class="text-4xl md:text-6xl font-black leading-tight text-pretty"
+                    >
+                        {caseStudy.title}
+                    </h1>
+                </div>
+                <p class="text-xl font-medium text-neutral-600 dark:text-neutral-400 mb-8 max-w-2xl leading-relaxed">
+                    {caseStudy.subtitle} — achieving a <strong class="text-bold dark:text-white">40% reduction in design iteration time</strong> and eliminating legacy technical debt across a government-scale platform.
+                </p>
+
+                <div class="inline-flex items-center gap-2 text-sm font-bold px-4 py-2 rounded-full bg-yellow-100 text-yellow-800 dark:bg-yellow-900/30 dark:text-yellow-300 mb-8">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                    NDA Protected — limited detail shared
+                </div>
+
+                <!-- Meta strip -->
+                <div class="flex flex-wrap gap-6 pt-8 border-t-2 border-zinc-100 dark:border-zinc-800">
+                    <div>
+                        <p class="text-xs font-bold uppercase tracking-widest text-neutral-400 mb-1">Role</p>
+                        <p class="font-bold text-sm">{caseStudy.role}</p>
+                    </div>
+                    <div>
+                        <p class="text-xs font-bold uppercase tracking-widest text-neutral-400 mb-1">Timeline</p>
+                        <p class="font-bold text-sm">{caseStudy.year}</p>
+                    </div>
+                    <div>
+                        <p class="text-xs font-bold uppercase tracking-widest text-neutral-400 mb-1">Tools</p>
+                        <p class="font-bold text-sm">{caseStudy.stack.join(" · ")}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Outcomes -->
+    <section class="py-16 bg-zinc-50 dark:bg-neutral-900">
+        <div class="px-4 md:px-8">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto text-center">
+                {outcomes.map((o) => (
+                    <div class="p-6 md:p-8 rounded-2xl border-2 border-zinc-200 dark:border-zinc-700/50 bg-white dark:bg-zinc-900">
+                        <span class="block text-3xl md:text-4xl font-black mb-2 text-black dark:text-white">
+                            {o.value}
+                        </span>
+                        <span class="text-xs font-bold text-neutral-500 dark:text-neutral-400 uppercase tracking-widest leading-snug block">
+                            {o.label}
+                        </span>
+                    </div>
+                ))}
+            </div>
+        </div>
+    </section>
+
+    <!-- Context & Platform -->
+    <section class="py-20">
+        <div class="px-4 md:px-8">
+            <div class="grid md:grid-cols-3 gap-12 max-w-6xl">
+                <div class="md:col-span-1">
+                    <p class="text-xs font-bold uppercase tracking-widest text-neutral-400 mb-3">Context</p>
+                    <h2 class="text-3xl font-black mb-4">The Platform</h2>
+                    <p class="text-neutral-600 dark:text-neutral-400 font-medium leading-relaxed text-sm">
+                        WorkSafe Victoria is the state's primary OHS regulator and workers' compensation body. The design system underpins two major digital products serving employers, workers, and the broader Victorian community.
+                    </p>
+                </div>
+                <div class="md:col-span-2 space-y-4">
+                    {context.map((c, i) => (
+                        <div class="flex gap-5 p-6 rounded-xl border-2 border-zinc-200 dark:border-zinc-700/50 bg-white dark:bg-zinc-900">
+                            <span class="w-8 h-8 rounded-lg bg-yellow-400 text-yellow-900 font-black text-xs flex items-center justify-center shrink-0">
+                                {i + 1}
+                            </span>
+                            <div>
+                                <h3 class="font-black text-base mb-1">{c.title}</h3>
+                                <p class="text-neutral-600 dark:text-neutral-400 font-medium leading-relaxed text-sm">{c.description}</p>
+                            </div>
+                        </div>
+                    ))}
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Role & Responsibilities -->
+    <section class="py-20 bg-zinc-50 dark:bg-neutral-900">
+        <div class="px-4 md:px-8">
+            <div class="grid md:grid-cols-3 gap-12 max-w-6xl">
+                <div class="md:col-span-1">
+                    <p class="text-xs font-bold uppercase tracking-widest text-neutral-400 mb-3">My Role</p>
+                    <h2 class="text-3xl font-black mb-4">Embedded Designer</h2>
+                    <p class="text-neutral-600 dark:text-neutral-400 font-medium leading-relaxed text-sm">
+                        Over six years at WorkSafe Victoria, I worked across the Design Practice — conducting user research, designing end-to-end product experiences, and contributing directly to the design system and component libraries.
+                    </p>
+                </div>
+                <div class="md:col-span-2">
+                    <div class="grid sm:grid-cols-2 gap-3">
+                        {responsibilities.map((r) => (
+                            <div class="flex items-start gap-3 p-4 rounded-xl border-2 border-zinc-200 dark:border-zinc-700/50 bg-white dark:bg-zinc-900">
+                                <span class="mt-1 w-1.5 h-1.5 rounded-full bg-yellow-500 shrink-0" />
+                                <p class="text-sm font-medium text-neutral-700 dark:text-neutral-300 leading-relaxed">{r}</p>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- The Challenge -->
+    <section class="py-20">
+        <div class="px-4 md:px-8">
+            <div class="grid md:grid-cols-3 gap-12 max-w-6xl">
+                <div class="md:col-span-1">
+                    <p class="text-xs font-bold uppercase tracking-widest text-neutral-400 mb-3">The Challenge</p>
+                    <h2 class="text-3xl font-black mb-4">Legacy Rigidity at Scale</h2>
+                    <p class="text-neutral-600 dark:text-neutral-400 font-medium leading-relaxed text-sm">
+                        The existing WSV Figma library was a static "library of parts" — functional but brittle. As the platform grew across multiple product teams, the cracks became critical.
+                    </p>
+                </div>
+                <div class="md:col-span-2 space-y-5">
+                    {challenges.map((c) => (
+                        <div class="flex gap-4">
+                            <span class="mt-1.5 w-2 h-2 rounded-full bg-red-500 shrink-0" />
+                            <div>
+                                <h3 class="font-black text-base mb-1">{c.title}</h3>
+                                <p class="text-neutral-600 dark:text-neutral-400 font-medium leading-relaxed text-sm">{c.description}</p>
+                            </div>
+                        </div>
+                    ))}
+                    <div class="p-6 rounded-xl bg-red-50 dark:bg-red-950/30 border-l-4 border-red-500 mt-2">
+                        <p class="font-bold text-red-800 dark:text-red-300">
+                            The system needed to transition from a static "library of parts" to a dynamic "functional framework" that could scale with the product.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Component Deep Dives -->
+    <section class="py-20 bg-zinc-50 dark:bg-neutral-900">
+        <div class="px-4 md:px-8">
+            <div class="grid md:grid-cols-3 gap-12 max-w-6xl">
+                <div class="md:col-span-1">
+                    <p class="text-xs font-bold uppercase tracking-widest text-neutral-400 mb-3">Solutions</p>
+                    <h2 class="text-3xl font-black mb-4">Component Deep Dives</h2>
+                    <p class="text-neutral-600 dark:text-neutral-400 font-medium leading-relaxed text-sm">
+                        Each area of the system was audited and rebuilt from first principles — reducing debt while improving the daily workflow for both designers and engineers.
+                    </p>
+                </div>
+                <div class="md:col-span-2 space-y-5">
+                    {deepDives.map((d) => (
+                        <div class="p-6 rounded-xl border-2 border-zinc-200 dark:border-zinc-700/50 bg-white dark:bg-zinc-900 hover:border-zinc-400 dark:hover:border-zinc-500 transition-colors">
+                            <div class="flex gap-4 mb-3">
+                                <span class="w-9 h-9 rounded-lg bg-yellow-400 text-yellow-900 font-black text-sm flex items-center justify-center shrink-0">
+                                    {d.letter}
+                                </span>
+                                <h3 class="font-black text-base leading-tight self-center">{d.title}</h3>
+                            </div>
+                            <p class="text-neutral-600 dark:text-neutral-400 font-medium leading-relaxed text-sm mb-3">
+                                {d.description}
+                            </p>
+                            <div class="flex items-center gap-2 text-sm font-bold text-green-700 dark:text-green-400">
+                                <span class="w-1.5 h-1.5 rounded-full bg-green-500 shrink-0" />
+                                {d.outcome}
+                            </div>
+                        </div>
+                    ))}
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- UX & Technical Fixes -->
+    <section class="py-20">
+        <div class="px-4 md:px-8">
+            <div class="grid md:grid-cols-3 gap-12 max-w-6xl">
+                <div class="md:col-span-1">
+                    <p class="text-xs font-bold uppercase tracking-widest text-neutral-400 mb-3">UX & Engineering</p>
+                    <h2 class="text-3xl font-black mb-4">Production Fixes & Enhancements</h2>
+                    <p class="text-neutral-600 dark:text-neutral-400 font-medium leading-relaxed text-sm">
+                        Beyond the component library, the project addressed live production defects and key UX improvements in the portal itself.
+                    </p>
+                </div>
+                <div class="md:col-span-2 space-y-6">
+                    {uxFixes.map((f) => (
+                        <div class="flex gap-5">
+                            <span class="text-3xl shrink-0">{f.icon}</span>
+                            <div>
+                                <h3 class="font-black text-lg mb-1">{f.title}</h3>
+                                <p class="text-neutral-700 dark:text-neutral-400 font-medium leading-relaxed">
+                                    {f.description}
+                                </p>
+                            </div>
+                        </div>
+                    ))}
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Future Proofing -->
+    <section class="py-20 bg-zinc-50 dark:bg-neutral-900">
+        <div class="px-4 md:px-8">
+            <div class="grid md:grid-cols-3 gap-12 max-w-6xl">
+                <div class="md:col-span-1">
+                    <p class="text-xs font-bold uppercase tracking-widest text-neutral-400 mb-3">Future-Proofing</p>
+                    <h2 class="text-3xl font-black mb-4">Built to Last</h2>
+                    <p class="text-neutral-600 dark:text-neutral-400 font-medium leading-relaxed text-sm">
+                        To prevent future style drift and ensure the system remains maintainable as the team grows, we implemented a set of forward-looking architectural decisions.
+                    </p>
+                </div>
+                <div class="md:col-span-2 grid sm:grid-cols-2 gap-4">
+                    {futureProofing.map((f) => (
+                        <div class="p-5 rounded-xl border-2 border-zinc-200 dark:border-zinc-700/50 bg-white dark:bg-zinc-900 hover:border-zinc-400 dark:hover:border-zinc-500 transition-colors">
+                            <h3 class="font-black text-base mb-2">{f.title}</h3>
+                            <p class="text-sm text-neutral-600 dark:text-neutral-400 font-medium leading-relaxed">{f.description}</p>
+                        </div>
+                    ))}
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Results -->
+    <section class="py-20">
+        <div class="px-4 md:px-8">
+            <div class="grid md:grid-cols-3 gap-12 max-w-6xl">
+                <div class="md:col-span-1">
+                    <p class="text-xs font-bold uppercase tracking-widest text-neutral-400 mb-3">Result</p>
+                    <h2 class="text-3xl font-black mb-4">A Living, Breathing Framework</h2>
+                </div>
+                <div class="md:col-span-2 space-y-6">
+                    <p class="text-lg font-medium text-neutral-700 dark:text-neutral-300 leading-relaxed">
+                        The WSV Design System has successfully transitioned from a static repository to a living framework. By prioritising legacy asset deprecation, consolidating components into variants, and resolving critical production bugs, we significantly reduced technical debt across the product fleet.
+                    </p>
+                    <ul class="space-y-4">
+                        <li class="flex items-start gap-3 text-neutral-700 dark:text-neutral-300 font-medium text-lg">
+                            <span class="mt-1.5 w-2 h-2 rounded-full bg-green-500 shrink-0" />
+                            <span><strong class="text-black dark:text-white">~40% reduction</strong> in design iteration time by shifting to fluid, auto-layout components.</span>
+                        </li>
+                        <li class="flex items-start gap-3 text-neutral-700 dark:text-neutral-300 font-medium text-lg">
+                            <span class="mt-1.5 w-2 h-2 rounded-full bg-green-500 shrink-0" />
+                            <span><strong class="text-black dark:text-white">80% reduction</strong> in badge component library footprint via atomic variant consolidation.</span>
+                        </li>
+                        <li class="flex items-start gap-3 text-neutral-700 dark:text-neutral-300 font-medium text-lg">
+                            <span class="mt-1.5 w-2 h-2 rounded-full bg-green-500 shrink-0" />
+                            <span><strong class="text-black dark:text-white">Zero legacy zombie components</strong> remaining — all audited pages migrated to 2024 standards.</span>
+                        </li>
+                        <li class="flex items-start gap-3 text-neutral-700 dark:text-neutral-300 font-medium text-lg">
+                            <span class="mt-1.5 w-2 h-2 rounded-full bg-green-500 shrink-0" />
+                            <span><strong class="text-black dark:text-white">Single token source of truth</strong> — global colour and typography updates now propagate instantly system-wide.</span>
+                        </li>
+                    </ul>
+                    <div class="p-6 rounded-xl bg-yellow-50 dark:bg-yellow-950/20 border-l-4 border-yellow-500 mt-2">
+                        <p class="font-bold text-yellow-800 dark:text-yellow-300">
+                            💡 The final push focuses on responsive breakpoints — ensuring the system is fully production-ready across mobile, tablet, and desktop at every component level.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Next / Back nav -->
+    <section class="py-16 border-t-2 border-zinc-100 dark:border-zinc-800">
+        <div class="px-4 md:px-8 flex flex-col sm:flex-row items-center justify-between gap-6">
+            <a
+                href="/case-studies"
+                class="inline-flex items-center gap-2 font-bold text-neutral-500 dark:text-neutral-400 hover:text-black dark:hover:text-white transition-colors"
+            >
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg>
+                All case studies
+            </a>
+            <a
+                href="/#contact"
+                class="group relative inline-flex items-center justify-center overflow-hidden h-12 px-8 font-bold text-white bg-black dark:bg-white dark:text-black transition-all duration-300 rounded-md"
+            >
+                <span class="transform transition-transform duration-300 group-hover:-translate-x-4">
+                    Get in touch
+                </span>
+                <span class="absolute right-5 transform -translate-x-4 opacity-0 transition-all duration-300 group-hover:translate-x-0 group-hover:opacity-100">
+                    &rarr;
+                </span>
+            </a>
+        </div>
+    </section>
+</MainLayout>
