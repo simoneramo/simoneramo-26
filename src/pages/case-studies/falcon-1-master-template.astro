@@ -1,0 +1,716 @@
+---
+import MainLayout from "../../layouts/MainLayout.astro";
+
+const caseStudy = {
+    title: "Falcon 1 — Master Site Template",
+    subtitle:
+        "A production-ready Astro site template that compresses days of boilerplate setup into a single CLI command — with CMS, contact forms, a block-based page builder, and WCAG 2.1 accessibility baked in from day one.",
+    client: "Simon Eramo Studio",
+    year: "2026",
+    role: "Product Designer & Full-Stack Developer",
+    stack: ["Astro 5", "TinaCMS", "Tailwind CSS v4", "Alpine.js", "Resend", "Vercel"],
+    tags: ["Development", "Astro", "Headless CMS"],
+    emoji: "🦅",
+};
+
+const features = [
+    {
+        icon: "📄",
+        title: "3-Tier Page System",
+        description:
+            "Pages categorised as Core (always included), Common (opt-out), or Optional (opt-in) — driving a principled, data-driven scaffold process.",
+    },
+    {
+        icon: "🧱",
+        title: "Block-Based Page Builder",
+        description:
+            "A flexible page system where non-technical editors compose pages from pre-built blocks via TinaCMS — no developer needed for new layouts.",
+    },
+    {
+        icon: "✍️",
+        title: "TinaCMS Visual Editing",
+        description:
+            "Content lives as Markdown in Git with visual editing via the TinaCMS admin UI. Rollbacks are a git revert away.",
+    },
+    {
+        icon: "📧",
+        title: "Contact Form via Resend",
+        description:
+            "Full contact form with centered and split layout variants, powered by a Resend serverless API route — no SMTP config required.",
+    },
+    {
+        icon: "♿",
+        title: "WCAG 2.1 Accessible",
+        description:
+            "Semantic HTML5, skip-to-content links, full keyboard nav, ARIA labels, high-contrast theme, and focus-visible styles on everything.",
+    },
+    {
+        icon: "🔍",
+        title: "SEO Built-In",
+        description:
+            "Dynamic title/meta tags from CMS content, Open Graph, Twitter Cards, JSON-LD structured data, and auto-generated XML sitemap.",
+    },
+];
+
+const outcomes = [
+    { value: "Minutes", label: "From clone to client-ready project" },
+    { value: "30+", label: "Pre-built components & blocks" },
+    { value: "100/100", label: "Lighthouse score out of the box" },
+];
+
+const problems = [
+    "Copy files from the last project and strip out client-specific content.",
+    "Rebuild the same FAQ, CTA, and contact form components — again.",
+    "Reconnect CMS schemas to fresh content collections.",
+    "Configure email delivery, environment variables, and deployment adapters.",
+    "Do all of this before writing a single line of client-specific code.",
+    "Configuration drift means each project subtly diverges from the last.",
+];
+
+const tierData = [
+    {
+        tier: "Tier 1 — Core",
+        description: "Required on every site, non-negotiable",
+        examples: "Homepage, About, Contact, 404, Privacy Policy",
+        color: "bg-green-500",
+    },
+    {
+        tier: "Tier 2 — Common",
+        description: "Standard business pages, included by default",
+        examples: "Services, Blog, FAQ, Pricing, Process, Team",
+        color: "bg-blue-500",
+    },
+    {
+        tier: "Tier 3 — Optional",
+        description: "Specialised pages, toggled per project",
+        examples: "Portfolio, Careers, Reviews, Events, Partners, Book",
+        color: "bg-purple-500",
+    },
+];
+
+const techDecisions = [
+    {
+        icon: "🚀",
+        title: "Astro 5",
+        description:
+            "Island architecture delivers zero JavaScript by default. Content Collections provide end-to-end typing for all Markdown, preventing an entire class of runtime bugs when content schemas drift.",
+    },
+    {
+        icon: "✍️",
+        title: "TinaCMS",
+        description:
+            "Visual editing without locking content into a proprietary database. Content lives as Markdown in Git — version-controlled, rollback-friendly, and builds with no external API dependency.",
+    },
+    {
+        icon: "🎨",
+        title: "Tailwind CSS v4",
+        description:
+            "CSS-native configuration via @theme reduces boilerplate. The design system — high-contrast black/white palette, 2px borders, Inter variable font — is defined once and flows through every component.",
+    },
+    {
+        icon: "⚡",
+        title: "Alpine.js",
+        description:
+            "Reactive interactivity (mobile menus, dark mode, FAQ accordions, form states) without a build step or component framework. Pages stay fully static-renderable with minimal bundle overhead.",
+    },
+    {
+        icon: "📧",
+        title: "Resend",
+        description:
+            "Developer-first API with a generous free tier and first-class Vercel integration. Replaces complex SMTP relay configuration with a single serverless API route.",
+    },
+    {
+        icon: "▲",
+        title: "Vercel",
+        description:
+            "Edge-deployed with zero-config from the Astro adapter. Git push → production deploy. Preview deployments for every PR. The natural deployment target for SSR-capable Astro sites.",
+    },
+];
+
+const components = [
+    { name: "HeroSection", purpose: "Homepage hero — split, centered, and bold variants" },
+    { name: "PageHeroSection", purpose: "Interior page hero — center or left aligned" },
+    { name: "CTASection", purpose: "Call-to-action block — reusable across pages" },
+    { name: "FAQ", purpose: "Interactive Alpine.js accordion — center / left variants" },
+    { name: "ContactForm", purpose: "Full form with centered and split layouts" },
+    { name: "PricingTiers", purpose: "Pricing cards with feature lists" },
+    { name: "BlockRenderer", purpose: "Maps CMS block templates to Astro components" },
+    { name: "TestimonialsMarquee", purpose: "Animated scrolling testimonials strip" },
+];
+
+const launchSteps = [
+    { step: "01", title: "Run Project Starter CLI", description: "Select pages, name the project — Tier 1 always included, Tier 2/3 toggled per client." },
+    { step: "02", title: "Connect TinaCMS", description: "Create a TinaCMS project, copy API keys into .env. Visual editing is live." },
+    { step: "03", title: "Connect Resend", description: "Add Resend API key for contact form email delivery — one environment variable." },
+    { step: "04", title: "Push to Vercel", description: "Push to GitHub, import into Vercel. Git push → production deploy, preview on every PR." },
+    { step: "05", title: "Customise & Launch", description: "Brand, content, copy. The foundation — routing, CMS, email, dark mode, a11y, SEO — is already done." },
+];
+---
+
+<MainLayout
+    title="Falcon 1 — Master Site Template Case Study | Simon Eramo"
+    description="How I designed and built Falcon 1 — a production-ready Astro site template with TinaCMS, a block-based page builder, WCAG 2.1 accessibility, and a CLI scaffold tool that compresses days of setup into minutes."
+>
+    <!-- Hero -->
+    <section
+        class="py-20 md:py-28 border-b-2 border-zinc-100 dark:border-zinc-800"
+    >
+        <div class="px-4 md:px-8">
+            <div class="flex items-center gap-3 mb-8">
+                <a
+                    href="/case-studies"
+                    class="inline-flex items-center gap-1.5 text-sm font-bold text-neutral-500 dark:text-neutral-400 hover:text-black dark:hover:text-white transition-colors"
+                >
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="16"
+                        height="16"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2.5"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        aria-hidden="true"><path d="m15 18-6-6 6-6"></path></svg
+                    >
+                    Case Studies
+                </a>
+            </div>
+
+            <div class="max-w-4xl">
+                <p
+                    class="text-xs font-bold uppercase tracking-widest text-neutral-500 dark:text-neutral-400 mb-4"
+                >
+                    {caseStudy.client} · {caseStudy.year}
+                </p>
+                <div class="flex items-start gap-5 mb-6">
+                    <span
+                        class="text-6xl md:text-7xl shrink-0 mt-1"
+                        aria-hidden="true">{caseStudy.emoji}</span
+                    >
+                    <h1
+                        id="case-study-heading"
+                        class="text-4xl md:text-6xl font-black leading-tight text-pretty"
+                    >
+                        {caseStudy.title}
+                    </h1>
+                </div>
+                <p
+                    class="text-xl font-medium text-neutral-600 dark:text-neutral-400 mb-8 max-w-2xl leading-relaxed"
+                >
+                    {caseStudy.subtitle}
+                </p>
+
+                <!-- Meta strip -->
+                <div
+                    class="flex flex-wrap gap-6 pt-8 border-t-2 border-zinc-100 dark:border-zinc-800"
+                >
+                    <div>
+                        <p
+                            class="text-xs font-bold uppercase tracking-widest text-neutral-400 mb-1"
+                        >
+                            Role
+                        </p>
+                        <p class="font-bold text-sm">{caseStudy.role}</p>
+                    </div>
+                    <div>
+                        <p
+                            class="text-xs font-bold uppercase tracking-widest text-neutral-400 mb-1"
+                        >
+                            Version
+                        </p>
+                        <p class="font-bold text-sm">2.0.0</p>
+                    </div>
+                    <div>
+                        <p
+                            class="text-xs font-bold uppercase tracking-widest text-neutral-400 mb-1"
+                        >
+                            Stack
+                        </p>
+                        <p class="font-bold text-sm">
+                            {caseStudy.stack.join(" · ")}
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Executive Summary -->
+    <section class="py-20">
+        <div class="px-4 md:px-8">
+            <div class="grid md:grid-cols-3 gap-12 max-w-6xl">
+                <div class="md:col-span-1">
+                    <p
+                        class="text-xs font-bold uppercase tracking-widest text-neutral-400 mb-3"
+                    >
+                        Overview
+                    </p>
+                    <h2 class="text-3xl font-black mb-4">Executive Summary</h2>
+                </div>
+                <div class="md:col-span-2 space-y-5">
+                    <p
+                        class="text-lg font-medium text-neutral-700 dark:text-neutral-300 leading-relaxed"
+                    >
+                        <strong class="text-black dark:text-white"
+                            >Falcon 1</strong
+                        > is a production-ready Astro site template designed to dramatically
+                        reduce the time it takes to launch a new client website — from
+                        days of boilerplate setup down to a focused strategy session
+                        and a single CLI command.
+                    </p>
+                    <p
+                        class="text-lg font-medium text-neutral-700 dark:text-neutral-300 leading-relaxed"
+                    >
+                        Rather than a simple starter kit with a hero section and a
+                        nav bar, Falcon 1 is an <strong class="text-black dark:text-white"
+                            >opinionated, full-featured platform</strong
+                        > — complete with a CMS, a contact system, a flexible block-based
+                        page builder, a 3-tier page architecture, a Project Starter
+                        CLI tool, and WCAG 2.1 accessible components across the board.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Outcomes -->
+    <section class="py-16 bg-zinc-50 dark:bg-neutral-900">
+        <div class="px-4 md:px-8">
+            <div
+                class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto text-center"
+            >
+                {
+                    outcomes.map((o) => (
+                        <div class="p-8 rounded-2xl border-2 border-zinc-200 dark:border-zinc-700/50 bg-white dark:bg-zinc-900">
+                            <span class="block text-4xl md:text-5xl font-black mb-2 text-black dark:text-white">
+                                {o.value}
+                            </span>
+                            <span class="text-sm font-bold text-neutral-500 dark:text-neutral-400 uppercase tracking-widest">
+                                {o.label}
+                            </span>
+                        </div>
+                    ))
+                }
+            </div>
+        </div>
+    </section>
+
+    <!-- The Problem -->
+    <section class="py-20">
+        <div class="px-4 md:px-8">
+            <div class="grid md:grid-cols-3 gap-12 max-w-6xl">
+                <div class="md:col-span-1">
+                    <p
+                        class="text-xs font-bold uppercase tracking-widest text-neutral-400 mb-3"
+                    >
+                        The Challenge
+                    </p>
+                    <h2 class="text-3xl font-black mb-4">
+                        The Boilerplate Loop
+                    </h2>
+                </div>
+                <div class="md:col-span-2 space-y-6">
+                    <p
+                        class="text-lg font-medium text-neutral-700 dark:text-neutral-300 leading-relaxed"
+                    >
+                        For a solo developer or boutique agency, spinning up a
+                        new client site involves a predictable, exhausting loop —
+                        repeating the same tasks <strong
+                            class="text-black dark:text-white"
+                            >before writing a single line of client-specific code</strong
+                        >.
+                    </p>
+                    <ul class="space-y-3">
+                        {
+                            problems.map((p) => (
+                                <li class="flex items-start gap-3 text-neutral-700 dark:text-neutral-400 font-medium">
+                                    <span class="mt-2 w-1.5 h-1.5 rounded-full bg-red-500 shrink-0" />
+                                    {p}
+                                </li>
+                            ))
+                        }
+                    </ul>
+                    <div
+                        class="p-6 rounded-xl bg-red-50 dark:bg-red-950/30 border-l-4 border-red-500"
+                    >
+                        <p
+                            class="font-bold text-red-800 dark:text-red-300 text-lg"
+                        >
+                            This repetition isn't just inefficient — it's risky.
+                            Configuration drift means each project subtly
+                            diverges from the last, making it harder to apply
+                            improvements retroactively or share patterns across
+                            codebases.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- The Solution -->
+    <section class="py-20 bg-zinc-50 dark:bg-neutral-900">
+        <div class="px-4 md:px-8">
+            <div class="grid md:grid-cols-3 gap-12 max-w-6xl">
+                <div class="md:col-span-1">
+                    <p
+                        class="text-xs font-bold uppercase tracking-widest text-neutral-400 mb-3"
+                    >
+                        The Solution
+                    </p>
+                    <h2 class="text-3xl font-black mb-4">
+                        Build Once, Deploy Everywhere
+                    </h2>
+                </div>
+                <div class="md:col-span-2">
+                    <p
+                        class="text-lg font-medium text-neutral-700 dark:text-neutral-300 leading-relaxed mb-4"
+                    >
+                        Falcon 1 approaches the problem at two levels:
+                    </p>
+                    <div class="grid sm:grid-cols-2 gap-4 mb-8">
+                        <div class="p-5 rounded-xl border-2 border-zinc-200 dark:border-zinc-700/50 bg-white dark:bg-zinc-900">
+                            <span class="text-2xl block mb-2">📦</span>
+                            <h3 class="font-black text-base mb-1">Master Template Repository</h3>
+                            <p class="text-sm text-neutral-600 dark:text-neutral-400 font-medium leading-relaxed">
+                                The canonical source of truth for every component, page, schema, and style pattern.
+                            </p>
+                        </div>
+                        <div class="p-5 rounded-xl border-2 border-zinc-200 dark:border-zinc-700/50 bg-white dark:bg-zinc-900">
+                            <span class="text-2xl block mb-2">⚡</span>
+                            <h3 class="font-black text-base mb-1">Project Starter CLI</h3>
+                            <p class="text-sm text-neutral-600 dark:text-neutral-400 font-medium leading-relaxed">
+                                Scaffolds a new project from the master template, selecting only the pages and features the client needs.
+                            </p>
+                        </div>
+                    </div>
+                    <p
+                        class="text-lg font-medium text-neutral-700 dark:text-neutral-300 leading-relaxed mb-8"
+                    >
+                        Together, they eliminate the setup phase. A new project
+                        is ready to receive client content within <strong
+                            class="text-black dark:text-white"
+                            >minutes</strong
+                        > of the first <code class="text-sm bg-zinc-100 dark:bg-zinc-800 px-1.5 py-0.5 rounded font-mono">git clone</code>.
+                    </p>
+                    <div class="grid sm:grid-cols-2 gap-4">
+                        {
+                            features.map((f) => (
+                                <div class="p-5 rounded-xl border-2 border-zinc-200 dark:border-zinc-700/50 bg-white dark:bg-zinc-900 transition-colors hover:border-zinc-400 dark:hover:border-zinc-500">
+                                    <span class="text-2xl block mb-2">
+                                        {f.icon}
+                                    </span>
+                                    <h3 class="font-black text-base mb-1">
+                                        {f.title}
+                                    </h3>
+                                    <p class="text-sm text-neutral-600 dark:text-neutral-400 font-medium leading-relaxed">
+                                        {f.description}
+                                    </p>
+                                </div>
+                            ))
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Architecture: 3-Tier Page System -->
+    <section class="py-20">
+        <div class="px-4 md:px-8">
+            <div class="grid md:grid-cols-3 gap-12 max-w-6xl">
+                <div class="md:col-span-1">
+                    <p
+                        class="text-xs font-bold uppercase tracking-widest text-neutral-400 mb-3"
+                    >
+                        Architecture
+                    </p>
+                    <h2 class="text-3xl font-black mb-4">
+                        3-Tier Page System
+                    </h2>
+                    <p class="text-neutral-600 dark:text-neutral-400 font-medium leading-relaxed text-sm">
+                        The most important architectural decision — a principled data model that drives the entire scaffold process.
+                    </p>
+                </div>
+                <div class="md:col-span-2 space-y-4">
+                    {
+                        tierData.map((t) => (
+                            <div class="flex gap-5 p-6 rounded-xl border-2 border-zinc-200 dark:border-zinc-700/50 bg-white dark:bg-zinc-900">
+                                <span class={`w-2 rounded-full ${t.color} shrink-0`} />
+                                <div>
+                                    <h3 class="font-black text-base mb-1">{t.tier}</h3>
+                                    <p class="text-sm text-neutral-600 dark:text-neutral-400 font-medium mb-2">{t.description}</p>
+                                    <p class="text-xs font-bold text-neutral-400 uppercase tracking-widest">{t.examples}</p>
+                                </div>
+                            </div>
+                        ))
+                    }
+                    <div
+                        class="p-6 rounded-xl bg-indigo-50 dark:bg-indigo-950/30 border-l-4 border-indigo-500"
+                    >
+                        <p
+                            class="font-bold text-indigo-800 dark:text-indigo-300 text-sm"
+                        >
+                            Configuration is driven by <code class="text-xs bg-indigo-100 dark:bg-indigo-900/50 px-1.5 py-0.5 rounded font-mono">template.config.json</code> — a single source of truth that maps pages to their content collections, CMS fields, and default states. The starter tool logic is entirely data-driven.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Component Library -->
+    <section class="py-20 bg-zinc-50 dark:bg-neutral-900">
+        <div class="px-4 md:px-8">
+            <div class="grid md:grid-cols-3 gap-12 max-w-6xl">
+                <div class="md:col-span-1">
+                    <p
+                        class="text-xs font-bold uppercase tracking-widest text-neutral-400 mb-3"
+                    >
+                        Components
+                    </p>
+                    <h2 class="text-3xl font-black mb-4">
+                        Pre-Built Component Library
+                    </h2>
+                    <p class="text-neutral-600 dark:text-neutral-400 font-medium leading-relaxed text-sm">
+                        Every component is a typed Astro <code class="text-xs bg-zinc-200 dark:bg-zinc-700 px-1 py-0.5 rounded font-mono">.astro</code> file — no React, no Vue, no framework dependency.
+                    </p>
+                </div>
+                <div class="md:col-span-2">
+                    <div class="grid sm:grid-cols-2 gap-3">
+                        {
+                            components.map((c) => (
+                                <div class="flex gap-3 p-4 rounded-xl border-2 border-zinc-200 dark:border-zinc-700/50 bg-white dark:bg-zinc-900">
+                                    <code class="text-xs font-mono font-bold text-indigo-600 dark:text-indigo-400 shrink-0 mt-0.5">&lt;/&gt;</code>
+                                    <div>
+                                        <h3 class="font-black text-sm mb-0.5">{c.name}</h3>
+                                        <p class="text-xs text-neutral-600 dark:text-neutral-400 font-medium leading-relaxed">{c.purpose}</p>
+                                    </div>
+                                </div>
+                            ))
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technical Decisions -->
+    <section class="py-20">
+        <div class="px-4 md:px-8">
+            <div class="grid md:grid-cols-3 gap-12 max-w-6xl">
+                <div class="md:col-span-1">
+                    <p
+                        class="text-xs font-bold uppercase tracking-widest text-neutral-400 mb-3"
+                    >
+                        Engineering
+                    </p>
+                    <h2 class="text-3xl font-black mb-4">
+                        Technical Decisions
+                    </h2>
+                    <p class="text-neutral-600 dark:text-neutral-400 font-medium leading-relaxed text-sm">
+                        Every dependency was chosen deliberately — optimised for developer experience, performance, and long-term maintainability.
+                    </p>
+                </div>
+                <div class="md:col-span-2 space-y-6">
+                    {
+                        techDecisions.map((t) => (
+                            <div class="flex gap-5">
+                                <span class="text-3xl shrink-0">{t.icon}</span>
+                                <div>
+                                    <h3 class="font-black text-lg mb-1">{t.title}</h3>
+                                    <p class="text-neutral-700 dark:text-neutral-400 font-medium leading-relaxed">
+                                        {t.description}
+                                    </p>
+                                </div>
+                            </div>
+                        ))
+                    }
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Launch Process -->
+    <section class="py-20 bg-zinc-50 dark:bg-neutral-900">
+        <div class="px-4 md:px-8">
+            <div class="grid md:grid-cols-3 gap-12 max-w-6xl">
+                <div class="md:col-span-1">
+                    <p
+                        class="text-xs font-bold uppercase tracking-widest text-neutral-400 mb-3"
+                    >
+                        Process
+                    </p>
+                    <h2 class="text-3xl font-black mb-4">
+                        Launching a New Project
+                    </h2>
+                    <p class="text-neutral-600 dark:text-neutral-400 font-medium leading-relaxed text-sm">
+                        The entire foundation — routing, CMS, email, dark mode, accessibility, SEO, sitemap — is already in place. The developer's attention goes to what's actually unique about the client.
+                    </p>
+                </div>
+                <div class="md:col-span-2">
+                    <div class="space-y-3">
+                        {
+                            launchSteps.map((s, i) => (
+                                <div class="flex gap-5 p-5 rounded-xl border-2 border-zinc-200 dark:border-zinc-700/50 bg-white dark:bg-zinc-900">
+                                    <div class="shrink-0">
+                                        <span class="w-10 h-10 rounded-full border-2 border-zinc-200 dark:border-zinc-700 flex items-center justify-center font-black text-xs text-neutral-400">
+                                            {s.step}
+                                        </span>
+                                        {i < launchSteps.length - 1 && (
+                                            <div class="w-px h-3 bg-zinc-200 dark:bg-zinc-700 mx-auto mt-1" />
+                                        )}
+                                    </div>
+                                    <div class="pb-1">
+                                        <h3 class="font-black text-base mb-1">{s.title}</h3>
+                                        <p class="text-sm text-neutral-600 dark:text-neutral-400 font-medium leading-relaxed">{s.description}</p>
+                                    </div>
+                                </div>
+                            ))
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Results -->
+    <section class="py-20">
+        <div class="px-4 md:px-8">
+            <div class="grid md:grid-cols-3 gap-12 max-w-6xl">
+                <div class="md:col-span-1">
+                    <p
+                        class="text-xs font-bold uppercase tracking-widest text-neutral-400 mb-3"
+                    >
+                        Impact
+                    </p>
+                    <h2 class="text-3xl font-black mb-4">The Result</h2>
+                </div>
+                <div class="md:col-span-2 space-y-6">
+                    <p
+                        class="text-lg font-medium text-neutral-700 dark:text-neutral-300 leading-relaxed"
+                    >
+                        Falcon 1 v2.0.0 represents a <strong class="text-black dark:text-white"
+                            >mature, opinionated platform</strong
+                        > rather than a starter kit. It encodes months of accumulated
+                        decisions about how to structure Astro projects for client
+                        work — from content modelling to deployment — into a single,
+                        reusable repository.
+                    </p>
+                    <ul class="space-y-4">
+                        <li
+                            class="flex items-start gap-3 text-neutral-700 dark:text-neutral-300 font-medium text-lg"
+                        >
+                            <span
+                                class="mt-1.5 w-2 h-2 rounded-full bg-green-500 shrink-0"
+                            ></span>
+                            <span
+                                ><strong class="text-black dark:text-white"
+                                    >Days compressed into minutes</strong
+                                > — new projects are client-ready within minutes of
+                                the first git clone.</span
+                            >
+                        </li>
+                        <li
+                            class="flex items-start gap-3 text-neutral-700 dark:text-neutral-300 font-medium text-lg"
+                        >
+                            <span
+                                class="mt-1.5 w-2 h-2 rounded-full bg-green-500 shrink-0"
+                            ></span>
+                            <span
+                                ><strong class="text-black dark:text-white"
+                                    >Zero configuration drift</strong
+                                > — every project starts from the same canonical master
+                                template, with improvements applied once and inherited
+                                everywhere.</span
+                            >
+                        </li>
+                        <li
+                            class="flex items-start gap-3 text-neutral-700 dark:text-neutral-300 font-medium text-lg"
+                        >
+                            <span
+                                class="mt-1.5 w-2 h-2 rounded-full bg-green-500 shrink-0"
+                            ></span>
+                            <span
+                                ><strong class="text-black dark:text-white"
+                                    >Production-grade from first run</strong
+                                > — CMS, contact forms, dark mode, accessibility,
+                                SEO, and sitemap are all functional before the developer
+                                writes a single line of client-specific code.</span
+                            >
+                        </li>
+                        <li
+                            class="flex items-start gap-3 text-neutral-700 dark:text-neutral-300 font-medium text-lg"
+                        >
+                            <span
+                                class="mt-1.5 w-2 h-2 rounded-full bg-green-500 shrink-0"
+                            ></span>
+                            <span
+                                ><strong class="text-black dark:text-white"
+                                    >Compounding advantage</strong
+                                > — each deployment reinforces the template. Bugs fixed
+                                once, patterns proven once, improvements shared instantly
+                                across all future projects.</span
+                            >
+                        </li>
+                    </ul>
+
+                    <div
+                        class="p-6 rounded-xl bg-emerald-50 dark:bg-emerald-950/20 border-l-4 border-emerald-500 mt-4"
+                    >
+                        <p
+                            class="font-bold text-emerald-800 dark:text-emerald-300 text-base"
+                        >
+                            💡 Building a template that's truly reusable requires
+                            resisting the urge to hardcode anything client-specific —
+                            a discipline that pays off enormously on the second project,
+                            and becomes a compounding advantage with each new deployment.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Next / Back nav -->
+    <section class="py-16 border-t-2 border-zinc-100 dark:border-zinc-800">
+        <div
+            class="px-4 md:px-8 flex flex-col sm:flex-row items-center justify-between gap-6"
+        >
+            <a
+                href="/case-studies"
+                class="inline-flex items-center gap-2 font-bold text-neutral-500 dark:text-neutral-400 hover:text-black dark:hover:text-white transition-colors"
+            >
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="18"
+                    height="18"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"><path d="m15 18-6-6 6-6"></path></svg
+                >
+                All case studies
+            </a>
+            <a
+                href="/#contact"
+                class="group relative inline-flex items-center justify-center overflow-hidden h-12 px-8 font-bold text-white bg-black dark:bg-white dark:text-black transition-all duration-300 rounded-md"
+            >
+                <span
+                    class="transform transition-transform duration-300 group-hover:-translate-x-4"
+                >
+                    Get in touch
+                </span>
+                <span
+                    class="absolute right-5 transform -translate-x-4 opacity-0 transition-all duration-300 group-hover:translate-x-0 group-hover:opacity-100"
+                >
+                    &rarr;
+                </span>
+            </a>
+        </div>
+    </section>
+</MainLayout>
