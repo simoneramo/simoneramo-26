@@ -4,13 +4,16 @@ import tailwindcss from '@tailwindcss/vite';
 import vercel from '@astrojs/vercel';
 import alpine from '@astrojs/alpinejs';
 
+import sitemap from '@astrojs/sitemap';
+
 // https://astro.build/config
 export default defineConfig({
-	integrations: [alpine()],
-	vite: {
-		plugins: [tailwindcss()],
+    site: 'https://simoneramo.com',
+    integrations: [alpine(), sitemap()],
+    vite: {
+        plugins: [tailwindcss()],
 
-	},
-	output: 'server',
-	adapter: vercel(),
+    },
+    output: 'server',
+    adapter: vercel(),
 });
