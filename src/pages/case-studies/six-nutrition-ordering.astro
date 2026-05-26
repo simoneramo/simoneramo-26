@@ -1,0 +1,653 @@
+---
+import MainLayout from "../../layouts/MainLayout.astro";
+
+const caseStudy = {
+    title: "6Nutrition Online Ordering",
+    subtitle: "Pickup-First Ordering for a Melbourne High-Protein Cafe",
+    client: "6Nutrition",
+    year: "2026",
+    role: "Product Designer & Full-Stack Developer",
+    stack: ["Next.js 16", "App Router", "React 19", "Tailwind CSS", "shadcn/ui", "Stripe", "Vercel"],
+    tags: ["Web App", "E-commerce", "Hospitality"],
+    emoji: "🥗",
+};
+
+const features = [
+    {
+        icon: "🍽️",
+        title: "Structured Menu Engine",
+        description:
+            "A JSON-driven menu with categories, modifier groups, shared add-ons, allergens and dietary tags — all resolved server-side so the menu is fast, cacheable, and never stale.",
+    },
+    {
+        icon: "🧩",
+        title: "Modifier-Aware Item Cards",
+        description:
+            "Every item opens a modal with required choices, multi-select extras, min/max validation and live price recalculation as the customer customises their order.",
+    },
+    {
+        icon: "🛒",
+        title: "Persistent Cart Drawer",
+        description:
+            "A fixed top-right cart pill that follows the customer through the menu, opening a side drawer with quantity controls, pickup-time selection, and customer details.",
+    },
+    {
+        icon: "💳",
+        title: "Stripe Checkout",
+        description:
+            "Server-side Stripe Checkout session creation with line items, modifier descriptions and pickup metadata — handing off to Stripe's hosted, PCI-compliant payment flow.",
+    },
+    {
+        icon: "📥",
+        title: "Webhook + Reconcile Cron",
+        description:
+            "A Stripe webhook captures completed sessions and a reconcile route catches anything missed, so the kitchen view never loses a paid order — even if a webhook is dropped.",
+    },
+    {
+        icon: "👨‍🍳",
+        title: "Kitchen View",
+        description:
+            "A dedicated /kitchen screen displays paid orders with customer name, phone, pickup time and itemised modifiers — designed to be glanceable on a counter tablet.",
+    },
+];
+
+const outcomes = [
+    { value: "<1 min", label: "From landing page to paid order" },
+    { value: "0 staff", label: "Manual phone orders to transcribe" },
+    { value: "100%", label: "Modifier accuracy via structured options" },
+];
+
+const problems = [
+    "Phone orders interrupting service and creating handwritten dockets",
+    "No reliable way to capture complex modifier choices (preparation, sides, extras)",
+    "Customers waiting in queue just to order, not to pick up",
+    "Inconsistent pickup timing — no visibility for the kitchen on what's coming next",
+    "No GST-compliant digital receipt trail for retail items",
+];
+---
+
+<MainLayout
+    title="6Nutrition Online Ordering — Case Study | Simon Eramo"
+    description="How I designed and built the 6Nutrition pickup ordering app — a Next.js 16 + Stripe ordering platform with a structured menu engine, modifier-aware item cards, persistent cart, and a kitchen view."
+>
+    <!-- Hero -->
+    <section
+        class="py-20 md:py-28 border-b-2 border-zinc-100 dark:border-zinc-800"
+    >
+        <div class="px-4 md:px-8">
+            <div class="flex items-center gap-3 mb-8">
+                <a
+                    href="/case-studies"
+                    class="inline-flex items-center gap-1.5 text-sm font-bold text-neutral-500 dark:text-neutral-400 hover:text-black dark:hover:text-white transition-colors"
+                >
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="16"
+                        height="16"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2.5"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        aria-hidden="true"><path d="m15 18-6-6 6-6"></path></svg
+                    >
+                    Case Studies
+                </a>
+            </div>
+
+            <div class="max-w-4xl">
+                <p
+                    class="text-xs font-bold uppercase tracking-widest text-neutral-500 dark:text-neutral-400 mb-4"
+                >
+                    {caseStudy.client} · {caseStudy.year}
+                </p>
+                <div class="flex items-start gap-5 mb-6">
+                    <span
+                        class="text-6xl md:text-7xl shrink-0 mt-1"
+                        aria-hidden="true">{caseStudy.emoji}</span
+                    >
+                    <h1
+                        id="case-study-heading"
+                        class="text-4xl md:text-6xl font-black leading-tight text-pretty"
+                    >
+                        {caseStudy.title}
+                    </h1>
+                </div>
+                <p
+                    class="text-xl font-medium text-neutral-600 dark:text-neutral-400 mb-8 max-w-2xl leading-relaxed"
+                >
+                    {caseStudy.subtitle}
+                </p>
+
+                <!-- Meta strip -->
+                <div
+                    class="flex flex-wrap gap-6 pt-8 border-t-2 border-zinc-100 dark:border-zinc-800"
+                >
+                    <div>
+                        <p
+                            class="text-xs font-bold uppercase tracking-widest text-neutral-400 mb-1"
+                        >
+                            Role
+                        </p>
+                        <p class="font-bold text-sm">{caseStudy.role}</p>
+                    </div>
+                    <div>
+                        <p
+                            class="text-xs font-bold uppercase tracking-widest text-neutral-400 mb-1"
+                        >
+                            Year
+                        </p>
+                        <p class="font-bold text-sm">{caseStudy.year}</p>
+                    </div>
+                    <div>
+                        <p
+                            class="text-xs font-bold uppercase tracking-widest text-neutral-400 mb-1"
+                        >
+                            Stack
+                        </p>
+                        <p class="font-bold text-sm">
+                            {caseStudy.stack.join(" · ")}
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Hero product screenshot -->
+            <div
+                class="mt-12 max-w-3xl rounded-2xl overflow-hidden border-2 border-zinc-200 dark:border-zinc-700/50 shadow-xl"
+            >
+                <img
+                    src="/images/six-nutrition-home.png"
+                    alt="6Nutrition ordering home screen — pastel mint background with brand mark, phone number, and a grid of breakfast items with high-quality food photography"
+                    class="w-full h-auto block"
+                    width="2940"
+                    height="1482"
+                />
+            </div>
+        </div>
+    </section>
+
+    <!-- Executive Summary -->
+    <section class="py-20">
+        <div class="px-4 md:px-8">
+            <div class="grid md:grid-cols-3 gap-12 max-w-6xl">
+                <div class="md:col-span-1">
+                    <p
+                        class="text-xs font-bold uppercase tracking-widest text-neutral-400 mb-3"
+                    >
+                        Overview
+                    </p>
+                    <h2 class="text-3xl font-black mb-4">Executive Summary</h2>
+                </div>
+                <div class="md:col-span-2">
+                    <p
+                        class="text-lg font-medium text-neutral-700 dark:text-neutral-300 leading-relaxed"
+                    >
+                        <strong class="text-black dark:text-white"
+                            >6Nutrition Online Ordering</strong
+                        > is a pickup-first ordering experience built for a Melbourne
+                        high-protein cafe. It replaces phone orders and queue-time
+                        ordering with a fast, modifier-aware web app that hands
+                        money to Stripe, surfaces orders to the kitchen in real time,
+                        and reconciles every payment via webhook plus a safety-net
+                        cron — all deployed on Vercel.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Outcomes -->
+    <section class="py-16 bg-zinc-50 dark:bg-neutral-900">
+        <div class="px-4 md:px-8">
+            <div
+                class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto text-center"
+            >
+                {
+                    outcomes.map((o) => (
+                        <div class="p-8 rounded-2xl border-2 border-zinc-200 dark:border-zinc-700/50 bg-white dark:bg-zinc-900">
+                            <span class="block text-4xl md:text-5xl font-black mb-2 text-black dark:text-white">
+                                {o.value}
+                            </span>
+                            <span class="text-sm font-bold text-neutral-500 dark:text-neutral-400 uppercase tracking-widest">
+                                {o.label}
+                            </span>
+                        </div>
+                    ))
+                }
+            </div>
+        </div>
+    </section>
+
+    <!-- The Problem -->
+    <section class="py-20">
+        <div class="px-4 md:px-8">
+            <div class="grid md:grid-cols-3 gap-12 max-w-6xl">
+                <div class="md:col-span-1">
+                    <p
+                        class="text-xs font-bold uppercase tracking-widest text-neutral-400 mb-3"
+                    >
+                        The Challenge
+                    </p>
+                    <h2 class="text-3xl font-black mb-4">
+                        Phone Orders, Queues, and Lost Modifiers
+                    </h2>
+                </div>
+                <div class="md:col-span-2 space-y-6">
+                    <p
+                        class="text-lg font-medium text-neutral-700 dark:text-neutral-300 leading-relaxed"
+                    >
+                        Like most cafes, 6Nutrition was juggling phone orders,
+                        in-person queues and a menu rich with <strong
+                            class="text-black dark:text-white"
+                            >required preparation choices, extras and add-ons</strong
+                        >. Handwritten dockets dropped modifier details, peak-time
+                        phone calls pulled staff off the counter, and customers
+                        waited in line just to place an order — not to collect one.
+                    </p>
+                    <ul class="space-y-3">
+                        {
+                            problems.map((p) => (
+                                <li class="flex items-start gap-3 text-neutral-700 dark:text-neutral-400 font-medium">
+                                    <span class="mt-2 w-1.5 h-1.5 rounded-full bg-red-500 shrink-0" />
+                                    {p}
+                                </li>
+                            ))
+                        }
+                    </ul>
+                    <div
+                        class="p-6 rounded-xl bg-red-50 dark:bg-red-950/30 border-l-4 border-red-500"
+                    >
+                        <p
+                            class="font-bold text-red-800 dark:text-red-300 text-lg"
+                        >
+                            "Modifier Drift" — every handwritten docket loses a
+                            preparation choice or a side. Multiply by hundreds
+                            of orders a week and the kitchen is always guessing.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- The Solution -->
+    <section class="py-20 bg-zinc-50 dark:bg-neutral-900">
+        <div class="px-4 md:px-8">
+            <div class="grid md:grid-cols-3 gap-12 max-w-6xl">
+                <div class="md:col-span-1">
+                    <p
+                        class="text-xs font-bold uppercase tracking-widest text-neutral-400 mb-3"
+                    >
+                        The Solution
+                    </p>
+                    <h2 class="text-3xl font-black mb-4">
+                        A Pickup-First Web App
+                    </h2>
+                </div>
+                <div class="md:col-span-2">
+                    <p
+                        class="text-lg font-medium text-neutral-700 dark:text-neutral-300 leading-relaxed mb-8"
+                    >
+                        A Next.js 16 App Router build with a structured JSON
+                        menu, modifier-aware modals, a persistent cart drawer,
+                        Stripe Checkout, and a dedicated kitchen view. Every
+                        decision — from required-modifier validation to the
+                        reconcile cron — exists to make sure <strong
+                            class="text-black dark:text-white"
+                            >every paid order reaches the kitchen exactly as the
+                            customer chose it</strong
+                        >.
+                    </p>
+                    <div class="grid sm:grid-cols-2 gap-4">
+                        {
+                            features.map((f) => (
+                                <div class="p-5 rounded-xl border-2 border-zinc-200 dark:border-zinc-700/50 bg-white dark:bg-zinc-900 transition-colors hover:border-zinc-400 dark:hover:border-zinc-500">
+                                    <span class="text-2xl block mb-2">
+                                        {f.icon}
+                                    </span>
+                                    <h3 class="font-black text-base mb-1">
+                                        {f.title}
+                                    </h3>
+                                    <p class="text-sm text-neutral-600 dark:text-neutral-400 font-medium leading-relaxed">
+                                        {f.description}
+                                    </p>
+                                </div>
+                            ))
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Design Highlights -->
+    <section class="py-20">
+        <div class="px-4 md:px-8">
+            <div class="grid md:grid-cols-3 gap-12 max-w-6xl">
+                <div class="md:col-span-1">
+                    <p
+                        class="text-xs font-bold uppercase tracking-widest text-neutral-400 mb-3"
+                    >
+                        Design
+                    </p>
+                    <h2 class="text-3xl font-black mb-4">
+                        Key Design Decisions
+                    </h2>
+                </div>
+                <div class="md:col-span-2 space-y-8">
+                    <div class="flex gap-5">
+                        <span class="text-3xl shrink-0">🥬</span>
+                        <div>
+                            <h3 class="font-black text-lg mb-1">
+                                Pastel-Mint Brand Palette
+                            </h3>
+                            <p
+                                class="text-neutral-700 dark:text-neutral-400 font-medium leading-relaxed"
+                            >
+                                A soft mint background paired with a circular
+                                brand mark and high-contrast black/white
+                                interactive elements — the menu feels fresh and
+                                "healthy" without ever competing with the food
+                                photography.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="flex gap-5">
+                        <span class="text-3xl shrink-0">🃏</span>
+                        <div>
+                            <h3 class="font-black text-lg mb-1">
+                                Modifier-First Item Cards
+                            </h3>
+                            <p
+                                class="text-neutral-700 dark:text-neutral-400 font-medium leading-relaxed"
+                            >
+                                Every card opens a dialog rather than
+                                quick-adding — even simple items — so customers
+                                always confirm required choices and the cart
+                                never ends up with an "incomplete" line item.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="flex gap-5">
+                        <span class="text-3xl shrink-0">🧷</span>
+                        <div>
+                            <h3 class="font-black text-lg mb-1">
+                                Persistent Top-Right Cart
+                            </h3>
+                            <p
+                                class="text-neutral-700 dark:text-neutral-400 font-medium leading-relaxed"
+                            >
+                                A fixed cart pill shows item count and running
+                                total at all times — no scroll-to-bottom moment
+                                of doubt. Tapping it slides in a full-height
+                                drawer with quantity controls and a pickup-time
+                                selector.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="flex gap-5">
+                        <span class="text-3xl shrink-0">📷</span>
+                        <div>
+                            <h3 class="font-black text-lg mb-1">
+                                Photo-Backed Menu with Graceful Fallback
+                            </h3>
+                            <p
+                                class="text-neutral-700 dark:text-neutral-400 font-medium leading-relaxed"
+                            >
+                                Items with photography render edge-to-edge
+                                imagery via <code>next/image</code>; items
+                                without fall back to a category-coloured
+                                placeholder — so the grid never looks
+                                half-finished while photo coverage rolls out.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal screenshot -->
+    <section class="pb-20">
+        <div class="px-4 md:px-8">
+            <div class="max-w-md mx-auto">
+                <div
+                    class="rounded-2xl overflow-hidden border-2 border-zinc-200 dark:border-zinc-700/50 shadow-xl"
+                >
+                    <img
+                        src="/images/six-nutrition-modal.png"
+                        alt="6Nutrition customise-item modal — required 'Choice of Preparation' radio group above an 'Extra Sides' multi-select list, with live price, validation message, and Add to Order CTA pinned to the bottom"
+                        class="w-full h-auto block"
+                    />
+                </div>
+                <p
+                    class="mt-4 text-sm font-medium text-neutral-500 dark:text-neutral-400 text-center"
+                >
+                    The customise-item modal: required choices, multi-select
+                    extras, live validation and a sticky total.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technical Architecture -->
+    <section class="py-20 bg-zinc-50 dark:bg-neutral-900">
+        <div class="px-4 md:px-8">
+            <div class="grid md:grid-cols-3 gap-12 max-w-6xl">
+                <div class="md:col-span-1">
+                    <p
+                        class="text-xs font-bold uppercase tracking-widest text-neutral-400 mb-3"
+                    >
+                        Engineering
+                    </p>
+                    <h2 class="text-3xl font-black mb-4">
+                        Technical Architecture
+                    </h2>
+                </div>
+                <div class="md:col-span-2 space-y-6">
+                    <p
+                        class="text-lg font-medium text-neutral-700 dark:text-neutral-300 leading-relaxed"
+                    >
+                        Built on Next.js 16 App Router and deployed on Vercel.
+                        The menu is a single JSON document resolved server-side;
+                        the cart lives in client state; checkout and webhooks
+                        run as Vercel Functions backed by Stripe.
+                    </p>
+                    <div class="grid sm:grid-cols-3 gap-4">
+                        <div
+                            class="p-5 rounded-xl border-2 border-zinc-200 dark:border-zinc-700/50 bg-white dark:bg-zinc-900"
+                        >
+                            <p
+                                class="text-xs font-bold uppercase tracking-widest text-neutral-400 mb-2"
+                            >
+                                Framework
+                            </p>
+                            <p class="font-black">Next.js 16</p>
+                            <p
+                                class="text-sm text-neutral-500 dark:text-neutral-400 mt-1"
+                            >
+                                App Router · RSC
+                            </p>
+                        </div>
+                        <div
+                            class="p-5 rounded-xl border-2 border-zinc-200 dark:border-zinc-700/50 bg-white dark:bg-zinc-900"
+                        >
+                            <p
+                                class="text-xs font-bold uppercase tracking-widest text-neutral-400 mb-2"
+                            >
+                                Payments
+                            </p>
+                            <p class="font-black">Stripe</p>
+                            <p
+                                class="text-sm text-neutral-500 dark:text-neutral-400 mt-1"
+                            >
+                                Checkout · Webhooks
+                            </p>
+                        </div>
+                        <div
+                            class="p-5 rounded-xl border-2 border-zinc-200 dark:border-zinc-700/50 bg-white dark:bg-zinc-900"
+                        >
+                            <p
+                                class="text-xs font-bold uppercase tracking-widest text-neutral-400 mb-2"
+                            >
+                                Hosting
+                            </p>
+                            <p class="font-black">Vercel</p>
+                            <p
+                                class="text-sm text-neutral-500 dark:text-neutral-400 mt-1"
+                            >
+                                Fluid Compute · Edge
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Architecture flow diagram -->
+                    <div
+                        class="p-6 rounded-xl bg-zinc-900 dark:bg-black border-2 border-zinc-700 font-mono text-sm overflow-x-auto"
+                    >
+                        <pre
+                            class="text-zinc-300 leading-relaxed whitespace-pre"><span class="text-indigo-400">menu.json</span> ──▶ <span class="text-green-400">getMenu()</span> ──▶ <span class="text-yellow-400">RSC Page</span> ──▶ <span class="text-pink-400">MenuItemCard</span>
+                                                              │
+                                                              ▼
+                                                       <span class="text-blue-400">Cart (client)</span>
+                                                              │
+                                                              ▼
+                                                  <span class="text-orange-400">/api/checkout</span>
+                                                              │
+                                                              ▼
+                                                       <span class="text-green-400">Stripe Checkout</span>
+                                                              │
+                                              ┌───────────────┴───────────────┐
+                                              ▼                               ▼
+                                <span class="text-pink-400">/api/stripe/webhook</span>      <span class="text-indigo-400">/api/cron/reconcile</span>
+                                              │                               │
+                                              └─────────────▶ <span class="text-green-400">/kitchen</span> ◀─────────────┘</pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Results -->
+    <section class="py-20">
+        <div class="px-4 md:px-8">
+            <div class="grid md:grid-cols-3 gap-12 max-w-6xl">
+                <div class="md:col-span-1">
+                    <p
+                        class="text-xs font-bold uppercase tracking-widest text-neutral-400 mb-3"
+                    >
+                        Impact
+                    </p>
+                    <h2 class="text-3xl font-black mb-4">The Result</h2>
+                </div>
+                <div class="md:col-span-2 space-y-6">
+                    <p
+                        class="text-lg font-medium text-neutral-700 dark:text-neutral-300 leading-relaxed"
+                    >
+                        6Nutrition customers can browse, customise and pay for
+                        pickup in under a minute — without taking up counter
+                        time or risking a missed modifier. The kitchen sees
+                        exactly what was ordered, when it's due, and who it's
+                        for.
+                    </p>
+                    <ul class="space-y-4">
+                        <li
+                            class="flex items-start gap-3 text-neutral-700 dark:text-neutral-300 font-medium text-lg"
+                        >
+                            <span
+                                class="mt-1.5 w-2 h-2 rounded-full bg-green-500 shrink-0"
+                            ></span>
+                            <span
+                                ><strong class="text-black dark:text-white"
+                                    >Under a minute</strong
+                                > from landing page to a paid, scheduled pickup order.</span
+                            >
+                        </li>
+                        <li
+                            class="flex items-start gap-3 text-neutral-700 dark:text-neutral-300 font-medium text-lg"
+                        >
+                            <span
+                                class="mt-1.5 w-2 h-2 rounded-full bg-green-500 shrink-0"
+                            ></span>
+                            <span
+                                ><strong class="text-black dark:text-white"
+                                    >Zero phone orders</strong
+                                > to transcribe — every modifier choice is captured,
+                                priced and ticketed automatically.</span
+                            >
+                        </li>
+                        <li
+                            class="flex items-start gap-3 text-neutral-700 dark:text-neutral-300 font-medium text-lg"
+                        >
+                            <span
+                                class="mt-1.5 w-2 h-2 rounded-full bg-green-500 shrink-0"
+                            ></span>
+                            <span
+                                ><strong class="text-black dark:text-white"
+                                    >Reliable order capture</strong
+                                > via Stripe webhook + a reconcile cron — paid orders
+                                never get lost in transit.</span
+                            >
+                        </li>
+                    </ul>
+
+                    <div
+                        class="p-6 rounded-xl bg-emerald-50 dark:bg-emerald-950/30 border-l-4 border-emerald-500 mt-4"
+                    >
+                        <p
+                            class="font-bold text-emerald-800 dark:text-emerald-300 text-base"
+                        >
+                            💡 Pickup-first, not delivery-first: by deliberately
+                            scoping out delivery, the build stays simple, the
+                            margins stay healthy, and the customer experience is
+                            tuned for the cafe's actual workflow.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Next / Back nav -->
+    <section class="py-16 border-t-2 border-zinc-100 dark:border-zinc-800">
+        <div
+            class="px-4 md:px-8 flex flex-col sm:flex-row items-center justify-between gap-6"
+        >
+            <a
+                href="/case-studies"
+                class="inline-flex items-center gap-2 font-bold text-neutral-500 dark:text-neutral-400 hover:text-black dark:hover:text-white transition-colors"
+            >
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="18"
+                    height="18"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"><path d="m15 18-6-6 6-6"></path></svg
+                >
+                All case studies
+            </a>
+            <a
+                href="/#contact"
+                class="group relative inline-flex items-center justify-center overflow-hidden h-12 px-8 font-bold text-white bg-black dark:bg-white dark:text-black transition-all duration-300 rounded-md"
+            >
+                <span
+                    class="transform transition-transform duration-300 group-hover:-translate-x-4"
+                >
+                    Get in touch
+                </span>
+                <span
+                    class="absolute right-5 transform -translate-x-4 opacity-0 transition-all duration-300 group-hover:translate-x-0 group-hover:opacity-100"
+                >
+                    &rarr;
+                </span>
+            </a>
+        </div>
+    </section>
+</MainLayout>

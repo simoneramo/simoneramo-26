@@ -3,6 +3,22 @@ import MainLayout from "../layouts/MainLayout.astro";
 
 const caseStudies = [
     {
+        id: "six-nutrition-ordering",
+        title: "6Nutrition Online Ordering",
+        subtitle: "Web App · E-commerce · Hospitality",
+        description:
+            "A pickup-first ordering web app for a Melbourne high-protein cafe — built on Next.js 16 and Stripe, with a modifier-aware menu, persistent cart, dedicated kitchen view, and webhook + reconcile cron so paid orders never get lost.",
+        tags: ["Web App", "Next.js", "Stripe"],
+        year: "2026",
+        client: "6Nutrition",
+        color: "#10b981",
+        gradient: "from-emerald-500/20 to-emerald-900/5",
+        emoji: "🥗",
+        status: "available",
+        href: "/case-studies/six-nutrition-ordering",
+        highlights: ["<1 min order to paid", "Zero phone orders to transcribe", "100% modifier accuracy"],
+    },
+    {
         id: "launch-local-dashboard",
         title: "Launch Local Dashboard",
         subtitle: "Product Design · Full-Stack Development · DX Tools",
@@ -99,6 +115,22 @@ const caseStudies = [
         highlights: ["1.5% → 5%+ conversion rate", "200+ campaigns designed", "8-person team trained in CRO"],
     },
     {
+        id: "we-make-small",
+        title: "We Make Small",
+        subtitle: "Web Design · CRO · Local SEO · Alpine.js",
+        description:
+            "Building a high-converting, single-page marketing website for a Melbourne web design studio — complete with dark mode, scroll-triggered animations, integrated contact forms, and local SEO optimisation.",
+        tags: ["Web Design", "Conversion", "Strategy"],
+        year: "2025",
+        client: "We Make Small",
+        color: "#06b6d4",
+        gradient: "from-cyan-500/20 to-cyan-900/5",
+        emoji: "🚀",
+        status: "available",
+        href: "/case-studies/we-make-small",
+        highlights: ["High-converting contact form", "Dark mode + auto theme", "Local SEO structured data"],
+    },
+    {
         id: "falcon-1-master-template",
         title: "Falcon 1 — Master Site Template",
         subtitle: "Full-Stack Design · Astro 5 · TinaCMS · Page Builder",
@@ -113,6 +145,22 @@ const caseStudies = [
         status: "available",
         href: "/case-studies/falcon-1-master-template",
         highlights: ["Days → minutes project setup", "30+ pre-built components", "100/100 Lighthouse out of the box"],
+    },
+    {
+        id: "little-pigeon",
+        title: "Little Pigeon Massage & Waxing",
+        subtitle: "Web Design · Astro · Local SEO · Wellness Brand",
+        description:
+            "A calm, conversion-focused marketing site for a Melbourne wellness studio — built on Astro with image-heavy storytelling, integrated booking, gift cards, a journal, and serverless contact forms.",
+        tags: ["Web Design", "Development", "Astro"],
+        year: "2025",
+        client: "Little Pigeon Massage & Waxing",
+        color: "#f472b6",
+        gradient: "from-pink-300/30 to-rose-900/5",
+        emoji: "🕊️",
+        status: "available",
+        href: "/case-studies/little-pigeon",
+        highlights: ["10+ purpose-built pages", "Serverless Resend contact form", "Astro 6 + Tailwind v4 stack"],
     },
 ];
 
@@ -140,6 +188,9 @@ const tagColors: Record<string, string> = {
     "UI/UX": "bg-fuchsia-100 text-fuchsia-800 dark:bg-fuchsia-900/30 dark:text-fuchsia-300",
     "Website Redesign": "bg-sky-100 text-sky-800 dark:bg-sky-900/30 dark:text-sky-300",
     Scaffolding: "bg-orange-100 text-orange-800 dark:bg-orange-900/30 dark:text-orange-300",
+    "Web App": "bg-emerald-100 text-emerald-800 dark:bg-emerald-900/30 dark:text-emerald-300",
+    "Next.js": "bg-zinc-100 text-zinc-800 dark:bg-zinc-800 dark:text-zinc-200",
+    Stripe: "bg-violet-100 text-violet-800 dark:bg-violet-900/30 dark:text-violet-300",
 };
 ---
 
