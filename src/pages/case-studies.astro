@@ -12,7 +12,7 @@ const caseStudies = [
         year: "2026",
         client: "6Nutrition",
         color: "#10b981",
-        gradient: "from-emerald-500/20 to-emerald-900/5",
+        solid: "bg-emerald-100 dark:bg-emerald-900/20",
         emoji: "🥗",
         status: "available",
         href: "/case-studies/six-nutrition-ordering",
@@ -28,7 +28,7 @@ const caseStudies = [
         year: "2026",
         client: "Personal Project",
         color: "#6366f1",
-        gradient: "from-indigo-600/20 to-indigo-900/5",
+        solid: "bg-indigo-100 dark:bg-indigo-900/20",
         emoji: "🚀",
         status: "available",
         href: "/case-studies/launch-local-dashboard",
@@ -44,7 +44,7 @@ const caseStudies = [
         year: "2026",
         client: "Personal Project",
         color: "#a855f7",
-        gradient: "from-purple-600/20 to-purple-900/5",
+        solid: "bg-purple-100 dark:bg-purple-900/20",
         emoji: "🤖",
         status: "available",
         href: "/case-studies/design-prompt-builder",
@@ -60,7 +60,7 @@ const caseStudies = [
         year: "2026",
         client: "Personal Project",
         color: "#f97316",
-        gradient: "from-orange-500/20 to-orange-900/5",
+        solid: "bg-orange-100 dark:bg-orange-900/20",
         emoji: "⚡",
         status: "available",
         href: "/case-studies/project-starter",
@@ -76,7 +76,7 @@ const caseStudies = [
         year: "2025",
         client: "Paul Jeffers",
         color: "#0ea5e9",
-        gradient: "from-sky-500/20 to-sky-900/5",
+        solid: "bg-sky-100 dark:bg-sky-900/20",
         emoji: "📷",
         status: "available",
         href: "/case-studies/paul-jeffers-photography",
@@ -92,7 +92,7 @@ const caseStudies = [
         year: "2023–2024",
         client: "WorkSafe Victoria",
         color: "#FDB813",
-        gradient: "from-yellow-500/20 to-yellow-900/5",
+        solid: "bg-yellow-100 dark:bg-yellow-900/20",
         emoji: "🏗️",
         status: "available",
         href: "/case-studies/worksafe-design-system",
@@ -108,27 +108,11 @@ const caseStudies = [
         year: "2017–2020",
         client: "Social Garden",
         color: "#20E28F",
-        gradient: "from-emerald-500/20 to-emerald-900/5",
+        solid: "bg-emerald-100 dark:bg-emerald-900/20",
         emoji: "📈",
         status: "available",
         href: "/case-studies/lead-gen-campaigns",
         highlights: ["1.5% → 5%+ conversion rate", "200+ campaigns designed", "8-person team trained in CRO"],
-    },
-    {
-        id: "we-make-small",
-        title: "We Make Small",
-        subtitle: "Web Design · CRO · Local SEO · Alpine.js",
-        description:
-            "Building a high-converting, single-page marketing website for a Melbourne web design studio — complete with dark mode, scroll-triggered animations, integrated contact forms, and local SEO optimisation.",
-        tags: ["Web Design", "Conversion", "Strategy"],
-        year: "2025",
-        client: "We Make Small",
-        color: "#06b6d4",
-        gradient: "from-cyan-500/20 to-cyan-900/5",
-        emoji: "🚀",
-        status: "available",
-        href: "/case-studies/we-make-small",
-        highlights: ["High-converting contact form", "Dark mode + auto theme", "Local SEO structured data"],
     },
     {
         id: "falcon-1-master-template",
@@ -140,7 +124,7 @@ const caseStudies = [
         year: "2026",
         client: "Simon Eramo Studio",
         color: "#FF6B6B",
-        gradient: "from-red-500/20 to-red-900/5",
+        solid: "bg-red-100 dark:bg-red-900/20",
         emoji: "🦅",
         status: "available",
         href: "/case-studies/falcon-1-master-template",
@@ -156,13 +140,26 @@ const caseStudies = [
         year: "2025",
         client: "Little Pigeon Massage & Waxing",
         color: "#f472b6",
-        gradient: "from-pink-300/30 to-rose-900/5",
+        solid: "bg-pink-100 dark:bg-pink-900/20",
         emoji: "🕊️",
         status: "available",
         href: "/case-studies/little-pigeon",
         highlights: ["10+ purpose-built pages", "Serverless Resend contact form", "Astro 6 + Tailwind v4 stack"],
     },
 ];
+
+// Lucide icon inner-SVG markup, keyed by case study id
+const cardIcons: Record<string, string> = {
+    "six-nutrition-ordering": '<path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/>',
+    "launch-local-dashboard": '<path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/>',
+    "design-prompt-builder": '<path d="M12 8V4H8"/><rect width="16" height="12" x="4" y="8" rx="2"/><path d="M2 14h2"/><path d="M20 14h2"/><path d="M15 13v2"/><path d="M9 13v2"/>',
+    "project-starter": '<path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z"/>',
+    "paul-jeffers-photography": '<path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/><circle cx="12" cy="13" r="3"/>',
+    "worksafe-design-system": '<rect width="7" height="7" x="3" y="3" rx="1"/><rect width="7" height="7" x="14" y="3" rx="1"/><rect width="7" height="7" x="14" y="14" rx="1"/><rect width="7" height="7" x="3" y="14" rx="1"/>',
+    "lead-gen-campaigns": '<polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/>',
+    "falcon-1-master-template": '<path d="M20.24 12.24a6 6 0 0 0-8.49-8.49L5 10.5V19h8.5z"/><line x1="16" x2="2" y1="8" y2="22"/><line x1="17.5" x2="9" y1="15" y2="15"/>',
+    "little-pigeon": '<path d="M16 7h.01"/><path d="M3.4 18H12a8 8 0 0 0 8-8V7a4 4 0 0 0-7.28-2.3L2 20"/><path d="m20 7 2 .5-2 .5"/><path d="M10 18v3"/><path d="M14 17.75V21"/><path d="M7 18a6 6 0 0 0 3.84-10.61"/>',
+};
 
 const tagColors: Record<string, string> = {
     "Product Design": "bg-violet-100 text-violet-800 dark:bg-violet-900/30 dark:text-violet-300",
@@ -211,12 +208,12 @@ const tagColors: Record<string, string> = {
                     id="case-studies-heading"
                     class="text-5xl md:text-6xl font-black mb-6 text-pretty leading-tighter"
                 >
-                    Work that speaks for itself
+                    What I've been building
                 </h1>
                 <p
-                    class="text-lg md:text-xl font-medium text-neutral-600 dark:text-neutral-400 max-w-2xl leading-relaxed"
+                    class="text-lg md:text-xl font-regular text-neutral-600 dark:text-neutral-400 max-w-2xl leading-relaxed"
                 >
-                    A curated portfolio of real projects—from design systems and AI tools to
+                    A curated portfolio of real projects from design systems and AI tools to
                     conversion campaigns and headless web platforms. Each one grounded in
                     research, craft, and measurable impact.
                 </p>
@@ -229,24 +226,34 @@ const tagColors: Record<string, string> = {
         <div class="px-4 md:px-8">
             <div class="grid md:grid-cols-2 gap-8">
                 {
-                    caseStudies.map((study, index) => (
-                        <article
-                            class={`relative flex flex-col rounded-2xl border-2 border-zinc-100 dark:border-zinc-700/50 overflow-hidden ${study.status === "coming-soon" ? "opacity-70" : ""}`}
+                    caseStudies.map((study) => {
+                        const CardTag = study.status === "available" ? "a" : "article";
+                        return (
+                        <CardTag
+                            href={study.status === "available" ? study.href : undefined}
+                            aria-label={study.status === "available" ? `Read case study: ${study.title}` : undefined}
+                            class={`group relative flex flex-col rounded-2xl border-2 border-zinc-100 dark:border-zinc-700/50 overflow-hidden transition-colors ${study.status === "available" ? "hover:border-black dark:hover:border-white" : "opacity-70"}`}
                         >
                             <!-- Card Header / Visual -->
                             <div
-                                class={`relative bg-linear-to-br ${study.gradient} dark:from-zinc-800 dark:to-zinc-900 p-8 md:p-10 flex items-center justify-between min-h-[180px] overflow-hidden`}
+                                class={`relative ${study.solid} p-8 md:p-10 flex items-center justify-between min-h-[180px] overflow-hidden`}
                             >
-                                <!-- Large background text number -->
-                                <span
-                                    class="absolute -right-4 -top-4 text-[120px] font-black opacity-5 select-none leading-none"
-                                    aria-hidden="true"
-                                >
-                                    {String(index + 1).padStart(2, "0")}
-                                </span>
-
                                 <div class="flex flex-col gap-3 relative z-10">
-                                    <span class="text-5xl">{study.emoji}</span>
+                                    <span class="flex items-center justify-center w-12 h-12 rounded-xl bg-white/70 dark:bg-white/10 text-black dark:text-white">
+                                        <svg
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            width="24"
+                                            height="24"
+                                            viewBox="0 0 24 24"
+                                            fill="none"
+                                            stroke="currentColor"
+                                            stroke-width="2"
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round"
+                                            aria-hidden="true"
+                                            set:html={cardIcons[study.id]}
+                                        />
+                                    </span>
                                     <div class="flex flex-wrap gap-2">
                                         {study.tags.map((tag) => (
                                             <span
@@ -300,10 +307,8 @@ const tagColors: Record<string, string> = {
 
                                 <!-- CTA -->
                                 {study.status === "available" ? (
-                                    <a
-                                        href={study.href}
-                                        class="group/btn inline-flex items-center gap-2 font-bold text-black dark:text-white hover:gap-4 transition-all duration-200"
-                                        aria-label={`Read case study: ${study.title}`}
+                                    <span
+                                        class="inline-flex items-center gap-2 font-bold text-black dark:text-white transition-all duration-200 group-hover:gap-4"
                                     >
                                         Read case study
                                         <svg
@@ -316,13 +321,13 @@ const tagColors: Record<string, string> = {
                                             stroke-width="2.5"
                                             stroke-linecap="round"
                                             stroke-linejoin="round"
-                                            class="transition-transform duration-200 group-hover/btn:translate-x-1"
+                                            class="transition-transform duration-200 group-hover:translate-x-1"
                                             aria-hidden="true"
                                         >
                                             <path d="M5 12h14" />
                                             <path d="m12 5 7 7-7 7" />
                                         </svg>
-                                    </a>
+                                    </span>
                                 ) : (
                                     <span class="inline-flex items-center gap-2 font-bold text-neutral-400 dark:text-neutral-600 cursor-not-allowed">
                                         <span class="w-2 h-2 rounded-full bg-yellow-400 animate-pulse" />
@@ -330,8 +335,9 @@ const tagColors: Record<string, string> = {
                                     </span>
                                 )}
                             </div>
-                        </article>
-                    ))
+                        </CardTag>
+                        );
+                    })
                 }
             </div>
         </div>

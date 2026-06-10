@@ -44,7 +44,7 @@ const professionalExperience = [
         ],
     },
     {
-        role: "Design Lead / Digital Designer",
+        role: "Digital Designer",
         company: "Social Garden",
         location: "Melbourne, Australia",
         date: "July 2015 – March 2018",
@@ -125,7 +125,7 @@ const professionalExperience = [
                         solutions
                     </h1>
                     <p
-                        class="text-lg md:text-xl font-medium mb-10 max-w-xl text-neutral-600 dark:text-gray-200"
+                        class="text-lg md:text-xl font-regular mb-10 max-w-xl text-neutral-600 dark:text-gray-200"
                     >
                         I'm a Melbourne-based UI/UX Product Designer with 13
                         years of experience. I specialize in creating clean,
@@ -292,7 +292,7 @@ const professionalExperience = [
 
     <!-- Skills Section -->
     <section id="skills" class="py-20">
-        <div class="px-4 md:px-8">
+        <div class="px-4 container max-w-7xl mx-auto md:px-8">
             <div class="mx-auto text-center">
                 <p
                     class="text-xs font-bold uppercase tracking-widest text-neutral-700 dark:text-neutral-400 mb-2"
@@ -311,7 +311,7 @@ const professionalExperience = [
             <div class="grid md:grid-cols-3 gap-8">
                 {
                     skills.items.map((skill) => (
-                        <article class="border-2 border-zinc-200 dark:border-zinc-700/40 p-4 md:p-8 rounded-lg transition-colors">
+                        <article class=" bg-zinc-50 p-4 md:p-8 rounded-lg transition-colors">
                             <span class="text-4xl mb-4 block">
                                 {skill.icon}
                             </span>
@@ -334,12 +334,8 @@ const professionalExperience = [
         <div class="container mx-auto px-4 md:px-8 max-w-3xl text-center">
             <span class="text-5xl mb-4 block">👋</span>
 
-            <h2 class="text-4xl md:text-5xl font-black mb-12">
-                Simpler, better, faster
-            </h2>
-
             <div
-                class="space-y-6 text-lg text-neutral-800 dark:text-neutral-400 font-regular leading-relaxed text-left md:text-center"
+                class="space-y-6 text-lg lg:text-xl text-neutral-800 dark:text-neutral-400 font-regular leading-relaxed text-left md:text-center"
             >
                 <p>
                     I am a dedicated <strong class="dark:text-white"
@@ -755,7 +751,7 @@ const professionalExperience = [
                         x-model="name"
                         @blur="touched.name = true; validateName()"
                         @input="touched.name && validateName()"
-                        class="w-full p-4 bg-transparent border-2 focus:bg-white focus:text-black focus:border-black dark:focus:bg-zinc-800 dark:focus:text-white dark:focus:border-zinc-200 transition-colors outline-none focus:ring-0 placeholder-neutral-500 rounded-md"
+                        class="w-full p-4 bg-transparent border-2 focus:bg-white focus:text-black focus:border-black dark:focus:bg-zinc-800 dark:focus:text-white dark:focus:border-zinc-200 transition-colors outline-none focus:ring-0 placeholder-neutral-300 rounded-md"
                         :class="errors.name ? 'border-red-600' : 'border-neutral-200 dark:border-zinc-600'"
                         :aria-invalid="errors.name"
                         aria-describedby="name-error"
@@ -781,7 +777,7 @@ const professionalExperience = [
                         x-model="email"
                         @blur="touched.email = true; validateEmail()"
                         @input="touched.email && validateEmail()"
-                        class="w-full p-4 bg-transparent border-2 focus:bg-white focus:text-black focus:border-black dark:focus:bg-zinc-800 dark:focus:text-white dark:focus:border-zinc-200 transition-colors outline-none focus:ring-0 placeholder-neutral-500 rounded-md"
+                        class="w-full p-4 bg-transparent border-2 focus:bg-white focus:text-black focus:border-black dark:focus:bg-zinc-800 dark:focus:text-white dark:focus:border-zinc-200 transition-colors outline-none focus:ring-0 placeholder-neutral-300 rounded-md"
                         :class="errors.email ? 'border-red-600' : 'border-neutral-200 dark:border-zinc-600'"
                         :aria-invalid="errors.email"
                         aria-describedby="email-error"
@@ -807,7 +803,7 @@ const professionalExperience = [
                         x-model="message"
                         @blur="touched.message = true; validateMessage()"
                         @input="touched.message && validateMessage()"
-                        class="w-full p-4 bg-transparent border-2 focus:bg-white focus:text-black focus:border-black dark:focus:bg-zinc-800 dark:focus:text-white dark:focus:border-zinc-200 transition-colors outline-none focus:ring-0 placeholder-neutral-500 rounded-md"
+                        class="w-full p-4 bg-transparent border-2 focus:bg-white focus:text-black focus:border-black dark:focus:bg-zinc-800 dark:focus:text-white dark:focus:border-zinc-200 transition-colors outline-none focus:ring-0 placeholder-neutral-300 rounded-md"
                         :class="errors.message ? 'border-red-600' : 'border-neutral-200 dark:border-zinc-600'"
                         :aria-invalid="errors.message"
                         aria-describedby="message-error"

@@ -4,7 +4,76 @@
 /* Enable class-based dark mode for Tailwind CSS 4 */
 @custom-variant dark (&:where(.dark, .dark *));
 
+/* Apercu */
+@font-face {
+  font-family: 'Apercu';
+  src: url('/fonts/apercu/Apercu-Light.woff2') format('woff2'),
+       url('/fonts/apercu/Apercu-Light.woff') format('woff');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Apercu';
+  src: url('/fonts/apercu/Apercu-LightItalic.woff2') format('woff2'),
+       url('/fonts/apercu/Apercu-LightItalic.woff') format('woff');
+  font-weight: 300;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Apercu';
+  src: url('/fonts/apercu/Apercu-Regular.woff2') format('woff2'),
+       url('/fonts/apercu/Apercu-Regular.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Apercu';
+  src: url('/fonts/apercu/Apercu-Italic.woff2') format('woff2'),
+       url('/fonts/apercu/Apercu-Italic.woff') format('woff');
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Apercu';
+  src: url('/fonts/apercu/Apercu-Medium.woff2') format('woff2'),
+       url('/fonts/apercu/Apercu-Medium.woff') format('woff');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Apercu';
+  src: url('/fonts/apercu/Apercu-MediumItalic.woff2') format('woff2'),
+       url('/fonts/apercu/Apercu-MediumItalic.woff') format('woff');
+  font-weight: 500;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Apercu';
+  src: url('/fonts/apercu/Apercu-Bold.woff2') format('woff2'),
+       url('/fonts/apercu/Apercu-Bold.woff') format('woff');
+  font-weight: 700 900;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Apercu';
+  src: url('/fonts/apercu/Apercu-BoldItalic.woff2') format('woff2'),
+       url('/fonts/apercu/Apercu-BoldItalic.woff') format('woff');
+  font-weight: 700 900;
+  font-style: italic;
+  font-display: swap;
+}
+
 @theme {
+  /* Custom Fonts */
+  --font-sans: 'Apercu', ui-sans-serif, system-ui, sans-serif;
+
   /* Custom Colors */
   --color-primary: #000000;
   --color-secondary: #ffffff;
@@ -31,14 +100,8 @@
 }
 
 body {
-  font-family: 'Onest Variable', sans-serif;
-  font-optical-sizing: auto;
+  font-family: 'Apercu', sans-serif;
   font-style: normal;
-  font-variation-settings:
-    "slnt" 0,
-    "wdth" 100,
-    "GRAD" 0,
-    "ROND" 0;
 }
 
 

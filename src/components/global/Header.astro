@@ -39,7 +39,7 @@ const { hideMenu = false, showPhoneButton = false } = Astro.props;
 
         {
             !hideMenu && (
-                <nav class="hidden md:flex font-medium justify-center items-center gap-6 sm:gap-4 lg:gap-12 w-2/4">
+                <nav class="hidden md:flex font-medium justify-center items-center gap-6 sm:gap-4 lg:gap-8 w-2/4">
                     {navLinks.map(({ url, label, children }) => {
                         const isActive =
                             Astro.url.pathname === url ||
