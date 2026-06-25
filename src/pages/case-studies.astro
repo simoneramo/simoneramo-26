@@ -3,22 +3,6 @@ import MainLayout from "../layouts/MainLayout.astro";
 
 const caseStudies = [
     {
-        id: "six-nutrition-ordering",
-        title: "6Nutrition Online Ordering",
-        subtitle: "Web App · E-commerce · Hospitality",
-        description:
-            "A pickup-first ordering web app for a Melbourne high-protein cafe — built on Next.js 16 and Stripe, with a modifier-aware menu, persistent cart, dedicated kitchen view, and webhook + reconcile cron so paid orders never get lost.",
-        tags: ["Web App", "Next.js", "Stripe"],
-        year: "2026",
-        client: "6Nutrition",
-        color: "#10b981",
-        solid: "bg-emerald-100 dark:bg-emerald-900/20",
-        emoji: "🥗",
-        status: "available",
-        href: "/case-studies/six-nutrition-ordering",
-        highlights: ["<1 min order to paid", "Zero phone orders to transcribe", "100% modifier accuracy"],
-    },
-    {
         id: "launch-local-dashboard",
         title: "Launch Local Dashboard",
         subtitle: "Product Design · Full-Stack Development · DX Tools",
@@ -33,6 +17,38 @@ const caseStudies = [
         status: "available",
         href: "/case-studies/launch-local-dashboard",
         highlights: ["~2–3 min saved per project switch", "Real-time process monitoring", "One-click launch + auto-open browser"],
+    },
+    {
+        id: "rolling-mugshot",
+        title: "Rolling Mugshot Online Ordering",
+        subtitle: "Web App · E-commerce · Hospitality",
+        description:
+            "Order-ahead for a mobile coffee cart — built on Next.js 16 and Square, where online pre-orders land in Square POS alongside walk-ups. Backed by a Postgres source of truth, an idempotent webhook, a live-polling status page, and a PIN-gated kitchen queue.",
+        tags: ["Web App", "Next.js", "Square"],
+        year: "2026",
+        client: "Rolling Mugshot",
+        color: "#b45309",
+        solid: "bg-amber-100 dark:bg-amber-900/20",
+        emoji: "☕",
+        status: "available",
+        href: "/case-studies/rolling-mugshot",
+        highlights: ["One queue with walk-ups in Square POS", "Exactly-once order capture", "Live status page, no texts"],
+    },
+    {
+        id: "six-nutrition-ordering",
+        title: "6Nutrition Online Ordering",
+        subtitle: "Web App · E-commerce · Hospitality",
+        description:
+            "A pickup-first ordering web app for a Melbourne high-protein cafe — built on Next.js 16 and Stripe, with a modifier-aware menu, persistent cart, dedicated kitchen view, and webhook + reconcile cron so paid orders never get lost.",
+        tags: ["Web App", "Next.js", "Stripe"],
+        year: "2026",
+        client: "6Nutrition",
+        color: "#10b981",
+        solid: "bg-emerald-100 dark:bg-emerald-900/20",
+        emoji: "🥗",
+        status: "available",
+        href: "/case-studies/six-nutrition-ordering",
+        highlights: ["<1 min order to paid", "Zero phone orders to transcribe", "100% modifier accuracy"],
     },
     {
         id: "design-prompt-builder",
@@ -116,7 +132,7 @@ const caseStudies = [
     },
     {
         id: "falcon-1-master-template",
-        title: "Falcon 1 — Master Site Template",
+        title: "Master Site Template",
         subtitle: "Full-Stack Design · Astro 5 · TinaCMS · Page Builder",
         description:
             "A production-ready Astro site template that compresses days of boilerplate setup into a single CLI command — complete with TinaCMS, a block-based page builder, WCAG 2.1 accessible components, dark mode, SEO, and a 3-tier page architecture.",
@@ -150,6 +166,7 @@ const caseStudies = [
 
 // Lucide icon inner-SVG markup, keyed by case study id
 const cardIcons: Record<string, string> = {
+    "rolling-mugshot": '<path d="M10 2v2"/><path d="M14 2v2"/><path d="M16 8a1 1 0 0 1 1 1v8a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4V9a1 1 0 0 1 1-1h14a4 4 0 1 1 0 8h-1"/><path d="M6 2v2"/>',
     "six-nutrition-ordering": '<path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/>',
     "launch-local-dashboard": '<path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/>',
     "design-prompt-builder": '<path d="M12 8V4H8"/><rect width="16" height="12" x="4" y="8" rx="2"/><path d="M2 14h2"/><path d="M20 14h2"/><path d="M15 13v2"/><path d="M9 13v2"/>',
@@ -188,6 +205,7 @@ const tagColors: Record<string, string> = {
     "Web App": "bg-emerald-100 text-emerald-800 dark:bg-emerald-900/30 dark:text-emerald-300",
     "Next.js": "bg-zinc-100 text-zinc-800 dark:bg-zinc-800 dark:text-zinc-200",
     Stripe: "bg-violet-100 text-violet-800 dark:bg-violet-900/30 dark:text-violet-300",
+    Square: "bg-amber-100 text-amber-800 dark:bg-amber-900/30 dark:text-amber-300",
 };
 ---
 

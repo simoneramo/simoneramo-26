@@ -1,0 +1,634 @@
+---
+import MainLayout from "../../layouts/MainLayout.astro";
+
+const caseStudy = {
+    title: "Rolling Mugshot Online Ordering",
+    subtitle: "Order-Ahead for a Mobile Coffee Cart, Wired Straight into Square POS",
+    client: "Rolling Mugshot",
+    year: "2026",
+    role: "Product Designer & Full-Stack Developer",
+    stack: ["Next.js 16", "App Router", "React 19", "Tailwind CSS", "shadcn/ui", "Square", "Neon Postgres", "Resend", "Vercel"],
+    tags: ["Web App", "E-commerce", "Hospitality"],
+    emoji: "☕",
+};
+
+const features = [
+    {
+        icon: "🔗",
+        title: "Square Payment Links",
+        description:
+            "Checkout creates a real Square Order plus a hosted Payment Link, so online pre-orders land in Square POS right alongside walk-up sales — one queue, one source of takings, no double entry.",
+    },
+    {
+        icon: "🗄️",
+        title: "Postgres Source of Truth",
+        description:
+            "Every paid order is written to a Neon Postgres `orders` table — the canonical record the kitchen view, status page, and receipts all read from, independent of Square's dashboard.",
+    },
+    {
+        icon: "🛡️",
+        title: "Idempotent Webhook",
+        description:
+            "The Square order ID is a UNIQUE column and the webhook does INSERT … ON CONFLICT DO NOTHING — so retried `payment.updated` events can never create a duplicate order at the window.",
+    },
+    {
+        icon: "📟",
+        title: "Live Order Status Page",
+        description:
+            "After paying, customers land on a status screen that polls every 3 seconds — walking from \"Order received\" to \"Preparing\" to \"Ready for pickup\" without a refresh or a text message.",
+    },
+    {
+        icon: "👨‍🍳",
+        title: "PIN-Gated Kitchen Queue",
+        description:
+            "A dedicated /kitchen view, protected by a signed HMAC cookie + shared PIN, lets cart staff advance each order paid → preparing → ready → collected on a glanceable counter tablet.",
+    },
+    {
+        icon: "✉️",
+        title: "Dual Resend Emails + Reconcile Cron",
+        description:
+            "Each paid order fires two Resend emails — a kitchen ticket and a customer receipt — while a reconcile route polls Square for any payment the webhook missed, so nothing slips through.",
+    },
+];
+
+const outcomes = [
+    { value: "1 POS", label: "Walk-ups + online in a single queue" },
+    { value: "~2s", label: "From payment to kitchen ticket" },
+    { value: "0", label: "Duplicate orders, via idempotent webhook" },
+];
+
+const problems = [
+    "A growing queue at the cart window during the morning rush",
+    "Walk-up sales and any online channel living in two separate systems to reconcile",
+    "No way for staff to see what's coming before a customer reaches the window",
+    "Dropped or duplicated orders whenever a payment webhook is retried",
+    "No digital receipt trail for customers paying ahead",
+];
+---
+
+<MainLayout
+    title="Rolling Mugshot Online Ordering — Case Study | Simon Eramo"
+    description="How I designed and built order-ahead for the Rolling Mugshot mobile coffee cart — a Next.js 16 + Square app where online pre-orders land in Square POS alongside walk-ups, backed by a Postgres source of truth, an idempotent webhook, a live status page, and a PIN-gated kitchen queue."
+>
+    <!-- Hero -->
+    <section
+        class="py-20 md:py-28 border-b-2 border-zinc-100 dark:border-zinc-800"
+    >
+        <div class="px-4 md:px-8">
+            <div class="flex items-center gap-3 mb-8">
+                <a
+                    href="/case-studies"
+                    class="inline-flex items-center gap-1.5 text-sm font-bold text-neutral-500 dark:text-neutral-400 hover:text-black dark:hover:text-white transition-colors"
+                >
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="16"
+                        height="16"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2.5"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        aria-hidden="true"><path d="m15 18-6-6 6-6"></path></svg
+                    >
+                    Case Studies
+                </a>
+            </div>
+
+            <div class="max-w-4xl">
+                <p
+                    class="text-xs font-bold uppercase tracking-widest text-neutral-500 dark:text-neutral-400 mb-4"
+                >
+                    {caseStudy.client} · {caseStudy.year}
+                </p>
+                <div class="flex items-start gap-5 mb-6">
+                    <span
+                        class="text-6xl md:text-7xl shrink-0 mt-1"
+                        aria-hidden="true">{caseStudy.emoji}</span
+                    >
+                    <h1
+                        id="case-study-heading"
+                        class="text-4xl md:text-6xl font-black leading-tight text-pretty"
+                    >
+                        {caseStudy.title}
+                    </h1>
+                </div>
+                <p
+                    class="text-xl font-medium text-neutral-600 dark:text-neutral-400 mb-8 max-w-2xl leading-relaxed"
+                >
+                    {caseStudy.subtitle}
+                </p>
+
+                <!-- Meta strip -->
+                <div
+                    class="flex flex-wrap gap-6 pt-8 border-t-2 border-zinc-100 dark:border-zinc-800"
+                >
+                    <div>
+                        <p
+                            class="text-xs font-bold uppercase tracking-widest text-neutral-400 mb-1"
+                        >
+                            Role
+                        </p>
+                        <p class="font-bold text-sm">{caseStudy.role}</p>
+                    </div>
+                    <div>
+                        <p
+                            class="text-xs font-bold uppercase tracking-widest text-neutral-400 mb-1"
+                        >
+                            Year
+                        </p>
+                        <p class="font-bold text-sm">{caseStudy.year}</p>
+                    </div>
+                    <div>
+                        <p
+                            class="text-xs font-bold uppercase tracking-widest text-neutral-400 mb-1"
+                        >
+                            Stack
+                        </p>
+                        <p class="font-bold text-sm">
+                            {caseStudy.stack.join(" · ")}
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Executive Summary -->
+    <section class="py-20">
+        <div class="px-4 md:px-8">
+            <div class="grid md:grid-cols-3 gap-12 max-w-6xl">
+                <div class="md:col-span-1">
+                    <p
+                        class="text-xs font-bold uppercase tracking-widest text-neutral-400 mb-3"
+                    >
+                        Overview
+                    </p>
+                    <h2 class="text-3xl font-black mb-4">Executive Summary</h2>
+                </div>
+                <div class="md:col-span-2">
+                    <p
+                        class="text-lg font-medium text-neutral-700 dark:text-neutral-300 leading-relaxed"
+                    >
+                        <strong class="text-black dark:text-white"
+                            >Rolling Mugshot Online Ordering</strong
+                        > lets customers browse the menu, order ahead, pay online,
+                        and collect at the truck window — without standing in the
+                        morning queue. Orders flow through Square Payment Links so
+                        they land in Square POS <em>alongside</em> walk-ups, write
+                        to a Postgres source of truth, surface to staff in a
+                        PIN-gated kitchen view, and confirm to the customer on a
+                        live-polling status page. An idempotent webhook plus a
+                        reconcile cron make sure every paid order arrives exactly
+                        once — all deployed on Vercel.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Outcomes -->
+    <section class="py-16 bg-zinc-50 dark:bg-neutral-900">
+        <div class="px-4 md:px-8">
+            <div
+                class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto text-center"
+            >
+                {
+                    outcomes.map((o) => (
+                        <div class="p-8 rounded-2xl border-2 border-zinc-200 dark:border-zinc-700/50 bg-white dark:bg-zinc-900">
+                            <span class="block text-4xl md:text-5xl font-black mb-2 text-black dark:text-white">
+                                {o.value}
+                            </span>
+                            <span class="text-sm font-bold text-neutral-500 dark:text-neutral-400 uppercase tracking-widest">
+                                {o.label}
+                            </span>
+                        </div>
+                    ))
+                }
+            </div>
+        </div>
+    </section>
+
+    <!-- The Problem -->
+    <section class="py-20">
+        <div class="px-4 md:px-8">
+            <div class="grid md:grid-cols-3 gap-12 max-w-6xl">
+                <div class="md:col-span-1">
+                    <p
+                        class="text-xs font-bold uppercase tracking-widest text-neutral-400 mb-3"
+                    >
+                        The Challenge
+                    </p>
+                    <h2 class="text-3xl font-black mb-4">
+                        A Queue at the Window and Two Systems to Reconcile
+                    </h2>
+                </div>
+                <div class="md:col-span-2 space-y-6">
+                    <p
+                        class="text-lg font-medium text-neutral-700 dark:text-neutral-300 leading-relaxed"
+                    >
+                        A mobile coffee cart lives and dies by throughput at peak.
+                        Rolling Mugshot needed to take orders ahead of time without
+                        bolting on a second point-of-sale to reconcile at the end
+                        of the day. The hard part isn't the menu — it's making sure
+                        an online order behaves <strong
+                            class="text-black dark:text-white"
+                            >exactly like a walk-up</strong
+                        >: same till, same queue, counted once, never lost.
+                    </p>
+                    <ul class="space-y-3">
+                        {
+                            problems.map((p) => (
+                                <li class="flex items-start gap-3 text-neutral-700 dark:text-neutral-400 font-medium">
+                                    <span class="mt-2 w-1.5 h-1.5 rounded-full bg-red-500 shrink-0" />
+                                    {p}
+                                </li>
+                            ))
+                        }
+                    </ul>
+                    <div
+                        class="p-6 rounded-xl bg-red-50 dark:bg-red-950/30 border-l-4 border-red-500"
+                    >
+                        <p
+                            class="font-bold text-red-800 dark:text-red-300 text-lg"
+                        >
+                            "Two-till drift" — the moment online orders live in a
+                            separate system from the window, every shift ends with
+                            a reconciliation puzzle and the risk of a paid order
+                            nobody made.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- The Solution -->
+    <section class="py-20 bg-zinc-50 dark:bg-neutral-900">
+        <div class="px-4 md:px-8">
+            <div class="grid md:grid-cols-3 gap-12 max-w-6xl">
+                <div class="md:col-span-1">
+                    <p
+                        class="text-xs font-bold uppercase tracking-widest text-neutral-400 mb-3"
+                    >
+                        The Solution
+                    </p>
+                    <h2 class="text-3xl font-black mb-4">
+                        One Queue, Backed by a Real Database
+                    </h2>
+                </div>
+                <div class="md:col-span-2">
+                    <p
+                        class="text-lg font-medium text-neutral-700 dark:text-neutral-300 leading-relaxed mb-8"
+                    >
+                        A Next.js 16 App Router build that hands money to Square via
+                        Payment Links — so online orders surface in the same POS as
+                        the window — and treats a Postgres <code>orders</code> table
+                        as the single source of truth. Every decision, from the
+                        UNIQUE payment reference to the reconcile cron, exists so
+                        that <strong class="text-black dark:text-white"
+                            >every paid order reaches the cart exactly once and
+                            exactly as ordered</strong
+                        >.
+                    </p>
+                    <div class="grid sm:grid-cols-2 gap-4">
+                        {
+                            features.map((f) => (
+                                <div class="p-5 rounded-xl border-2 border-zinc-200 dark:border-zinc-700/50 bg-white dark:bg-zinc-900 transition-colors hover:border-zinc-400 dark:hover:border-zinc-500">
+                                    <span class="text-2xl block mb-2">
+                                        {f.icon}
+                                    </span>
+                                    <h3 class="font-black text-base mb-1">
+                                        {f.title}
+                                    </h3>
+                                    <p class="text-sm text-neutral-600 dark:text-neutral-400 font-medium leading-relaxed">
+                                        {f.description}
+                                    </p>
+                                </div>
+                            ))
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Design Highlights -->
+    <section class="py-20">
+        <div class="px-4 md:px-8">
+            <div class="grid md:grid-cols-3 gap-12 max-w-6xl">
+                <div class="md:col-span-1">
+                    <p
+                        class="text-xs font-bold uppercase tracking-widest text-neutral-400 mb-3"
+                    >
+                        Design
+                    </p>
+                    <h2 class="text-3xl font-black mb-4">
+                        Key Design Decisions
+                    </h2>
+                </div>
+                <div class="md:col-span-2 space-y-8">
+                    <div class="flex gap-5">
+                        <span class="text-3xl shrink-0">🪟</span>
+                        <div>
+                            <h3 class="font-black text-lg mb-1">
+                                Pickup-at-the-Window, Not Delivery
+                            </h3>
+                            <p
+                                class="text-neutral-700 dark:text-neutral-400 font-medium leading-relaxed"
+                            >
+                                The whole flow is scoped to order-ahead-and-collect.
+                                No couriers, no delivery zones — just a faster path
+                                to the same truck window, which keeps the build
+                                simple and the margins intact.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="flex gap-5">
+                        <span class="text-3xl shrink-0">📟</span>
+                        <div>
+                            <h3 class="font-black text-lg mb-1">
+                                A Status Page That Replaces the "Is It Ready?" Tap
+                            </h3>
+                            <p
+                                class="text-neutral-700 dark:text-neutral-400 font-medium leading-relaxed"
+                            >
+                                Rather than texting customers, the post-payment
+                                screen polls every 3 seconds and moves through
+                                received → preparing → ready states — so people walk
+                                up exactly when their coffee is done, not before.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="flex gap-5">
+                        <span class="text-3xl shrink-0">🔢</span>
+                        <div>
+                            <h3 class="font-black text-lg mb-1">
+                                Human-Readable Pickup Codes
+                            </h3>
+                            <p
+                                class="text-neutral-700 dark:text-neutral-400 font-medium leading-relaxed"
+                            >
+                                Orders get a short, speakable code instead of a UUID,
+                                so a barista can call it across a noisy cart and a
+                                customer can read it back without squinting at a
+                                screen.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="flex gap-5">
+                        <span class="text-3xl shrink-0">🔒</span>
+                        <div>
+                            <h3 class="font-black text-lg mb-1">
+                                Friction-Light Staff Auth
+                            </h3>
+                            <p
+                                class="text-neutral-700 dark:text-neutral-400 font-medium leading-relaxed"
+                            >
+                                The kitchen view is gated by a signed HMAC cookie and
+                                a shared PIN — secure enough for a counter tablet,
+                                but no account juggling for casual staff mid-rush.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technical Architecture -->
+    <section class="py-20 bg-zinc-50 dark:bg-neutral-900">
+        <div class="px-4 md:px-8">
+            <div class="grid md:grid-cols-3 gap-12 max-w-6xl">
+                <div class="md:col-span-1">
+                    <p
+                        class="text-xs font-bold uppercase tracking-widest text-neutral-400 mb-3"
+                    >
+                        Engineering
+                    </p>
+                    <h2 class="text-3xl font-black mb-4">
+                        Technical Architecture
+                    </h2>
+                </div>
+                <div class="md:col-span-2 space-y-6">
+                    <p
+                        class="text-lg font-medium text-neutral-700 dark:text-neutral-300 leading-relaxed"
+                    >
+                        Built on Next.js 16 App Router and deployed on Vercel.
+                        Checkout creates a Square Payment Link; a signature-verified
+                        webhook inserts the paid order into Neon Postgres and fires
+                        Resend emails; the kitchen view and customer status page
+                        both read from that single table. A reconcile route backfills
+                        anything Square's webhook misses.
+                    </p>
+                    <div class="grid sm:grid-cols-3 gap-4">
+                        <div
+                            class="p-5 rounded-xl border-2 border-zinc-200 dark:border-zinc-700/50 bg-white dark:bg-zinc-900"
+                        >
+                            <p
+                                class="text-xs font-bold uppercase tracking-widest text-neutral-400 mb-2"
+                            >
+                                Framework
+                            </p>
+                            <p class="font-black">Next.js 16</p>
+                            <p
+                                class="text-sm text-neutral-500 dark:text-neutral-400 mt-1"
+                            >
+                                App Router · RSC
+                            </p>
+                        </div>
+                        <div
+                            class="p-5 rounded-xl border-2 border-zinc-200 dark:border-zinc-700/50 bg-white dark:bg-zinc-900"
+                        >
+                            <p
+                                class="text-xs font-bold uppercase tracking-widest text-neutral-400 mb-2"
+                            >
+                                Payments
+                            </p>
+                            <p class="font-black">Square</p>
+                            <p
+                                class="text-sm text-neutral-500 dark:text-neutral-400 mt-1"
+                            >
+                                Payment Links · Webhooks
+                            </p>
+                        </div>
+                        <div
+                            class="p-5 rounded-xl border-2 border-zinc-200 dark:border-zinc-700/50 bg-white dark:bg-zinc-900"
+                        >
+                            <p
+                                class="text-xs font-bold uppercase tracking-widest text-neutral-400 mb-2"
+                            >
+                                Data
+                            </p>
+                            <p class="font-black">Neon Postgres</p>
+                            <p
+                                class="text-sm text-neutral-500 dark:text-neutral-400 mt-1"
+                            >
+                                Source of truth · Resend
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Architecture flow diagram -->
+                    <div
+                        class="p-6 rounded-xl bg-zinc-900 dark:bg-black border-2 border-zinc-700 font-mono text-sm overflow-x-auto"
+                    >
+                        <pre
+                            class="text-zinc-300 leading-relaxed whitespace-pre"><span class="text-blue-400">Customer</span> ──▶ <span class="text-orange-400">/api/checkout</span> ──▶ <span class="text-green-400">Square Payment Link</span> ──▶ <span class="text-yellow-400">hosted checkout</span>
+                                                                  │ pays
+                                                                  ▼
+                                                       <span class="text-pink-400">/api/square/webhook</span>
+                                                                  │ INSERT … ON CONFLICT DO NOTHING
+                                                                  ▼
+                                                       <span class="text-indigo-400">Postgres `orders`</span>
+                                                                  │
+                                              ┌───────────────────┼───────────────────┐
+                                              ▼                   ▼                   ▼
+                                        <span class="text-green-400">Resend</span>            <span class="text-green-400">/kitchen</span>            <span class="text-blue-400">/order/[id]</span>
+                                   (ticket + receipt)     (staff queue)      (polls every 3s)
+                                              ▲
+                                  <span class="text-indigo-400">/api/cron/reconcile</span> ──┘  (backfills missed webhooks)</pre>
+                    </div>
+
+                    <div
+                        class="p-6 rounded-xl bg-amber-50 dark:bg-amber-950/30 border-l-4 border-amber-500"
+                    >
+                        <p
+                            class="font-bold text-amber-800 dark:text-amber-300 text-base"
+                        >
+                            ☕ The whole system is built around one invariant: the
+                            Square order ID is UNIQUE in Postgres. Webhook retries,
+                            duplicate events, and reconcile sweeps all converge on
+                            the same row — so a paid order can be created once and
+                            only once, no matter how many times Square tries.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Results -->
+    <section class="py-20">
+        <div class="px-4 md:px-8">
+            <div class="grid md:grid-cols-3 gap-12 max-w-6xl">
+                <div class="md:col-span-1">
+                    <p
+                        class="text-xs font-bold uppercase tracking-widest text-neutral-400 mb-3"
+                    >
+                        Impact
+                    </p>
+                    <h2 class="text-3xl font-black mb-4">The Result</h2>
+                </div>
+                <div class="md:col-span-2 space-y-6">
+                    <p
+                        class="text-lg font-medium text-neutral-700 dark:text-neutral-300 leading-relaxed"
+                    >
+                        Rolling Mugshot customers can order and pay before they
+                        arrive, then walk straight to the window when their status
+                        page says "Ready." Because checkout runs through Square,
+                        online pre-orders sit in the same POS as walk-ups — one
+                        queue, one set of takings, nothing to reconcile twice.
+                    </p>
+                    <ul class="space-y-4">
+                        <li
+                            class="flex items-start gap-3 text-neutral-700 dark:text-neutral-300 font-medium text-lg"
+                        >
+                            <span
+                                class="mt-1.5 w-2 h-2 rounded-full bg-green-500 shrink-0"
+                            ></span>
+                            <span
+                                ><strong class="text-black dark:text-white"
+                                    >One unified queue</strong
+                                > — online orders land in Square POS alongside window
+                                sales, with no second till to reconcile.</span
+                            >
+                        </li>
+                        <li
+                            class="flex items-start gap-3 text-neutral-700 dark:text-neutral-300 font-medium text-lg"
+                        >
+                            <span
+                                class="mt-1.5 w-2 h-2 rounded-full bg-green-500 shrink-0"
+                            ></span>
+                            <span
+                                ><strong class="text-black dark:text-white"
+                                    >Exactly-once order capture</strong
+                                > — a UNIQUE payment reference plus a reconcile cron
+                                guarantee no duplicates and no dropped orders.</span
+                            >
+                        </li>
+                        <li
+                            class="flex items-start gap-3 text-neutral-700 dark:text-neutral-300 font-medium text-lg"
+                        >
+                            <span
+                                class="mt-1.5 w-2 h-2 rounded-full bg-green-500 shrink-0"
+                            ></span>
+                            <span
+                                ><strong class="text-black dark:text-white"
+                                    >No more "is it ready?"</strong
+                                > — a live status page and a glanceable kitchen queue
+                                keep customers and staff in sync without a single text
+                                message.</span
+                            >
+                        </li>
+                    </ul>
+
+                    <div
+                        class="p-6 rounded-xl bg-emerald-50 dark:bg-emerald-950/30 border-l-4 border-emerald-500 mt-4"
+                    >
+                        <p
+                            class="font-bold text-emerald-800 dark:text-emerald-300 text-base"
+                        >
+                            💡 Meet the merchant where they already are: by building
+                            on the cart's existing Square POS instead of a parallel
+                            system, online ordering became an extension of the
+                            window — not a second business to run.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Next / Back nav -->
+    <section class="py-16 border-t-2 border-zinc-100 dark:border-zinc-800">
+        <div
+            class="px-4 md:px-8 flex flex-col sm:flex-row items-center justify-between gap-6"
+        >
+            <a
+                href="/case-studies"
+                class="inline-flex items-center gap-2 font-bold text-neutral-500 dark:text-neutral-400 hover:text-black dark:hover:text-white transition-colors"
+            >
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="18"
+                    height="18"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"><path d="m15 18-6-6 6-6"></path></svg
+                >
+                All case studies
+            </a>
+            <a
+                href="/#contact"
+                class="group relative inline-flex items-center justify-center overflow-hidden h-12 px-8 font-bold text-white bg-black dark:bg-white dark:text-black transition-all duration-300 rounded-md"
+            >
+                <span
+                    class="transform transition-transform duration-300 group-hover:-translate-x-4"
+                >
+                    Get in touch
+                </span>
+                <span
+                    class="absolute right-5 transform -translate-x-4 opacity-0 transition-all duration-300 group-hover:translate-x-0 group-hover:opacity-100"
+                >
+                    &rarr;
+                </span>
+            </a>
+        </div>
+    </section>
+</MainLayout>
