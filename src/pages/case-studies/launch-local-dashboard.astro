@@ -2,73 +2,75 @@
 import MainLayout from "../../layouts/MainLayout.astro";
 
 const caseStudy = {
-    title: "Launch Local Dashboard",
+    title: "Local Launch",
     subtitle:
-        "A premium command center designed to eliminate terminal fatigue and streamline the local development experience. It bridges the gap between the filesystem and the browser, enabling developers to scan, launch, and monitor projects with unparalleled ease.",
+        "A local command center for the dev servers across your ~/Sites projects—scan, launch, stop, and monitor them from one place, on one port. Version 2 is a ground-up rewrite that pushes live state over Server-Sent Events, so the dashboard always reflects what's actually running.",
     client: "Personal Project",
     year: "2026",
     role: "Product Designer & Full-Stack Developer",
-    stack: ["React 19", "Vite", "Node.js", "Express", "Lucide Icons"],
-    tags: ["Developer Tools", "React", "Node.js"],
-    emoji: "🖥️",
+    stack: ["Next.js 15", "React 19", "TypeScript", "Server-Sent Events", "Node.js"],
+    tags: ["Developer Tools", "Next.js", "React"],
+    emoji: "🚀",
 };
 
 const features = [
     {
-        icon: "🔍",
-        title: "Smart Scanning",
-        description: "Automatically detects projects in the ~/Sites directory.",
+        icon: "📡",
+        title: "Live SSE State",
+        description:
+            "The server pushes an event when a process spawns, dies, or changes port. The UI never polls.",
+    },
+    {
+        icon: "🧩",
+        title: "One Process, One Port",
+        description:
+            "A single Next.js App Router process serves the UI and the API on port 7777—no frontend/backend to fall out of sync.",
     },
     {
         icon: "🧠",
         title: "Framework Intelligence",
         description:
-            "Identifies Next.js, Astro, Vite, and React projects automatically.",
+            "Table-driven detection and port resolution for Next.js, Astro, Vite, and TinaCMS—adding a framework is one row.",
     },
     {
-        icon: "📡",
-        title: "Deep Process Detection",
+        icon: "🛑",
+        title: "Reliable Stop Pipeline",
         description:
-            "Uses lsof to find all active servers, even those started outside the app.",
+            "Graceful SIGTERM → SIGKILL → port-kill fallback. Stop is instant and always leaves the port free.",
     },
     {
-        icon: "🚀",
-        title: "One-Click Launch",
+        icon: "⚙️",
+        title: "Per-Project Config",
         description:
-            "Spawns background processes and automatically opens Chrome to the correct URL.",
+            "Override the command, port, browser, or env vars without touching package.json—the escape hatch for monorepos and Docker.",
     },
     {
-        icon: "🛠️",
-        title: 'Universal "Open With"',
+        icon: "♻️",
+        title: "Orphan Recovery",
         description:
-            "Instant access to VS Code, Cursor, Antigravity, Warp, and Finder.",
-    },
-    {
-        icon: "📌",
-        title: "Pinned & Sorted",
-        description:
-            "Pin active projects to the top, sorted by date or alphabetically.",
+            "On startup it checks last-known ports against what's still listening and offers one-click cleanup of leftovers.",
     },
 ];
 
 const outcomes = [
-    { value: "~2 min", label: "Saved per project switch" },
-    { value: "100%", label: "Zombie processes identified & killed" },
-    { value: "1-click", label: "From directory to running localhost" },
+    { value: "1 process", label: "One Next.js app, one port" },
+    { value: "Zero polling", label: "SSE pushes state on change" },
+    { value: "Instant", label: "Stop — no resurrect bug" },
 ];
 
 const problems = [
-    "Navigating deep directory structures in the terminal",
-    "Remembering which project runs on which port",
-    "Manually running npm run dev and waiting for the URL",
-    "Losing track of background processes consuming system resources",
-    "Switching between different editors and tools for each project",
+    "2.5s polling triggered an lsof storm that stalled the backend",
+    '"Frontend alive, backend dead" desync between the Vite and Express processes',
+    "The UI wouldn't update after Stop—an 8s cooldown plus a resurrect bug",
+    "Hot-reload wiped in-memory state and orphaned child processes",
+    "A 921-line App.jsx and 1054-line server.js that were hard to change safely",
+    "PID files littered into every project folder",
 ];
 ---
 
 <MainLayout
-    title="Launch Local Dashboard — Case Study | Simon Eramo"
-    description="How I designed and built Launch Local—a premium command center that eliminates terminal fatigue for web developers with one-click project launching and real-time server monitoring."
+    title="Local Launch — Case Study | Simon Eramo"
+    description="How I rebuilt Local Launch—a local dev-server dashboard—on a single Next.js process with Server-Sent Events, eliminating the polling, process desync, and stop bugs of the first version."
 >
     <!-- Hero -->
     <section
@@ -120,6 +122,18 @@ const problems = [
                     {caseStudy.subtitle}
                 </p>
 
+                <div class="flex flex-wrap items-center gap-4 mb-8">
+                    <a
+                        href="https://github.com/simoneramo/Local-Launch-v2"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="inline-flex items-center gap-2 font-bold text-sm px-4 py-2 rounded-full border-2 border-zinc-200 dark:border-zinc-700 hover:border-black dark:hover:border-white transition-colors"
+                    >
+                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.4 5.4 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
+                        View on GitHub
+                    </a>
+                </div>
+
                 <!-- Meta strip -->
                 <div
                     class="flex flex-wrap gap-6 pt-8 border-t-2 border-zinc-100 dark:border-zinc-800"
@@ -159,7 +173,7 @@ const problems = [
             >
                 <img
                     src="/images/default-view.png"
-                    alt="Launch Local Dashboard — default project grid view"
+                    alt="Local Launch — default project grid view"
                     class="w-full h-auto block"
                     width="1456"
                     height="816"
@@ -185,14 +199,20 @@ const problems = [
                         class="text-lg font-medium text-neutral-700 dark:text-neutral-300 leading-relaxed"
                     >
                         <strong class="text-black dark:text-white"
-                            >Launch Local</strong
-                        > is a centralised dashboard built to solve the <em
-                            >"terminal fatigue"</em
-                        > experienced by modern web developers. By providing a visual
-                        interface to scan, launch, and manage local projects across
-                        various frameworks (Next.js, Astro, Vite, etc.), it reduces
-                        the cognitive overhead of switching between projects and managing
-                        background processes.
+                            >Local Launch</strong
+                        > is a dashboard for starting, stopping, and tracking the
+                        dev servers across a developer's <code
+                            class="text-base px-1.5 py-0.5 rounded bg-zinc-100 dark:bg-zinc-800"
+                            >~/Sites</code
+                        > projects—from one place, on one port. <strong
+                            class="text-black dark:text-white">Version 2</strong
+                        > is a ground-up rewrite. The original worked, but its split
+                        Vite-frontend / Express-backend architecture and 2.5s polling
+                        loop produced a class of frustrating bugs: process desync,
+                        an lsof storm, and a UI that wouldn't update after you hit
+                        Stop. v2 collapses everything into a single Next.js process
+                        that <em>pushes</em> state over Server-Sent Events, so the
+                        dashboard always reflects what's actually running.
                     </p>
                 </div>
             </div>
@@ -232,19 +252,19 @@ const problems = [
                         The Challenge
                     </p>
                     <h2 class="text-3xl font-black mb-4">
-                        Terminal Fatigue & Port Chaos
+                        A Working Tool That Fought Back
                     </h2>
                 </div>
                 <div class="md:col-span-2 space-y-6">
                     <p
                         class="text-lg font-medium text-neutral-700 dark:text-neutral-300 leading-relaxed"
                     >
-                        Modern developers often juggle <strong
-                            class="text-black dark:text-white"
-                            >5–10 active projects</strong
-                        >. The traditional workflow is fragmented and
-                        error-prone, leading to a cluttered workspace and lost
-                        time.
+                        v1 shipped and got daily use—but its architecture made it
+                        <strong class="text-black dark:text-white"
+                            >fragile and hard to evolve</strong
+                        >. Two processes, a constant polling loop, and detection
+                        logic that walked every listening port created bugs that
+                        compounded with use.
                     </p>
                     <ul class="space-y-3">
                         {
@@ -262,8 +282,9 @@ const problems = [
                         <p
                             class="font-bold text-red-800 dark:text-red-300 text-lg"
                         >
-                            "Terminal Fatigue" — the compounding cognitive cost
-                            of a fragmented local dev workflow.
+                            The root cause: a two-process design where the UI
+                            could show "Running" for a server that was already
+                            dead.
                         </p>
                     </div>
                 </div>
@@ -282,20 +303,21 @@ const problems = [
                         The Solution
                     </p>
                     <h2 class="text-3xl font-black mb-4">
-                        A Unified Command Center
+                        One Process, Pushed State
                     </h2>
                 </div>
                 <div class="md:col-span-2">
                     <p
                         class="text-lg font-medium text-neutral-700 dark:text-neutral-300 leading-relaxed mb-8"
                     >
-                        Launch Local replaces terminal commands with a
-                        high-fidelity visual dashboard. It acts as a bridge
-                        between the filesystem and the developer's
-                        tools—providing a <strong
+                        v2 rebuilds the dashboard on a single <strong
                             class="text-black dark:text-white"
+                            >Next.js 15 (App Router)</strong
+                        > process serving both the UI and the API on one port. The
+                        server is the <strong class="text-black dark:text-white"
                             >single source of truth</strong
-                        > for the local development environment.
+                        >, pushing live updates over SSE and tracking only the processes
+                        it spawned—so Stop is instant and the state can't drift.
                     </p>
                     <div class="grid sm:grid-cols-2 gap-4">
                         {
@@ -335,24 +357,21 @@ const problems = [
                 </div>
                 <div class="md:col-span-2 space-y-8">
                     <div class="flex gap-5">
-                        <span class="text-3xl shrink-0">🎨</span>
+                        <span class="text-3xl shrink-0">🎯</span>
                         <div>
                             <h3 class="font-black text-lg mb-1">
-                                Premium Aesthetics
+                                Truth Over Detection
                             </h3>
                             <p
                                 class="text-neutral-700 dark:text-neutral-400 font-medium leading-relaxed"
                             >
-                                The application leverages <strong
+                                v1 scanned every port to surface terminal-started
+                                servers—the source of the lsof storm and the
+                                resurrect-after-stop bug. v2 <strong
                                     class="text-black dark:text-white"
-                                    >Glassmorphism</strong
-                                >, <strong class="text-black dark:text-white"
-                                    >Dynamic Gradients</strong
-                                >, and <strong
-                                    class="text-black dark:text-white"
-                                    >Micro-animations</strong
-                                > to create a "state of the art" feel—a UI as inspiring
-                                as the projects it manages.
+                                    >deliberately drops external detection</strong
+                                >: a project is Running <em>iff</em> the dashboard
+                                launched it. A smaller promise the tool can keep perfectly.
                             </p>
                         </div>
                     </div>
@@ -360,16 +379,18 @@ const problems = [
                         <span class="text-3xl shrink-0">📡</span>
                         <div class="w-full">
                             <h3 class="font-black text-lg mb-1">
-                                Real-time Monitoring
+                                Push, Don't Poll
                             </h3>
                             <p
                                 class="text-neutral-700 dark:text-neutral-400 font-medium leading-relaxed mb-5"
                             >
-                                The Activity Monitor tracks running servers in
-                                real-time—differentiating between projects
-                                launched via the dashboard and external
-                                processes, enabling clean termination of any
-                                local server.
+                                A live log drawer streams stdout/stderr from any
+                                running project (also written to <code
+                                    class="text-sm px-1.5 py-0.5 rounded bg-zinc-100 dark:bg-zinc-800"
+                                    >~/.local-launch/logs</code
+                                >), and an event bus pushes state changes the
+                                instant a process spawns, dies, or remaps a
+                                port—replacing the old polling loop entirely.
                             </p>
                             <!-- Light / Dark mode screenshots -->
                             <div class="grid sm:grid-cols-2 gap-4">
@@ -378,7 +399,7 @@ const problems = [
                                 >
                                     <img
                                         src="/images/server-running.png"
-                                        alt="Launch Local — running server panel in light mode"
+                                        alt="Local Launch — running server panel in light mode"
                                         class="w-full h-auto block"
                                         width="728"
                                         height="600"
@@ -394,7 +415,7 @@ const problems = [
                                 >
                                     <img
                                         src="/images/server-running-dark.png"
-                                        alt="Launch Local — running server panel in dark mode"
+                                        alt="Local Launch — running server panel in dark mode"
                                         class="w-full h-auto block"
                                         width="728"
                                         height="600"
@@ -409,18 +430,21 @@ const problems = [
                         </div>
                     </div>
                     <div class="flex gap-5">
-                        <span class="text-3xl shrink-0">📌</span>
+                        <span class="text-3xl shrink-0">🗂️</span>
                         <div>
                             <h3 class="font-black text-lg mb-1">
-                                Pinned & Sorted
+                                One Hand-Inspectable Store
                             </h3>
                             <p
                                 class="text-neutral-700 dark:text-neutral-400 font-medium leading-relaxed"
                             >
-                                Developers can pin "Active" projects to the top,
-                                while the rest are sorted by creation date or
-                                alphabetically—ensuring the most relevant work
-                                is always reachable.
+                                Pins, added projects, settings, and per-project
+                                overrides live in a single JSON file at <code
+                                    class="text-sm px-1.5 py-0.5 rounded bg-zinc-100 dark:bg-zinc-800"
+                                    >~/.local-launch/state.json</code
+                                >—written atomically through a serialized queue,
+                                so concurrent routes can't clobber it. No more PID
+                                files scattered across every project.
                             </p>
                         </div>
                     </div>
@@ -447,8 +471,9 @@ const problems = [
                     <p
                         class="text-lg font-medium text-neutral-700 dark:text-neutral-300 leading-relaxed"
                     >
-                        The project is built on a modern stack focused on
-                        performance and deep system integration.
+                        A single Next.js process where Route Handlers mutate
+                        state, emit on an event bus, and stream the result back to
+                        the UI over SSE—no second runtime to fall out of sync.
                     </p>
                     <div class="grid sm:grid-cols-3 gap-4">
                         <div
@@ -459,11 +484,11 @@ const problems = [
                             >
                                 Frontend
                             </p>
-                            <p class="font-black">React 19 + Vite</p>
+                            <p class="font-black">Next.js 15 + React 19</p>
                             <p
                                 class="text-sm text-neutral-500 dark:text-neutral-400 mt-1"
                             >
-                                Lucide Icons
+                                TypeScript · Lucide Icons
                             </p>
                         </div>
                         <div
@@ -474,7 +499,7 @@ const problems = [
                             >
                                 Backend
                             </p>
-                            <p class="font-black">Node.js + Express</p>
+                            <p class="font-black">Route Handlers</p>
                             <p
                                 class="text-sm text-neutral-500 dark:text-neutral-400 mt-1"
                             >
@@ -487,13 +512,13 @@ const problems = [
                             <p
                                 class="text-xs font-bold uppercase tracking-widest text-neutral-400 mb-2"
                             >
-                                System
+                                Realtime
                             </p>
-                            <p class="font-black">lsof · fs</p>
+                            <p class="font-black">Server-Sent Events</p>
                             <p
                                 class="text-sm text-neutral-500 dark:text-neutral-400 mt-1"
                             >
-                                Deep FS traversal
+                                Event bus on globalThis
                             </p>
                         </div>
                     </div>
@@ -503,13 +528,12 @@ const problems = [
                         class="p-6 rounded-xl bg-zinc-900 dark:bg-black border-2 border-zinc-700 font-mono text-sm overflow-x-auto"
                     >
                         <pre
-                            class="text-zinc-300 leading-relaxed whitespace-pre"><span class="text-indigo-400">React Dashboard</span>  ──── API Requests ────▶  <span class="text-green-400">Node.js Server</span>
-                                                         │
-                                      ┌──────────────────┼──────────────────┐
-                                      ▼                  ▼                  ▼
-                               <span class="text-yellow-400">Scan ~/Sites</span>      <span class="text-blue-400">lsof (ports)</span>      <span class="text-pink-400">Spawn procs</span>
-                                                                            │
-                                                                    <span class="text-orange-400">Log match → Auto-open browser</span></pre>
+                            class="text-zinc-300 leading-relaxed whitespace-pre">click ──▶ <span class="text-indigo-400">api.launch()</span> ──▶ <span class="text-green-400">/api/launch</span> ──▶ <span class="text-yellow-400">launcher.launch()</span>
+                                              │ spawns child, parses URL
+                                              ▼
+                                      <span class="text-pink-400">eventBus.emit("project")</span>
+                                              │
+   UI state ◀── <span class="text-blue-400">useProjects</span> ◀── <span class="text-orange-400">/api/events (SSE)</span> ◀──┘</pre>
                     </div>
                 </div>
             </div>
@@ -532,10 +556,10 @@ const problems = [
                     <p
                         class="text-lg font-medium text-neutral-700 dark:text-neutral-300 leading-relaxed"
                     >
-                        Launch Local transforms a manual, error-prone workflow
-                        into a seamless experience. The dashboard delivers
-                        measurable time savings and a genuinely elevated
-                        developer experience.
+                        v2 is feature-complete and verified end-to-end on
+                        macOS—launch, stop, and orphan-recovery flows all tested
+                        against real projects. The rewrite didn't just add
+                        features; it deleted whole categories of bug.
                     </p>
                     <ul class="space-y-4">
                         <li
@@ -546,8 +570,9 @@ const problems = [
                             ></span>
                             <span
                                 ><strong class="text-black dark:text-white"
-                                    >~2–3 minutes saved</strong
-                                > per project switch through one-click launching.</span
+                                    >Process desync eliminated</strong
+                                >—one process means the UI can't show "Running"
+                                for a dead server.</span
                             >
                         </li>
                         <li
@@ -558,8 +583,9 @@ const problems = [
                             ></span>
                             <span
                                 ><strong class="text-black dark:text-white"
-                                    >Easy identification and termination</strong
-                                > of zombie processes consuming resources.</span
+                                    >Instant, reliable Stop</strong
+                                >—graceful → force → port-kill always leaves the
+                                port free, no 8-second cooldown.</span
                             >
                         </li>
                         <li
@@ -570,8 +596,24 @@ const problems = [
                             ></span>
                             <span
                                 ><strong class="text-black dark:text-white"
-                                    >A beautiful, focused environment</strong
-                                > that reduces friction and boosts creative flow.</span
+                                    >Survives hot-reload and crashes</strong
+                                >—registry and event bus pinned to globalThis; the
+                                orphan banner recovers leftover ports on
+                                restart.</span
+                            >
+                        </li>
+                        <li
+                            class="flex items-start gap-3 text-neutral-700 dark:text-neutral-300 font-medium text-lg"
+                        >
+                            <span
+                                class="mt-1.5 w-2 h-2 rounded-full bg-green-500 shrink-0"
+                            ></span>
+                            <span
+                                ><strong class="text-black dark:text-white"
+                                    >Far easier to evolve</strong
+                                >—single-responsibility files (~50–200 lines)
+                                replace a 921-line component and 1054-line server;
+                                adding a framework is one row.</span
                             >
                         </li>
                     </ul>
@@ -582,13 +624,26 @@ const problems = [
                         <p
                             class="font-bold text-indigo-800 dark:text-indigo-300 text-base"
                         >
-                            💡 Pro Tip: Launch Local works best as a browser
-                            "Home Page"—jump straight into any project the
-                            moment you start your workday.
+                            💡 Daily use: wire <code
+                                class="px-1.5 py-0.5 rounded bg-indigo-100 dark:bg-indigo-900/40"
+                                >alias ll='~/Sites/local-launch-v2/scripts/start.sh'</code
+                            >—it builds if needed and serves the dashboard on port
+                            7777, ready every morning.
                         </p>
                     </div>
                 </div>
             </div>
+        </div>
+    </section>
+
+    <!-- Last updated -->
+    <section class="pb-12">
+        <div class="px-4 md:px-8">
+            <p
+                class="text-xs font-bold uppercase tracking-widest text-neutral-900 dark:text-white"
+            >
+                Last updated · June 2026
+            </p>
         </div>
     </section>
 

@@ -4,11 +4,11 @@ import MainLayout from "../layouts/MainLayout.astro";
 const caseStudies = [
     {
         id: "launch-local-dashboard",
-        title: "Launch Local Dashboard",
-        subtitle: "Product Design · Full-Stack Development · DX Tools",
+        title: "Local Launch",
+        subtitle: "Full-Stack Development · DX Tools · Next.js",
         description:
-            "Building a premium command center that eliminates \"terminal fatigue\" for web developers—one-click project launching, real-time server monitoring, and deep process detection across Next.js, Astro, Vite, and more.",
-        tags: ["Developer Tools", "React", "Node.js"],
+            "A local dashboard to scan, launch, stop, and monitor the dev servers across your ~/Sites projects—rebuilt in v2 on a single Next.js process that pushes live state over Server-Sent Events, killing the polling, process desync, and stop bugs of the first version.",
+        tags: ["Developer Tools", "Next.js", "React"],
         year: "2026",
         client: "Personal Project",
         color: "#6366f1",
@@ -16,7 +16,7 @@ const caseStudies = [
         emoji: "🚀",
         status: "available",
         href: "/case-studies/launch-local-dashboard",
-        highlights: ["~2–3 min saved per project switch", "Real-time process monitoring", "One-click launch + auto-open browser"],
+        highlights: ["One process, one port — no desync", "Zero polling — SSE pushes on change", "Instant, reliable stop"],
     },
     {
         id: "rolling-mugshot",
