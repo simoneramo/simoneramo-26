@@ -33,6 +33,7 @@ This guide details how to run the project locally or reuse this skeleton for a n
 ### 1. Installation
 
 1. **Clone the repository** (or copy to new directory):
+
    ```bash
    git clone <repository-url> simoneramo-26
    cd simoneramo-26
@@ -46,6 +47,7 @@ This guide details how to run the project locally or reuse this skeleton for a n
 ### 2. Environment Setup
 
 1. Create a `.env` file in the root directory:
+
    ```bash
    cp .env.example .env
    ```
@@ -54,6 +56,7 @@ This guide details how to run the project locally or reuse this skeleton for a n
 3. **Resend Configuration**: Sign up at [resend.com](https://resend.com) and create an API key for the contact form.
 
 Add the following variables to your `.env` file:
+
 ```env
 # TinaCMS keys (From your project settings on Tina.io)
 NEXT_PUBLIC_TINA_CLIENT_ID=your_client_id_here
@@ -98,6 +101,7 @@ npm run dev
 ## ✉️ Contact Form (Resend Setup)
 
 The contact form is configured to use **Resend**. For production use:
+
 1. Ensure your `.env` file has the correct `RESEND_API_KEY`, `SITE_OWNER_EMAIL`, and `RESEND_FROM_EMAIL`.
 2. **Custom Domain**: For best deliverability, go to [Resend Domains](https://resend.com/domains), verify your domain, and set `RESEND_FROM_EMAIL` to your verified sender (e.g., `contact@yourdomain.com`).
 3. Form data is sent securely to the `/api/contact` Astro API route, which uses Resend to deliver the email without exposing API keys to the browser.

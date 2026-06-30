@@ -6,670 +6,691 @@ import meHero from "../assets/me-hero.jpg";
 
 const homepageData = await getEntry("homepage", "index");
 if (!homepageData) {
-    throw new Error("Homepage data not found");
+  throw new Error("Homepage data not found");
 }
 const contactForm = homepageData.data.contactForm;
 const hero = homepageData.data.hero;
 const skills = homepageData.data.skills;
 const testimonials = homepageData.data.testimonials;
 
+// Social links shown in the contact section.
+const socialIcons: Record<string, string> = {
+  github:
+    "M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12",
+  linkedin:
+    "M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z",
+  dribbble:
+    "M12 24C5.385 24 0 18.615 0 12S5.385 0 12 0s12 5.385 12 12-5.385 12-12 12zm10.12-10.358c-.35-.11-3.17-.953-6.384-.438 1.34 3.684 1.887 6.684 1.992 7.308 2.3-1.555 3.936-4.02 4.395-6.87zm-6.115 7.808c-.153-.9-.75-4.032-2.19-7.77l-.066.02c-5.79 2.015-7.86 6.025-8.04 6.4 1.73 1.358 3.92 2.166 6.29 2.166 1.42 0 2.77-.29 4-.814zm-11.62-2.58c.232-.4 3.045-5.055 8.332-6.765.135-.045.27-.084.405-.12-.26-.585-.54-1.167-.832-1.74C7.17 11.775 2.206 11.71 1.756 11.7l-.004.312c0 2.633.998 5.037 2.634 6.855zm-2.42-8.955c.46.008 4.683.026 9.477-1.248-1.698-3.018-3.53-5.558-3.8-5.928-2.868 1.35-5.01 3.99-5.676 7.17zM9.6 2.052c.282.38 2.145 2.914 3.822 6 3.645-1.365 5.19-3.44 5.373-3.702-1.81-1.61-4.19-2.586-6.795-2.586-.825 0-1.63.1-2.4.285zm10.335 3.483c-.218.29-1.935 2.493-5.724 4.04.24.49.47.985.68 1.486.08.18.15.36.22.53 3.41-.43 6.8.26 7.14.33-.02-2.42-.88-4.64-2.31-6.38z",
+  instagram:
+    "M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163C8.741 0 8.332.014 7.052.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z",
+  email:
+    "M1.5 8.67v8.58a3 3 0 003 3h15a3 3 0 003-3V8.67l-8.928 5.493a3 3 0 01-3.144 0zM22.5 6.908V6.75a3 3 0 00-3-3h-15a3 3 0 00-3 3v.158l9.714 5.978a1.5 1.5 0 001.572 0z",
+};
+
+const socials = [
+  {
+    platform: "GitHub",
+    url: "https://github.com/simoneramo",
+    icon: socialIcons.github,
+  },
+  {
+    platform: "Email",
+    url: "mailto:simonramo@gmail.com",
+    icon: socialIcons.email,
+  },
+  {
+    platform: "LinkedIn",
+    url: "https://www.linkedin.com/in/simoneramo/",
+    icon: socialIcons.linkedin,
+  },
+  {
+    platform: "Dribbble",
+    url: "https://dribbble.com/simoneramo",
+    icon: socialIcons.dribbble,
+  },
+  {
+    platform: "Instagram",
+    url: "https://www.instagram.com/simon_eramo/",
+    icon: socialIcons.instagram,
+  },
+];
+
 const professionalExperience = [
-    {
-        role: "Freelance Full Stack Designer",
-        company: "Simon Eramo",
-        location: "Melbourne, Australia",
-        date: "Jan 2026 – Present",
-        logo: "/logos/simon-eramo-26.png",
-        color: "#8b5cf6",
-        points: [
-            "Designing and developing high-performance, headless websites using a modern stack: Astro, TinaCMS, and Tailwind CSS.",
-            "Leveraging Vercel for global edge deployment and GitHub for secure version control to build scalable, production-ready applications.",
-            "Focusing on technical excellence, accessibility (WCAG), and conversion strategy to help small businesses compete digitally.",
-            "Utilising AI-driven workflows (Gemini, Claude, Codex, OpenClaw) to accelerate development, optimize code, and enhance creative ideation.",
-        ],
-    },
-    {
-        role: "UI/UX Designer",
-        company: "WorkSafe Victoria",
-        location: "Geelong, VIC, Australia",
-        date: "June 2019 – December 2025",
-        logo: "/logos/worksafe.png",
-        color: "#FDB813",
-        points: [
-            "Spearheaded end-to-end design activities across multiple high-priority projects, moving from initial user research and synthesis through to low and high-fidelity prototyping and final delivery.",
-            "Pivoted core product experiences by collaborating effectively with Product Owners, BAs, developers, and testers, translating complex requirements into actionable design roadmaps.",
-            "Established and maintained the Figma design system and component libraries, ensuring design consistency across agency platforms and supporting accelerated team velocity.",
-            "Conducted in-depth user interviews and usability testing, synthesising qualitative and quantitative data to identify user needs and validate design solutions, ensuring product roadmaps were user-led.",
-            "Drove visual design excellence, utilising expert proficiency in Figma to create and maintain accessible, beautiful, and genuinely easy-to-use user interfaces (UI) and design components.",
-        ],
-    },
-    {
-        role: "Digital Designer",
-        company: "Social Garden",
-        location: "Melbourne, Australia",
-        date: "July 2015 – March 2018",
-        logo: "/logos/social-garden.svg",
-        color: "#20E28F",
-        points: [
-            "Lowered conversion goals for lead generation campaigns across property and education sectors, delivering great results that always exceeded expectations by raising average rates from 3.5% to above 5%.",
-            "Optimised and delivered over 200 high-volume campaigns, ensuring design was focused on conversion while demonstrating an amazing creative eye that aesthetically elevated client brands—a rare dual skill set.",
-            "Led a design change to implement a human-centred and design thinking approach across all aspects of the business, fostering a user-first culture.",
-            "Trained and mentored a design team of up to 8 members on process, strategy, visual design, conversion optimisation, productivity, and well-being.",
-            "Redesigned the lead generation campaign process from end to end, significantly improving team collaboration, productivity, quality, and overall results.",
-        ],
-    },
-    {
-        role: "Freelance UI/UX Designer",
-        company: "Simon Eramo",
-        location: "Melbourne, Australia",
-        date: "December 2012 – June 2019",
-        logo: "/logos/simon-eramo.png",
-        color: "#FF1563",
-        points: [
-            "Managed end-to-end design for a portfolio of small to medium clients, spanning website creation, marketing creative, and corporate identity projects.",
-            "Proactively acquired and mastered front-end design and development tools (Sketch App, Sublime Text, Visual Code Studio, Modular CSS) to enhance design-to-development handoff and understanding.",
-            "Improved knowledge and application of core design methodologies, including design history, Lean, Agile, and advanced user experience processes.",
-        ],
-    },
-    {
-        role: "Digital Designer / Front End Developer",
-        company: "ID Digital Agency",
-        location: "Melbourne, Australia",
-        date: "August 2013 – June 2014",
-        logo: "/logos/id-digital.svg",
-        color: "#333333",
-        points: [
-            "Provided end-to-end website creation services, including account management, User Experience design, Visual Design, and Front-end Development.",
-            "Created a front-end and modular HTML and CSS framework to enable quick setup and development of web applications, improving team efficiency.",
-        ],
-    },
-    {
-        role: "Freelance Web Designer",
-        company: "Thirst Studios",
-        location: "Melbourne, Australia",
-        date: "Jan 2012 - Mar 2013",
-        logo: "/logos/thirst-studios.svg",
-        color: "#8AC73E",
-        points: [
-            "Website creation in a small team of 3, working on small to medium sized clients.",
-            "Learnt Expression Engine including PHP, designed and built websites from end to end.",
-        ],
-    },
+  {
+    role: "Freelance Full Stack Designer",
+    company: "Simon Eramo",
+    location: "Melbourne, Australia",
+    date: "Jan 2026 – Present",
+    logo: "/logos/simon-eramo-26.png",
+    color: "#8b5cf6",
+    points: [
+      "Designing and developing high-performance, headless websites using a modern stack: Astro, TinaCMS, and Tailwind CSS.",
+      "Leveraging Vercel for global edge deployment and GitHub for secure version control to build scalable, production-ready applications.",
+      "Focusing on technical excellence, accessibility (WCAG), and conversion strategy to help small businesses compete digitally.",
+      "Utilising AI-driven workflows (Gemini, Claude, Codex, OpenClaw) to accelerate development, optimize code, and enhance creative ideation.",
+    ],
+  },
+  {
+    role: "UI/UX Designer",
+    company: "WorkSafe Victoria",
+    location: "Geelong, VIC, Australia",
+    date: "June 2019 – December 2025",
+    logo: "/logos/worksafe.png",
+    color: "#FDB813",
+    points: [
+      "Spearheaded end-to-end design activities across multiple high-priority projects, moving from initial user research and synthesis through to low and high-fidelity prototyping and final delivery.",
+      "Pivoted core product experiences by collaborating effectively with Product Owners, BAs, developers, and testers, translating complex requirements into actionable design roadmaps.",
+      "Established and maintained the Figma design system and component libraries, ensuring design consistency across agency platforms and supporting accelerated team velocity.",
+      "Conducted in-depth user interviews and usability testing, synthesising qualitative and quantitative data to identify user needs and validate design solutions, ensuring product roadmaps were user-led.",
+      "Drove visual design excellence, utilising expert proficiency in Figma to create and maintain accessible, beautiful, and genuinely easy-to-use user interfaces (UI) and design components.",
+    ],
+  },
+  {
+    role: "Digital Designer",
+    company: "Social Garden",
+    location: "Melbourne, Australia",
+    date: "July 2015 – March 2018",
+    logo: "/logos/social-garden.svg",
+    color: "#20E28F",
+    points: [
+      "Lowered conversion goals for lead generation campaigns across property and education sectors, delivering great results that always exceeded expectations by raising average rates from 3.5% to above 5%.",
+      "Optimised and delivered over 200 high-volume campaigns, ensuring design was focused on conversion while demonstrating an amazing creative eye that aesthetically elevated client brands—a rare dual skill set.",
+      "Led a design change to implement a human-centred and design thinking approach across all aspects of the business, fostering a user-first culture.",
+      "Trained and mentored a design team of up to 8 members on process, strategy, visual design, conversion optimisation, productivity, and well-being.",
+      "Redesigned the lead generation campaign process from end to end, significantly improving team collaboration, productivity, quality, and overall results.",
+    ],
+  },
+  {
+    role: "Freelance UI/UX Designer",
+    company: "Simon Eramo",
+    location: "Melbourne, Australia",
+    date: "December 2012 – June 2019",
+    logo: "/logos/simon-eramo.png",
+    color: "#FF1563",
+    points: [
+      "Managed end-to-end design for a portfolio of small to medium clients, spanning website creation, marketing creative, and corporate identity projects.",
+      "Proactively acquired and mastered front-end design and development tools (Sketch App, Sublime Text, Visual Code Studio, Modular CSS) to enhance design-to-development handoff and understanding.",
+      "Improved knowledge and application of core design methodologies, including design history, Lean, Agile, and advanced user experience processes.",
+    ],
+  },
+  {
+    role: "Digital Designer / Front End Developer",
+    company: "ID Digital Agency",
+    location: "Melbourne, Australia",
+    date: "August 2013 – June 2014",
+    logo: "/logos/id-digital.svg",
+    color: "#333333",
+    points: [
+      "Provided end-to-end website creation services, including account management, User Experience design, Visual Design, and Front-end Development.",
+      "Created a front-end and modular HTML and CSS framework to enable quick setup and development of web applications, improving team efficiency.",
+    ],
+  },
+  {
+    role: "Freelance Web Designer",
+    company: "Thirst Studios",
+    location: "Melbourne, Australia",
+    date: "Jan 2012 - Mar 2013",
+    logo: "/logos/thirst-studios.svg",
+    color: "#8AC73E",
+    points: [
+      "Website creation in a small team of 3, working on small to medium sized clients.",
+      "Learnt Expression Engine including PHP, designed and built websites from end to end.",
+    ],
+  },
 ];
 ---
 
 <MainLayout>
-    <!-- Hero Section -->
-    <section class="py-20">
-        <div class="px-4 md:px-8">
-            <div class="grid md:grid-cols-5 gap-12 items-center">
-                <div class="md:col-span-3 text-center md:text-left">
-                    <p
-                        class="text-xs font-bold uppercase tracking-widest text-neutral-800 dark:text-neutral-400 mb-4 flex items-center justify-center md:justify-start gap-2"
-                    >
-                        <span class="relative flex h-2 w-2">
-                            <span
-                                class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"
-                            ></span>
-                            <span
-                                class="relative inline-flex rounded-full h-2 w-2 bg-green-600"
-                            ></span>
-                        </span>
-                        Available for hire
-                    </p>
-                    <h1
-                        id="hero-heading"
-                        class="text-5xl md:text-6xl max-w-3xl text-pretty font-black mb-4"
-                    >
-                        Creating clean, functional, and user-centered digital
-                        solutions
-                    </h1>
-                    <p
-                        class="text-lg md:text-xl font-regular mb-10 max-w-xl text-neutral-600 dark:text-gray-200"
-                    >
-                        I'm a Melbourne-based UI/UX Product Designer with 13
-                        years of experience. I specialize in creating clean,
-                        functional, and user-centered digital solutions.
-                    </p>
-                    <div
-                        class="flex flex-col sm:flex-row md:justify-start justify-center gap-4"
-                    >
-                        <a
-                            href={hero.buttonLink}
-                            class="group relative inline-flex items-center justify-center overflow-hidden h-14 px-10 font-bold text-white bg-black dark:bg-white dark:text-black transition-all duration-300 text-lg rounded-md hover:bg-black dark:hover:bg-white"
-                        >
-                            <span
-                                class="transform transition-transform duration-300 group-hover:-translate-x-4"
-                            >
-                                Get in touch
-                            </span>
-                            <span
-                                class="absolute right-6 transform -translate-x-4 opacity-0 transition-all duration-300 group-hover:translate-x-0 group-hover:opacity-100"
-                            >
-                                &rarr;
-                            </span>
-                        </a>
-                    </div>
-                    <!-- <p
+  <!-- Hero Section -->
+  <section class="py-20">
+    <div class="px-4 md:px-8">
+      <div class="grid items-center gap-12 md:grid-cols-5">
+        <div class="text-center md:col-span-3 md:text-left">
+          <p
+            class="mb-4 flex items-center justify-center gap-2 text-xs font-bold tracking-widest text-neutral-600 uppercase md:justify-start dark:text-neutral-400"
+          >
+            Available for hire
+          </p>
+          <h1
+            id="hero-heading"
+            class="mb-4 max-w-3xl text-5xl font-black text-pretty md:text-6xl"
+          >
+            Creating clean, functional, and user-centered digital solutions
+          </h1>
+          <p
+            class="font-regular mb-10 max-w-xl text-lg text-neutral-600 md:text-xl dark:text-gray-200"
+          >
+            I'm a Melbourne-based UI/UX Product Designer with 13 years of
+            experience. I specialize in creating clean, functional, and
+            user-centered digital solutions.
+          </p>
+          <div
+            class="flex flex-col justify-center gap-4 sm:flex-row md:justify-start"
+          >
+            <a
+              href={hero.buttonLink}
+              class="group relative inline-flex h-14 items-center justify-center overflow-hidden rounded-full bg-black px-10 text-lg font-bold text-white transition-all duration-300 hover:bg-black dark:bg-white dark:text-black dark:hover:bg-white"
+            >
+              <span
+                class="transform transition-transform duration-300 group-hover:-translate-x-4"
+              >
+                Get in touch
+              </span>
+              <span
+                class="absolute right-6 -translate-x-4 transform opacity-0 transition-all duration-300 group-hover:translate-x-0 group-hover:opacity-100"
+              >
+                &rarr;
+              </span>
+            </a>
+          </div>
+          <!-- <p
                         class="mt-8 text-md font-black text-purple-500 dark:text-purple-800"
                     >
                         {hero.trustBadge}
                     </p> -->
-                </div>
-
-                <div
-                    class="md:col-span-2 relative aspect-square overflow-hidden rounded-full flex items-center justify-center mt-12 md:mt-0"
-                >
-                    <Image
-                        src={meHero}
-                        alt="Simon Eramo"
-                        class="w-[90%] h-[90%] object-cover rounded-full"
-                        loading="eager"
-                        fetchpriority="high"
-                    />
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Clients and Projects -->
-    <section class="pt-10 pb-14 overflow-hidden">
-        <div class="px-4 md:px-8">
-            <h2
-                class="text-xs font-bold text-neutral-700 dark:text-neutral-400 mb-8 uppercase tracking-widest"
-            >
-                Clients and projects that I've worked on
-            </h2>
-            <div class="relative w-full overflow-hidden">
-                <div
-                    class="flex animate-scroll hover:[animation-play-state:paused] gap-32 w-max items-center"
-                >
-                    {
-                        /* Duplicate logos for seamless infinite scroll */
-                        [...Array(4)].map(() => (
-                            <div class="flex gap-32 items-center shrink-0">
-                                <img
-                                    src="/logos/monash.svg"
-                                    alt="Monash University"
-                                    class="h-8 w-auto dark:brightness-0 dark:invert"
-                                />
-                                <img
-                                    src="/logos/worksafe.svg"
-                                    alt="WorkSafe Victoria"
-                                    class="h-10 w-auto"
-                                />
-                                <img
-                                    src="/logos/mirvac.svg"
-                                    alt="Mirvac"
-                                    class="h-8 w-auto dark:brightness-0 dark:invert"
-                                />
-                                <img
-                                    src="/logos/RMIT.svg"
-                                    alt="RMIT University"
-                                    class="h-8 w-auto dark:brightness-0 dark:invert"
-                                />
-                                <img
-                                    src="/logos/vic-gov.svg"
-                                    alt="Victoria State Government"
-                                    class="h-10 w-auto"
-                                />
-                            </div>
-                        ))
-                    }
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <style>
-        @keyframes marquee {
-            0% {
-                transform: translateX(0%);
-            }
-            100% {
-                transform: translateX(-100%);
-            }
-        }
-
-        @keyframes marquee2 {
-            0% {
-                transform: translateX(100%);
-            }
-            100% {
-                transform: translateX(0%);
-            }
-        }
-
-        .animate-marquee {
-            animation: marquee 60s linear infinite;
-        }
-
-        .animate-marquee2 {
-            animation: marquee2 60s linear infinite;
-        }
-
-        /* Pause on hover */
-        section:hover .animate-marquee,
-        section:hover .animate-marquee2 {
-            animation-play-state: paused;
-        }
-
-        @keyframes scroll {
-            0% {
-                transform: translateX(0);
-            }
-
-            100% {
-                transform: translateX(-50%);
-            }
-        }
-
-        .animate-scroll {
-            animation: scroll 80s linear infinite;
-        }
-
-        .animate-scroll-slow {
-            animation: scroll 180s linear infinite;
-        }
-
-        .animate-scroll:hover,
-        .animate-scroll-slow:hover {
-            animation-play-state: paused;
-        }
-        @keyframes spin-slow {
-            from {
-                transform: rotate(0deg);
-            }
-            to {
-                transform: rotate(360deg);
-            }
-        }
-
-        .animate-spin-slow {
-            animation: spin-slow 40s linear infinite;
-        }
-    </style>
-
-    <!-- Skills Section -->
-    <section id="skills" class="py-20">
-        <div class="px-4 container max-w-7xl mx-auto md:px-8">
-            <div class="mx-auto text-center">
-                <p
-                    class="text-xs font-bold uppercase tracking-widest text-neutral-700 dark:text-neutral-400 mb-2"
-                >
-                    Capabilities
-                </p>
-                <h2 class="text-5xl font-black mb-4">Core competencies</h2>
-                <p
-                    class="text-center text-lg text-black dark:text-neutral-200 mb-12 font-medium"
-                >
-                    A versatile skillset bridging the gap between design and
-                    development.
-                </p>
-            </div>
-
-            <div class="grid md:grid-cols-3 gap-8">
-                {
-                    skills.items.map((skill) => (
-                        <article class=" bg-zinc-50 dark:bg-zinc-800 p-4 md:p-8 rounded-lg transition-colors">
-                            <span class="text-4xl mb-4 block">
-                                {skill.icon}
-                            </span>
-
-                            <h3 class="text-xl font-black mb-2">
-                                {skill.title}
-                            </h3>
-                            <p class="leading-relaxed text-neutral-700 dark:text-neutral-400 font-regular">
-                                {skill.description}
-                            </p>
-                        </article>
-                    ))
-                }
-            </div>
-        </div>
-    </section>
-
-    <!-- About Me Section -->
-    <section id="about" class="py-20 bg-zinc-50 dark:bg-neutral-900">
-        <div class="container mx-auto px-4 md:px-8 max-w-3xl text-center">
-            <span class="text-5xl mb-4 block">👋</span>
-
-            <div
-                class="space-y-6 text-lg lg:text-xl text-neutral-800 dark:text-neutral-400 font-regular leading-relaxed text-left md:text-center"
-            >
-                <p>
-                    I am a dedicated <strong class="dark:text-white"
-                        >UI/UX & Product Designer</strong
-                    > with over a decade of experience crafting elegant, intuitive
-                    digital solutions that simplify the user experience.
-                </p>
-                <p>
-                    My six-year tenure at WorkSafe Victoria has been
-                    foundational. Most recently, I’ve collaborated with senior
-                    leads within the Design Practice to deliver high-impact
-                    projects, specialising in the <strong
-                        class="dark:text-white"
-                        >end-to-end design process</strong
-                    >. From in-depth user research and synthesis to
-                    high-fidelity prototyping and iterative testing, I ensure
-                    every solution is grounded in user needs.
-                </p>
-                <p>
-                    I am particularly passionate about the intersection of
-                    <strong class="dark:text-white"
-                        >visual design and accessibility</strong
-                    >. A career highlight includes my contribution to our
-                    internal <strong class="dark:text-white"
-                        >Design System</strong
-                    >, where I built scalable, consistent libraries that
-                    significantly improved development workflow efficiency.
-                </p>
-                <p>
-                    I am currently exploring how <strong class="dark:text-white"
-                        >AI-driven workflows</strong
-                    > can enhance design efficiency and effectiveness. Parallel to
-                    this, I am launching a design and development agency focused on
-                    high-performance, <strong class="dark:text-white"
-                        >headless websites</strong
-                    > for small businesses—leveraging a modern stack including <strong
-                        class="dark:text-white"
-                        >Astro, TinaCMS, Tailwind CSS, and Vercel.</strong
-                    >
-                </p>
-                <p>
-                    I am a collaborative problem-solver who thrives in
-                    fast-paced environments, currently seeking a new opportunity
-                    to contribute to a team building impactful, user-centric
-                    products.
-                </p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Professional Experience Section -->
-    <section class="py-20" id="experience">
-        <div class="px-4 md:px-8">
-            <div class="text-center mb-16">
-                <p
-                    class="text-xs font-bold uppercase tracking-widest text-neutral-500 dark:text-neutral-400 mb-4"
-                >
-                    Career History
-                </p>
-                <h2 class="text-4xl md:text-5xl font-black mb-6">
-                    Professional experience
-                </h2>
-                <p
-                    class="text-center text-lg text-black dark:text-neutral-200 mb-12 font-medium"
-                >
-                    A timeline of my role history and professional growth over
-                    the last decade.
-                </p>
-            </div>
-
-            <div
-                class="space-y-12 relative before:absolute before:inset-0 before:ml-5 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-linear-to-b before:from-transparent before:via-neutral-200 before:to-transparent dark:before:via-zinc-800"
-            >
-                {
-                    professionalExperience.map((job, index) => (
-                        <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active">
-                            <div class="flex items-center justify-center w-6 h-6 rounded-full shrink-0 md:order-1 ml-2 md:ml-0 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 text-xl bg-zinc-500 dark:bg-zinc-600" />
-                            <div class="w-[calc(100%-4rem)] md:w-[calc(50%-1.5rem)] p-6 rounded-xl bg-zinc-50 dark:bg-zinc-900/50 rounded-xls">
-                                <img
-                                    src={job.logo}
-                                    alt="Company Logo"
-                                    class="h-12 w-auto mb-4"
-                                />
-                                <h3 class="text-xl font-black text-neutral-800 dark:text-neutral-200 mb-1">
-                                    {job.role}
-                                </h3>
-                                <p class="font-bold text-lg text-neutral-800 dark:text-zinc-200 mb-2">
-                                    {job.company}
-                                </p>
-                                <p class="text-xs font-bold text-text-neutral-800 dark:text-neutral-400 mb-6 uppercase tracking-wide">
-                                    {job.location} • {job.date}
-                                </p>
-                                <ul class="space-y-2">
-                                    {job.points.map((point) => (
-                                        <li class="flex items-start gap-3 text-md text-neutral-700 dark:text-neutral-400 font-medium leading-relaxed">
-                                            <span class="mt-1.5 w-1 h-1 bg-black dark:bg-white rounded-full shrink-0" />
-                                            {point}
-                                        </li>
-                                    ))}
-                                </ul>
-                            </div>
-                        </div>
-                    ))
-                }
-            </div>
-        </div>
-    </section>
-
-    <!-- Scrolling Testimonials Section -->
-    <section class="py-20 overflow-hidden">
-        <div class="px-8 mb-12 text-center">
-            <p
-                class="text-xs font-bold uppercase tracking-widest text-neutral-800 dark:text-neutral-400 mb-2"
-            >
-                Expert Endorsement
-            </p>
-            <h2 class="text-5xl font-black mb-4">Backed by industry peers</h2>
-            <p
-                class="text-lg font-medium text-neutral-600 dark:text-neutral-400 max-w-2xl mx-auto"
-            >
-                Don't just take my word for it. Here's what industry peers have
-                to say about working with me.
-            </p>
         </div>
 
-        <div class="relative w-full overflow-hidden group">
-            <div
-                class="flex animate-scroll-slow hover:[animation-play-state:paused] gap-8 w-max"
-            >
-                {
-                    /* Create 4 sets of testimonials to ensure smooth infinite scroll even on wide screens */
-                    [...Array(4)].map(() => (
-                        <div class="flex gap-8 shrink-0">
-                            {testimonials.items.map((testimonial, index) => (
-                                <div class="w-[500px] shrink-0 bg-zinc-100 dark:bg-zinc-800 p-8 rounded-xl flex flex-col">
-                                    <p class="text-lg font-medium text-neutral-700 dark:text-neutral-300 mb-6 line-clamp-4">
-                                        "{testimonial.quote}"
-                                    </p>
-                                    <div class="flex items-center gap-4 mt-auto">
-                                        <div
-                                            class={`w-12 h-12 rounded-full flex items-center justify-center font-bold text-xl
-                                            ${index % 4 === 0 ? "bg-yellow-300 text-yellow-800" : ""}
-                                            ${index % 4 === 1 ? "bg-purple-300 text-purple-800" : ""}
-                                            ${index % 4 === 2 ? "bg-blue-300 text-blue-800" : ""}
-                                            ${index % 4 === 3 ? "bg-green-300 text-green-800" : ""}
-                                        `}
-                                        >
-                                            {testimonial.authorName.charAt(0)}
-                                        </div>
-                                        <div>
-                                            <div class="font-bold text-lg dark:text-neutral-200">
-                                                {testimonial.authorName}
-                                            </div>
-                                            <div class="text-sm font-medium text-neutral-600 dark:text-neutral-400">
-                                                {testimonial.authorTitle}
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            ))}
-                        </div>
-                    ))
-                }
-            </div>
-        </div>
-    </section>
-
-    <!-- Tools I Use Section -->
-    <section class="pt-20 pb-32">
-        <div class="container mx-auto px-4 md:px-8">
-            <div class="text-center mb-16">
-                <p
-                    class="text-xs font-bold uppercase tracking-widest text-neutral-500 mb-4"
-                >
-                    My toolkit
-                </p>
-                <h2 class="text-4xl md:text-5xl font-black mb-6">
-                    Tools that I use and love
-                </h2>
-                <p
-                    class="text-lg text-black dark:text-neutral-200 mb-12 max-w-2xl font-medium mx-auto"
-                >
-                    I rely on a modern, robust tech stack to deliver secure,
-                    scalable, and high-performance digital products.
-                </p>
-            </div>
-
-            <div
-                class="grid grid-cols-2 md:grid-cols-6 gap-8 items-center justify-items-center"
-            >
-                <div class="flex flex-col items-center gap-2">
-                    <img
-                        src="/logos/astro.svg"
-                        alt="Astro"
-                        class="h-20 w-auto"
-                    />
-                    <span
-                        class="text-sm font-bold text-neutral-600 dark:text-neutral-400"
-                        >Astro</span
-                    >
-                </div>
-                <div class="flex flex-col items-center gap-2">
-                    <img
-                        src="/logos/tailwindcss.svg"
-                        alt="Tailwind CSS"
-                        class="h-20 w-auto"
-                    />
-                    <span
-                        class="text-sm font-bold text-neutral-600 dark:text-neutral-400"
-                        >Tailwind CSS</span
-                    >
-                </div>
-                <div class="flex flex-col items-center gap-2">
-                    <img
-                        src="/logos/tina.svg"
-                        alt="TinaCMS"
-                        class="h-20 w-auto"
-                    />
-                    <span
-                        class="text-sm font-bold text-neutral-600 dark:text-neutral-400"
-                        >TinaCMS</span
-                    >
-                </div>
-                <div class="flex flex-col items-center gap-2">
-                    <img
-                        src="/logos/figma.svg"
-                        alt="Figma"
-                        class="h-20 w-auto"
-                    />
-                    <span
-                        class="text-sm font-bold text-neutral-600 dark:text-neutral-400"
-                        >Figma</span
-                    >
-                </div>
-                <div class="flex flex-col items-center gap-2">
-                    <img
-                        src="/logos/antigravity.svg"
-                        alt="Antigravity"
-                        class="h-20 w-auto"
-                    />
-                    <span
-                        class="text-sm font-bold text-neutral-600 dark:text-neutral-400"
-                        >Antigravity</span
-                    >
-                </div>
-                <div class="flex flex-col items-center gap-2">
-                    <img
-                        src="/logos/claude.svg"
-                        alt="Claude"
-                        class="h-20 w-auto"
-                    />
-                    <span
-                        class="text-sm font-bold text-neutral-600 dark:text-neutral-400"
-                        >Claude Code</span
-                    >
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- GitHub Stats Section -->
-    <section id="github" class="py-20">
-        <div class="px-4 container max-w-7xl mx-auto md:px-8">
-            <div class="mx-auto text-center">
-                <p
-                    class="text-xs font-bold uppercase tracking-widest text-neutral-700 dark:text-neutral-400 mb-2"
-                >
-                    Open Source
-                </p>
-                <h2 class="text-5xl font-black mb-4">GitHub activity</h2>
-                <p
-                    class="text-center text-lg text-black dark:text-neutral-200 mb-12 font-medium"
-                >
-                    A live snapshot of my contributions over the last year.
-                </p>
-            </div>
-
-            <!-- Contribution graph -->
-            <a
-                href="https://github.com/simoneramo"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="block bg-zinc-50 dark:bg-zinc-800 p-6 md:p-8 rounded-lg transition-colors hover:bg-zinc-100 dark:hover:bg-zinc-700/70 max-w-4xl mx-auto"
-                aria-label="View Simon Eramo's GitHub contribution graph"
-            >
-                <div
-                    class="flex items-baseline justify-between gap-4 mb-4 text-sm font-bold"
-                >
-                    <span class="text-neutral-800 dark:text-neutral-200">
-                        516 contributions in the last year
-                    </span>
-                    <span class="text-neutral-800 dark:text-neutral-200">
-                        57 repos
-                    </span>
-                </div>
-                <img
-                    class="w-full"
-                    src="https://ghchart.rshah.org/simoneramo"
-                    alt="Simon Eramo's GitHub contributions over the last year"
-                    loading="lazy"
-                />
-            </a>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="py-20">
         <div
-            class="container mx-auto max-w-6xl px-8 items-center grid md:grid-cols-2 gap-12"
+          class="relative mt-12 flex aspect-square items-center justify-center overflow-hidden rounded-full md:col-span-2 md:mt-0"
         >
-            <div class="text-left">
-                <p
-                    class="text-xs font-bold uppercase tracking-widest text-neutral-800 dark:text-neutral-200 mb-2"
-                >
-                    Contact me
-                </p>
-                <h2
-                    id="contact-heading"
-                    class="text-5xl font-black mb-4 dark:text-neutral-200"
-                >
-                    Get in touch
-                </h2>
+          <Image
+            src={meHero}
+            alt="Simon Eramo"
+            class="h-[90%] w-[90%] rounded-full object-cover"
+            loading="eager"
+            fetchpriority="high"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
 
-                <p
-                    class="mb-6 text-neutral-600 font-medium dark:text-neutral-400 text-lg"
-                >
-                    I’m always open to new collaborations and projects.<br />If
-                    you have something in mind, send me a message!
+  <!-- Clients and Projects -->
+  <section class="overflow-hidden pt-10 pb-14">
+    <div class="px-4 md:px-8">
+      <h2
+        class="mb-8 text-center text-xs font-bold tracking-widest text-neutral-600 uppercase dark:text-neutral-400"
+      >
+        Clients and projects that I've worked on
+      </h2>
+      <div class="relative w-full overflow-hidden">
+        <div
+          class="animate-scroll flex w-max items-center gap-32 hover:[animation-play-state:paused]"
+        >
+          {
+            /* Duplicate logos for seamless infinite scroll */
+            [...Array(4)].map(() => (
+              <div class="flex shrink-0 items-center gap-32">
+                <img
+                  src="/logos/monash.svg"
+                  alt="Monash University"
+                  class="h-8 w-auto dark:brightness-0 dark:invert"
+                />
+                <img
+                  src="/logos/worksafe.svg"
+                  alt="WorkSafe Victoria"
+                  class="h-10 w-auto"
+                />
+                <img
+                  src="/logos/mirvac.svg"
+                  alt="Mirvac"
+                  class="h-8 w-auto dark:brightness-0 dark:invert"
+                />
+                <img
+                  src="/logos/RMIT.svg"
+                  alt="RMIT University"
+                  class="h-8 w-auto dark:brightness-0 dark:invert"
+                />
+                <img
+                  src="/logos/vic-gov.svg"
+                  alt="Victoria State Government"
+                  class="h-10 w-auto"
+                />
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <style>
+    @keyframes marquee {
+      0% {
+        transform: translateX(0%);
+      }
+      100% {
+        transform: translateX(-100%);
+      }
+    }
+
+    @keyframes marquee2 {
+      0% {
+        transform: translateX(100%);
+      }
+      100% {
+        transform: translateX(0%);
+      }
+    }
+
+    .animate-marquee {
+      animation: marquee 60s linear infinite;
+    }
+
+    .animate-marquee2 {
+      animation: marquee2 60s linear infinite;
+    }
+
+    /* Pause on hover */
+    section:hover .animate-marquee,
+    section:hover .animate-marquee2 {
+      animation-play-state: paused;
+    }
+
+    @keyframes scroll {
+      0% {
+        transform: translateX(0);
+      }
+
+      100% {
+        transform: translateX(-50%);
+      }
+    }
+
+    .animate-scroll {
+      animation: scroll 80s linear infinite;
+    }
+
+    .animate-scroll-slow {
+      animation: scroll 180s linear infinite;
+    }
+
+    .animate-scroll:hover,
+    .animate-scroll-slow:hover {
+      animation-play-state: paused;
+    }
+    @keyframes spin-slow {
+      from {
+        transform: rotate(0deg);
+      }
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    .animate-spin-slow {
+      animation: spin-slow 40s linear infinite;
+    }
+  </style>
+
+  <!-- Skills Section -->
+  <section id="skills" class="py-20">
+    <div class="container mx-auto max-w-7xl px-4 md:px-8">
+      <div class="mx-auto text-center">
+        <p
+          class="mb-2 text-xs font-bold tracking-widest text-neutral-600 uppercase dark:text-neutral-400"
+        >
+          Capabilities
+        </p>
+        <h2 class="mb-4 text-5xl font-black">Core competencies</h2>
+        <p
+          class="font-regular mb-12 text-center text-lg text-neutral-600 dark:text-neutral-400"
+        >
+          A versatile skillset bridging the gap between design and development.
+        </p>
+      </div>
+
+      <div class="grid gap-8 md:grid-cols-3">
+        {
+          skills.items.map((skill) => (
+            <article class="rounded-lg bg-zinc-50 p-4 transition-colors md:p-8 dark:bg-zinc-800">
+              <span class="mb-4 block text-4xl">{skill.icon}</span>
+
+              <h3 class="mb-2 text-xl font-black">{skill.title}</h3>
+              <p class="font-regular leading-relaxed text-neutral-700 dark:text-neutral-400">
+                {skill.description}
+              </p>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- About Me Section -->
+  <section id="about" class="bg-zinc-50 py-20 dark:bg-neutral-900">
+    <div class="container mx-auto max-w-3xl px-4 text-center md:px-8">
+      <span class="mb-4 block text-5xl">👋</span>
+
+      <div
+        class="font-regular space-y-6 text-left text-lg leading-relaxed text-neutral-800 md:text-center lg:text-xl dark:text-neutral-400"
+      >
+        <p>
+          I am a dedicated <strong class="dark:text-white"
+            >UI/UX & Product Designer</strong
+          > with over a decade of experience crafting elegant, intuitive digital solutions
+          that simplify the user experience.
+        </p>
+        <p>
+          My six-year tenure at WorkSafe Victoria has been foundational. Most
+          recently, I’ve collaborated with senior leads within the Design
+          Practice to deliver high-impact projects, specialising in the <strong
+            class="dark:text-white">end-to-end design process</strong
+          >. From in-depth user research and synthesis to high-fidelity
+          prototyping and iterative testing, I ensure every solution is grounded
+          in user needs.
+        </p>
+        <p>
+          I am particularly passionate about the intersection of
+          <strong class="dark:text-white"
+            >visual design and accessibility</strong
+          >. A career highlight includes my contribution to our internal <strong
+            class="dark:text-white">Design System</strong
+          >, where I built scalable, consistent libraries that significantly
+          improved development workflow efficiency.
+        </p>
+        <p>
+          I am currently exploring how <strong class="dark:text-white"
+            >AI-driven workflows</strong
+          > can enhance design efficiency and effectiveness. Parallel to this, I am
+          launching a design and development agency focused on high-performance, <strong
+            class="dark:text-white">headless websites</strong
+          > for small businesses—leveraging a modern stack including <strong
+            class="dark:text-white"
+            >Astro, TinaCMS, Tailwind CSS, and Vercel.</strong
+          >
+        </p>
+        <p>
+          I am a collaborative problem-solver who thrives in fast-paced
+          environments, currently seeking a new opportunity to contribute to a
+          team building impactful, user-centric products.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Professional Experience Section -->
+  <section class="py-20" id="experience">
+    <div class="px-4 md:px-8">
+      <div class="mb-16 text-center">
+        <p
+          class="mb-4 text-xs font-bold tracking-widest text-neutral-600 uppercase dark:text-neutral-400"
+        >
+          Career History
+        </p>
+        <h2 class="mb-6 text-4xl font-black md:text-5xl">
+          Professional experience
+        </h2>
+        <p
+          class="font-regular mb-12 text-center text-lg text-neutral-600 dark:text-neutral-400"
+        >
+          A timeline of my role history and professional growth over the last
+          decade.
+        </p>
+      </div>
+
+      <div
+        class="relative space-y-12 before:absolute before:inset-0 before:ml-5 before:h-full before:w-0.5 before:-translate-x-px before:bg-linear-to-b before:from-transparent before:via-neutral-200 before:to-transparent md:before:mx-auto md:before:translate-x-0 dark:before:via-zinc-800"
+      >
+        {
+          professionalExperience.map((job, index) => (
+            <div class="group is-active relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse">
+              <div class="ml-2 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-zinc-500 text-xl md:order-1 md:ml-0 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 dark:bg-zinc-600" />
+              <div class="rounded-xls w-[calc(100%-4rem)] rounded-xl bg-zinc-50 p-6 md:w-[calc(50%-1.5rem)] dark:bg-zinc-900/50">
+                <img
+                  src={job.logo}
+                  alt="Company Logo"
+                  class="mb-4 h-12 w-auto"
+                />
+                <h3 class="mb-1 text-xl font-black text-neutral-800 dark:text-neutral-200">
+                  {job.role}
+                </h3>
+                <p class="mb-2 text-lg font-bold text-neutral-800 dark:text-zinc-200">
+                  {job.company}
                 </p>
+                <p class="text-text-neutral-800 mb-6 text-xs font-bold tracking-wide uppercase dark:text-neutral-400">
+                  {job.location} • {job.date}
+                </p>
+                <ul class="space-y-2">
+                  {job.points.map((point) => (
+                    <li class="text-md flex items-start gap-3 leading-relaxed font-medium text-neutral-700 dark:text-neutral-400">
+                      <span class="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-black dark:bg-white" />
+                      {point}
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
 
-            <form
-                class="text-left space-y-6 border-2 border-neutral-100 dark:border-zinc-800 bg-white dark:bg-zinc-800 p-6 md:p-8 rounded-xl"
-                x-data="{
+  <!-- Scrolling Testimonials Section -->
+  <section class="overflow-hidden py-20">
+    <div class="mb-12 px-8 text-center">
+      <p
+        class="mb-2 text-xs font-bold tracking-widest text-neutral-600 uppercase dark:text-neutral-400"
+      >
+        Expert Endorsement
+      </p>
+      <h2 class="mb-4 text-5xl font-black">Backed by industry peers</h2>
+      <p
+        class="font-regular mx-auto max-w-2xl text-lg text-neutral-600 dark:text-neutral-400"
+      >
+        Don't just take my word for it. Here's what industry peers have to say
+        about working with me.
+      </p>
+    </div>
+
+    <div class="group relative w-full overflow-hidden">
+      <div
+        class="animate-scroll-slow flex w-max gap-8 hover:[animation-play-state:paused]"
+      >
+        {
+          /* Create 4 sets of testimonials to ensure smooth infinite scroll even on wide screens */
+          [...Array(4)].map(() => (
+            <div class="flex shrink-0 gap-8">
+              {testimonials.items.map((testimonial, index) => (
+                <div class="flex w-[500px] shrink-0 flex-col rounded-xl bg-zinc-100 p-8 dark:bg-zinc-800">
+                  <p class="mb-6 line-clamp-4 text-lg font-medium text-neutral-700 dark:text-neutral-300">
+                    "{testimonial.quote}"
+                  </p>
+                  <div class="mt-auto flex items-center gap-4">
+                    <div
+                      class={`flex h-12 w-12 items-center justify-center rounded-full text-xl font-bold ${index % 4 === 0 ? "bg-yellow-300 text-yellow-800" : ""} ${index % 4 === 1 ? "bg-purple-300 text-purple-800" : ""} ${index % 4 === 2 ? "bg-blue-300 text-blue-800" : ""} ${index % 4 === 3 ? "bg-green-300 text-green-800" : ""} `}
+                    >
+                      {testimonial.authorName.charAt(0)}
+                    </div>
+                    <div>
+                      <div class="text-lg font-bold dark:text-neutral-200">
+                        {testimonial.authorName}
+                      </div>
+                      <div class="text-sm font-medium text-neutral-600 dark:text-neutral-400">
+                        {testimonial.authorTitle}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- Tools I Use Section -->
+  <section class="pt-20 pb-32">
+    <div class="container mx-auto px-4 md:px-8">
+      <div class="mb-16 text-center">
+        <p
+          class="mb-4 text-xs font-bold tracking-widest text-neutral-600 uppercase dark:text-neutral-400"
+        >
+          My toolkit
+        </p>
+        <h2 class="mb-6 text-4xl font-black md:text-5xl">
+          Tools that I use and love
+        </h2>
+        <p
+          class="font-regular mx-auto mb-12 max-w-2xl text-lg text-neutral-600 dark:text-neutral-400"
+        >
+          I rely on a modern, robust tech stack to deliver secure, scalable, and
+          high-performance digital products.
+        </p>
+      </div>
+
+      <div
+        class="grid grid-cols-2 items-center justify-items-center gap-8 md:grid-cols-6"
+      >
+        <div class="flex flex-col items-center gap-2">
+          <img src="/logos/astro.svg" alt="Astro" class="h-20 w-auto" />
+          <span class="text-sm font-bold text-neutral-600 dark:text-neutral-400"
+            >Astro</span
+          >
+        </div>
+        <div class="flex flex-col items-center gap-2">
+          <img
+            src="/logos/tailwindcss.svg"
+            alt="Tailwind CSS"
+            class="h-20 w-auto"
+          />
+          <span class="text-sm font-bold text-neutral-600 dark:text-neutral-400"
+            >Tailwind CSS</span
+          >
+        </div>
+        <div class="flex flex-col items-center gap-2">
+          <img src="/logos/tina.svg" alt="TinaCMS" class="h-20 w-auto" />
+          <span class="text-sm font-bold text-neutral-600 dark:text-neutral-400"
+            >TinaCMS</span
+          >
+        </div>
+        <div class="flex flex-col items-center gap-2">
+          <img src="/logos/figma.svg" alt="Figma" class="h-20 w-auto" />
+          <span class="text-sm font-bold text-neutral-600 dark:text-neutral-400"
+            >Figma</span
+          >
+        </div>
+        <div class="flex flex-col items-center gap-2">
+          <img
+            src="/logos/antigravity.svg"
+            alt="Antigravity"
+            class="h-20 w-auto"
+          />
+          <span class="text-sm font-bold text-neutral-600 dark:text-neutral-400"
+            >Antigravity</span
+          >
+        </div>
+        <div class="flex flex-col items-center gap-2">
+          <img src="/logos/claude.svg" alt="Claude" class="h-20 w-auto" />
+          <span class="text-sm font-bold text-neutral-600 dark:text-neutral-400"
+            >Claude Code</span
+          >
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GitHub Stats Section -->
+  <section id="github" class="py-20">
+    <div class="container mx-auto max-w-7xl px-4 md:px-8">
+      <div class="mx-auto text-center">
+        <p
+          class="mb-2 text-xs font-bold tracking-widest text-neutral-700 uppercase dark:text-neutral-400"
+        >
+          Open Source
+        </p>
+        <h2 class="mb-4 text-5xl font-black">GitHub activity</h2>
+        <p
+          class="font-regular mb-12 text-center text-lg text-neutral-600 dark:text-neutral-400"
+        >
+          A live snapshot of my contributions over the last year.
+        </p>
+      </div>
+
+      <!-- Contribution graph -->
+      <a
+        href="https://github.com/simoneramo"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="mx-auto block max-w-4xl rounded-lg bg-zinc-50 p-6 transition-colors hover:bg-zinc-100 md:p-8 dark:bg-zinc-800 dark:hover:bg-zinc-700/70"
+        aria-label="View Simon Eramo's GitHub contribution graph"
+      >
+        <div
+          class="mb-4 flex items-baseline justify-between gap-4 text-sm font-bold"
+        >
+          <span class="text-neutral-800 dark:text-neutral-200">
+            516 contributions in the last year
+          </span>
+          <span class="text-neutral-800 dark:text-neutral-200"> 57 repos </span>
+        </div>
+        <img
+          class="w-full"
+          src="https://ghchart.rshah.org/simoneramo"
+          alt="Simon Eramo's GitHub contributions over the last year"
+          loading="lazy"
+        />
+      </a>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="py-20">
+    <div
+      class="container mx-auto grid max-w-6xl items-center gap-12 px-8 md:grid-cols-2"
+    >
+      <div class="text-left">
+        <p
+          class="mb-2 text-xs font-bold tracking-widest text-neutral-600 uppercase dark:text-neutral-400"
+        >
+          Contact me
+        </p>
+        <h2
+          id="contact-heading"
+          class="mb-4 text-5xl font-black dark:text-neutral-200"
+        >
+          Get in touch
+        </h2>
+
+        <p
+          class="font-regular mb-6 text-lg text-neutral-600 dark:text-neutral-400"
+        >
+          I’m always open to new collaborations and projects.<br />If you have
+          something in mind, send me a message!
+        </p>
+
+        <div class="flex items-center gap-5">
+          {
+            socials.map((social) => (
+              <a
+                href={social.url}
+                target={social.url.startsWith("mailto:") ? undefined : "_blank"}
+                rel={
+                  social.url.startsWith("mailto:")
+                    ? undefined
+                    : "noopener noreferrer"
+                }
+                aria-label={social.platform}
+                class="text-neutral-500 transition-colors hover:text-black dark:text-neutral-400 dark:hover:text-white"
+              >
+                <svg
+                  class="h-6 w-6"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                  aria-hidden="true"
+                >
+                  <path d={social.icon} />
+                </svg>
+              </a>
+            ))
+          }
+        </div>
+      </div>
+
+      <form
+        class="space-y-6 rounded-xl border-2 border-neutral-100 bg-white p-6 text-left md:p-8 dark:border-zinc-800 dark:bg-zinc-800"
+        x-data="{
                         name: '',
                         email: '',
                         message: '',
@@ -757,139 +778,136 @@ const professionalExperience = [
                             }
                         }
                     }"
-                @submit.prevent="submitForm()"
-            >
-                <div
-                    x-show="showSuccess"
-                    x-transition
-                    class="p-4 bg-green-100 border-l-4 border-green-500 text-green-700 mb-6 rounded-md"
-                    role="alert"
-                >
-                    <p class="font-bold">
-                        {contactForm.successMessage.title}
-                    </p>
-                    <p>{contactForm.successMessage.description}</p>
-                </div>
-
-                <div
-                    x-show="showError"
-                    x-transition
-                    class="p-4 bg-red-100 border-l-4 border-red-600 text-red-700 mb-6 rounded-md"
-                    role="alert"
-                >
-                    <p class="font-bold">Error sending message</p>
-                    <p x-text="errorMessage"></p>
-                </div>
-
-                <div>
-                    <label for="name" class="block font-bold mb-2"
-                        >{contactForm.nameField.label}</label
-                    >
-                    <input
-                        type="text"
-                        id="name"
-                        x-model="name"
-                        @blur="touched.name = true; validateName()"
-                        @input="touched.name && validateName()"
-                        class="w-full p-4 bg-transparent border-2 focus:bg-white focus:text-black focus:border-black dark:focus:bg-zinc-800 dark:focus:text-white dark:focus:border-zinc-200 transition-colors outline-none focus:ring-0 placeholder-neutral-300 rounded-md"
-                        :class="errors.name ? 'border-red-600' : 'border-neutral-200 dark:border-zinc-600'"
-                        :aria-invalid="errors.name"
-                        aria-describedby="name-error"
-                        placeholder={contactForm.nameField.placeholder}
-                    />
-                    <span
-                        id="name-error"
-                        x-show="errors.name"
-                        class="text-red-600 dark:text-red-600 font-medium mt-1 block"
-                        role="alert"
-                    >
-                        {contactForm.nameField.errorMessage}
-                    </span>
-                </div>
-
-                <div>
-                    <label for="email" class="block font-bold mb-2"
-                        >{contactForm.emailField.label}</label
-                    >
-                    <input
-                        type="email"
-                        id="email"
-                        x-model="email"
-                        @blur="touched.email = true; validateEmail()"
-                        @input="touched.email && validateEmail()"
-                        class="w-full p-4 bg-transparent border-2 focus:bg-white focus:text-black focus:border-black dark:focus:bg-zinc-800 dark:focus:text-white dark:focus:border-zinc-200 transition-colors outline-none focus:ring-0 placeholder-neutral-300 rounded-md"
-                        :class="errors.email ? 'border-red-600' : 'border-neutral-200 dark:border-zinc-600'"
-                        :aria-invalid="errors.email"
-                        aria-describedby="email-error"
-                        placeholder={contactForm.emailField.placeholder}
-                    />
-                    <span
-                        id="email-error"
-                        x-show="errors.email"
-                        class="text-red-600 dark:text-red-600 font-medium mt-1 block"
-                        role="alert"
-                    >
-                        {contactForm.emailField.errorMessage}
-                    </span>
-                </div>
-
-                <div>
-                    <label for="message" class="block font-bold mb-2"
-                        >{contactForm.messageField.label}</label
-                    >
-                    <textarea
-                        id="message"
-                        rows="4"
-                        x-model="message"
-                        @blur="touched.message = true; validateMessage()"
-                        @input="touched.message && validateMessage()"
-                        class="w-full p-4 bg-transparent border-2 focus:bg-white focus:text-black focus:border-black dark:focus:bg-zinc-800 dark:focus:text-white dark:focus:border-zinc-200 transition-colors outline-none focus:ring-0 placeholder-neutral-300 rounded-md"
-                        :class="errors.message ? 'border-red-600' : 'border-neutral-200 dark:border-zinc-600'"
-                        :aria-invalid="errors.message"
-                        aria-describedby="message-error"
-                        placeholder={contactForm.messageField.placeholder}
-                    ></textarea>
-                    <span
-                        id="message-error"
-                        x-show="errors.message"
-                        class="text-red-600 dark:text-red-600 font-medium mt-1 block"
-                        role="alert"
-                    >
-                        {contactForm.messageField.errorMessage}
-                    </span>
-                </div>
-
-                <button
-                    type="submit"
-                    :disabled="isSubmitting"
-                    class="w-full py-4 group relative overflow-hidden bg-black text-white dark:bg-white dark:text-black font-bold tracking-wider transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex justify-center items-center rounded-md cursor-pointer"
-                >
-                    <div
-                        x-show="!isSubmitting"
-                        class="relative flex items-center justify-center px-10"
-                    >
-                        <span
-                            class="transform transition-transform duration-300 group-hover:-translate-x-4"
-                        >
-                            {contactForm.submitButton.text}
-                        </span>
-                        <span
-                            class="absolute right-6 transform -translate-x-4 opacity-0 transition-all duration-300 group-hover:translate-x-0 group-hover:opacity-100"
-                        >
-                            &rarr;
-                        </span>
-                    </div>
-
-                    <span x-show="isSubmitting"
-                        >{contactForm.submitButton.loadingText}</span
-                    >
-                </button>
-                <p
-                    class="text-sm text-center text-black dark:text-neutral-400 mt-4"
-                >
-                    {contactForm.privacyNote}
-                </p>
-            </form>
+        @submit.prevent="submitForm()"
+      >
+        <div
+          x-show="showSuccess"
+          x-transition
+          class="mb-6 rounded-md border-l-4 border-green-500 bg-green-100 p-4 text-green-700"
+          role="alert"
+        >
+          <p class="font-bold">
+            {contactForm.successMessage.title}
+          </p>
+          <p>{contactForm.successMessage.description}</p>
         </div>
-    </section>
+
+        <div
+          x-show="showError"
+          x-transition
+          class="mb-6 rounded-md border-l-4 border-red-600 bg-red-100 p-4 text-red-700"
+          role="alert"
+        >
+          <p class="font-bold">Error sending message</p>
+          <p x-text="errorMessage"></p>
+        </div>
+
+        <div>
+          <label for="name" class="mb-2 block font-bold"
+            >{contactForm.nameField.label}</label
+          >
+          <input
+            type="text"
+            id="name"
+            x-model="name"
+            @blur="touched.name = true; validateName()"
+            @input="touched.name && validateName()"
+            class="w-full rounded-md border-2 bg-transparent p-4 placeholder-neutral-500 transition-colors outline-none focus:border-black focus:bg-white focus:text-black focus:ring-0 dark:focus:border-zinc-200 dark:focus:bg-zinc-800 dark:focus:text-white"
+            :class="errors.name ? 'border-red-600' : 'border-neutral-200 dark:border-neutral-600'"
+            :aria-invalid="errors.name"
+            aria-describedby="name-error"
+            placeholder={contactForm.nameField.placeholder}
+          />
+          <span
+            id="name-error"
+            x-show="errors.name"
+            class="mt-1 block font-medium text-red-600 dark:text-red-600"
+            role="alert"
+          >
+            {contactForm.nameField.errorMessage}
+          </span>
+        </div>
+
+        <div>
+          <label for="email" class="mb-2 block font-bold"
+            >{contactForm.emailField.label}</label
+          >
+          <input
+            type="email"
+            id="email"
+            x-model="email"
+            @blur="touched.email = true; validateEmail()"
+            @input="touched.email && validateEmail()"
+            class="w-full rounded-md border-2 bg-transparent p-4 placeholder-neutral-500 transition-colors outline-none focus:border-black focus:bg-white focus:text-black focus:ring-0 dark:focus:border-zinc-200 dark:focus:bg-zinc-800 dark:focus:text-white"
+            :class="errors.email ? 'border-red-600' : 'border-neutral-200 dark:border-neutral-600'"
+            :aria-invalid="errors.email"
+            aria-describedby="email-error"
+            placeholder={contactForm.emailField.placeholder}
+          />
+          <span
+            id="email-error"
+            x-show="errors.email"
+            class="mt-1 block font-medium text-red-600 dark:text-red-600"
+            role="alert"
+          >
+            {contactForm.emailField.errorMessage}
+          </span>
+        </div>
+
+        <div>
+          <label for="message" class="mb-2 block font-bold"
+            >{contactForm.messageField.label}</label
+          >
+          <textarea
+            id="message"
+            rows="4"
+            x-model="message"
+            @blur="touched.message = true; validateMessage()"
+            @input="touched.message && validateMessage()"
+            class="w-full rounded-md border-2 bg-transparent p-4 placeholder-neutral-500 transition-colors outline-none focus:border-black focus:bg-white focus:text-black focus:ring-0 dark:focus:border-zinc-200 dark:focus:bg-zinc-800 dark:focus:text-white"
+            :class="errors.message ? 'border-red-600' : 'border-neutral-200 dark:border-neutral-600'"
+            :aria-invalid="errors.message"
+            aria-describedby="message-error"
+            placeholder={contactForm.messageField.placeholder}></textarea>
+          <span
+            id="message-error"
+            x-show="errors.message"
+            class="mt-1 block font-medium text-red-600 dark:text-red-600"
+            role="alert"
+          >
+            {contactForm.messageField.errorMessage}
+          </span>
+        </div>
+
+        <button
+          type="submit"
+          :disabled="isSubmitting"
+          class="group relative flex w-full cursor-pointer items-center justify-center overflow-hidden rounded-full bg-black py-4 font-bold tracking-wider text-white transition-all duration-300 disabled:cursor-not-allowed disabled:opacity-50 dark:bg-white dark:text-black"
+        >
+          <div
+            x-show="!isSubmitting"
+            class="relative flex items-center justify-center px-10"
+          >
+            <span
+              class="transform transition-transform duration-300 group-hover:-translate-x-4"
+            >
+              {contactForm.submitButton.text}
+            </span>
+            <span
+              class="absolute right-6 -translate-x-4 transform opacity-0 transition-all duration-300 group-hover:translate-x-0 group-hover:opacity-100"
+            >
+              &rarr;
+            </span>
+          </div>
+
+          <span x-show="isSubmitting"
+            >{contactForm.submitButton.loadingText}</span
+          >
+        </button>
+        <p class="mt-4 text-center text-sm text-black dark:text-neutral-400">
+          {contactForm.privacyNote}
+        </p>
+      </form>
+    </div>
+  </section>
 </MainLayout>

@@ -1,7 +1,7 @@
 ---
 hero:
-  buttonLink: '#contact'
-  trustBadge: 'Trusted by 1,000+ developers for reliable, clean code!'
+  buttonLink: "#contact"
+  trustBadge: "Trusted by 1,000+ developers for reliable, clean code!"
 skills:
   items:
     - title: UX Research & Strategy
@@ -79,7 +79,7 @@ contactForm:
     placeholder: How can I help you?
     errorMessage: Message must be at least 6 characters long.
   submitButton:
-    text: Send
+    text: Send Message
     loadingText: Sending...
-  privacyNote: 'I respect your inbox. No spam, ever.'
+  privacyNote: "I respect your inbox. No spam, ever."
 ---

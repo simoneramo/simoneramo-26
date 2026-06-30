@@ -4,105 +4,103 @@ import Header from "../components/global/Header.astro";
 import Footer from "../components/global/Footer.astro";
 
 interface Props {
-    title?: string;
-    description?: string;
-    hideMenu?: boolean;
-    showPhoneButton?: boolean;
+  title?: string;
+  description?: string;
+  hideMenu?: boolean;
+  showPhoneButton?: boolean;
 }
 
 const {
-    title = "Simon Eramo | UI/UX Product Designer",
-    description = "Melbourne-based UI/UX Product Designer with 13 years of experience specializing in clean, functional, and user-centered digital solutions.",
-    hideMenu = false,
-    showPhoneButton = false,
+  title = "Simon Eramo | UI/UX Product Designer",
+  description = "Melbourne-based UI/UX Product Designer with 13 years of experience specializing in clean, functional, and user-centered digital solutions.",
+  hideMenu = false,
+  showPhoneButton = false,
 } = Astro.props;
 
 const canonicalURL = new URL(
-    Astro.url.pathname,
-    Astro.site || "https://simoneramo.com",
+  Astro.url.pathname,
+  Astro.site || "https://simoneramo.com",
 ).href;
 const ogImageURL = new URL(
-    "/images/me-hero.jpg",
-    Astro.site || "https://simoneramo.com",
+  "/images/me-hero.jpg",
+  Astro.site || "https://simoneramo.com",
 ).href;
 ---
 
 <!doctype html>
 <html lang="en" class="scroll-smooth">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-        <title>{title}</title>
-        <link rel="icon" type="image/png" href="/favicon.png" />
+    <title>{title}</title>
+    <link rel="icon" type="image/png" href="/favicon.png" />
 
-        <meta name="description" content={description} />
-        <link rel="canonical" href={canonicalURL} />
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalURL} />
 
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content={canonicalURL} />
-        <meta property="og:title" content={title} />
-        <meta property="og:description" content={description} />
-        <meta property="og:image" content={ogImageURL} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={ogImageURL} />
 
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content={title} />
-        <meta property="twitter:description" content={description} />
-        <meta name="twitter:image" content={ogImageURL} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta property="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImageURL} />
 
-        <script is:inline>
-            if (
-                localStorage.getItem("theme") === "dark" ||
-                (!("theme" in localStorage) &&
-                    window.matchMedia("(prefers-color-scheme: dark)").matches)
-            ) {
-                document.documentElement.classList.add("dark");
-            } else {
-                document.documentElement.classList.remove("dark");
-            }
-        </script>
+    <script is:inline>
+      if (
+        localStorage.getItem("theme") === "dark" ||
+        (!("theme" in localStorage) &&
+          window.matchMedia("(prefers-color-scheme: dark)").matches)
+      ) {
+        document.documentElement.classList.add("dark");
+      } else {
+        document.documentElement.classList.remove("dark");
+      }
+    </script>
 
-        <script
-            type="application/ld+json"
-            set:html={JSON.stringify({
-                "@context": "https://schema.org",
-                "@type": "Person",
-                name: "Simon Eramo",
-                jobTitle: "UI/UX Product Designer",
-                url: canonicalURL,
-            })}
-        />
+    <script
+      type="application/ld+json"
+      set:html={JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "Person",
+        name: "Simon Eramo",
+        jobTitle: "UI/UX Product Designer",
+        url: canonicalURL,
+      })}
+    />
 
-        <!-- Google tag (gtag.js) -->
-        <script
-            async
-            src="https://www.googletagmanager.com/gtag/js?id=G-4BXRLTM220"
-        ></script>
-        <script is:inline>
-            window.dataLayer = window.dataLayer || [];
-            function gtag() {
-                dataLayer.push(arguments);
-            }
-            gtag("js", new Date());
-            gtag("config", "G-4BXRLTM220");
-        </script>
-    </head>
-    <body
-        class="bg-white text-black dark:bg-zinc-900 dark:text-neutral-50 antialiased font-sans flex flex-col min-h-screen"
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-4BXRLTM220"
+    ></script>
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+      gtag("config", "G-4BXRLTM220");
+    </script>
+  </head>
+  <body
+    class="flex min-h-screen flex-col bg-white font-sans text-neutral-900 antialiased dark:bg-zinc-900 dark:text-neutral-100"
+  >
+    <a
+      href="#main-content"
+      class="sr-only z-50 rounded-md bg-black px-6 py-3 font-bold text-white focus:not-sr-only focus:absolute focus:top-4 focus:left-4 dark:bg-white dark:text-black"
     >
-        <a
-            href="#main-content"
-            class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 z-50 bg-black text-white dark:bg-white dark:text-black px-6 py-3 font-bold rounded-md"
-        >
-            Skip to main content
-        </a>
+      Skip to main content
+    </a>
 
-        <Header hideMenu={hideMenu} showPhoneButton={showPhoneButton} />
+    <Header hideMenu={hideMenu} showPhoneButton={showPhoneButton} />
 
-        <main id="main-content" class="grow pt-20">
-            <slot />
-        </main>
+    <main id="main-content" class="grow pt-20">
+      <slot />
+    </main>
 
-        <Footer />
-    </body>
+    <Footer />
+  </body>
 </html>

@@ -2,521 +2,490 @@
 import MainLayout from "../../layouts/MainLayout.astro";
 
 const caseStudy = {
-    title: "Project Starter",
-    subtitle:
-        "Eliminating the \"Copy-Paste\" Project Setup Workflow — a locally-hosted scaffold engine that spins up new client projects from custom templates in seconds, with TinaCMS pre-configured and ready to connect.",
-    client: "Personal Project",
-    year: "2026",
-    role: "Product Designer & Full-Stack Developer",
-    stack: ["Node.js", "Express", "Vanilla HTML/CSS/JS", "fs-extra"],
-    tags: ["Developer Tools", "Node.js", "Scaffolding"],
-    emoji: "⚡",
+  title: "Project Starter",
+  subtitle:
+    'Eliminating the "Copy-Paste" Project Setup Workflow — a locally-hosted scaffold engine that spins up new client projects from custom templates in seconds, with TinaCMS pre-configured and ready to connect.',
+  client: "Personal Project",
+  year: "2026",
+  role: "Product Designer & Full-Stack Developer",
+  stack: ["Node.js", "Express", "Vanilla HTML/CSS/JS", "fs-extra"],
+  tags: ["Developer Tools", "Node.js", "Scaffolding"],
+  emoji: "⚡",
 };
 
 const features = [
-    {
-        icon: "📁",
-        title: "Template Library",
-        description:
-            "Register any local folder as a reusable template — project types available instantly from the dashboard.",
-    },
-    {
-        icon: "🔄",
-        title: "Smart String Replacement",
-        description:
-            "Recursively replaces template name strings across all files and filenames in a single deep-copy pass.",
-    },
-    {
-        icon: "🔑",
-        title: "TinaCMS .env Generator",
-        description:
-            "Reads .env.example from the template, injects Tina Cloud credentials if provided, and writes a ready .env file.",
-    },
-    {
-        icon: "🐌",
-        title: "Auto Slug",
-        description:
-            "Project slug auto-generates from the project name as you type — no manual entry required.",
-    },
-    {
-        icon: "🚀",
-        title: "Post-Setup Actions",
-        description:
-            "Runs npm install and git init automatically. Opens the project in VS Code or Finder on completion.",
-    },
-    {
-        icon: "📋",
-        title: "Project Registry",
-        description:
-            "Logs every created project with its path, template, and date — quick re-access from the My Projects tab.",
-    },
+  {
+    icon: "📁",
+    title: "Template Library",
+    description:
+      "Register any local folder as a reusable template — project types available instantly from the dashboard.",
+  },
+  {
+    icon: "🔄",
+    title: "Smart String Replacement",
+    description:
+      "Recursively replaces template name strings across all files and filenames in a single deep-copy pass.",
+  },
+  {
+    icon: "🔑",
+    title: "TinaCMS .env Generator",
+    description:
+      "Reads .env.example from the template, injects Tina Cloud credentials if provided, and writes a ready .env file.",
+  },
+  {
+    icon: "🐌",
+    title: "Auto Slug",
+    description:
+      "Project slug auto-generates from the project name as you type — no manual entry required.",
+  },
+  {
+    icon: "🚀",
+    title: "Post-Setup Actions",
+    description:
+      "Runs npm install and git init automatically. Opens the project in VS Code or Finder on completion.",
+  },
+  {
+    icon: "📋",
+    title: "Project Registry",
+    description:
+      "Logs every created project with its path, template, and date — quick re-access from the My Projects tab.",
+  },
 ];
 
 const outcomes = [
-    { value: "~2 min", label: "Total setup time (vs. 5–15 min manual)" },
-    { value: "Zero", label: "Stray template names left in config files" },
-    { value: "1-click", label: "From form to fully scaffolded project" },
+  { value: "~2 min", label: "Total setup time (vs. 5–15 min manual)" },
+  { value: "Zero", label: "Stray template names left in config files" },
+  { value: "1-click", label: "From form to fully scaffolded project" },
 ];
 
 const problems = [
-    "Open Finder, locate the template folder, duplicate it and rename.",
-    "Manually hunt through package.json and config files to replace template strings.",
-    "Copy .env.example to .env and fill in credentials — then forget a field.",
-    "Run npm install in the terminal. Remember to git init — or forget.",
-    "Open VS Code, navigate to the project, and finally start building.",
+  "Open Finder, locate the template folder, duplicate it and rename.",
+  "Manually hunt through package.json and config files to replace template strings.",
+  "Copy .env.example to .env and fill in credentials — then forget a field.",
+  "Run npm install in the terminal. Remember to git init — or forget.",
+  "Open VS Code, navigate to the project, and finally start building.",
 ];
 ---
 
 <MainLayout
-    title="Project Starter — Case Study | Simon Eramo"
-    description="How I designed and built Project Starter — a locally-hosted scaffold engine that compresses a 5–15 minute manual project setup into a single automated click, with TinaCMS pre-configured out of the box."
+  title="Project Starter — Case Study | Simon Eramo"
+  description="How I designed and built Project Starter — a locally-hosted scaffold engine that compresses a 5–15 minute manual project setup into a single automated click, with TinaCMS pre-configured out of the box."
 >
-    <!-- Hero -->
-    <section
-        class="py-20 md:py-28 border-b-2 border-zinc-100 dark:border-zinc-800"
-    >
-        <div class="px-4 md:px-8">
-            <div class="flex items-center gap-3 mb-8">
-                <a
-                    href="/case-studies"
-                    class="inline-flex items-center gap-1.5 text-sm font-bold text-neutral-500 dark:text-neutral-400 hover:text-black dark:hover:text-white transition-colors"
-                >
-                    <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="16"
-                        height="16"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        stroke-width="2.5"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        aria-hidden="true"><path d="m15 18-6-6 6-6"></path></svg
-                    >
-                    Case Studies
-                </a>
-            </div>
+  <!-- Hero -->
+  <section
+    class="border-b-2 border-zinc-100 py-20 md:py-28 dark:border-zinc-800"
+  >
+    <div class="px-4 md:px-8">
+      <div class="mb-8 flex items-center gap-3">
+        <a
+          href="/case-studies"
+          class="inline-flex items-center gap-1.5 text-sm font-bold text-neutral-500 transition-colors hover:text-black dark:text-neutral-400 dark:hover:text-white"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"><path d="m15 18-6-6 6-6"></path></svg
+          >
+          Case Studies
+        </a>
+      </div>
 
-            <div class="max-w-4xl">
-                <p
-                    class="text-xs font-bold uppercase tracking-widest text-neutral-500 dark:text-neutral-400 mb-4"
-                >
-                    {caseStudy.client} · {caseStudy.year}
-                </p>
-                <div class="flex items-start gap-5 mb-6">
-                    <span
-                        class="text-6xl md:text-7xl shrink-0 mt-1"
-                        aria-hidden="true">{caseStudy.emoji}</span
-                    >
-                    <h1
-                        id="case-study-heading"
-                        class="text-4xl md:text-6xl font-black leading-tight text-pretty"
-                    >
-                        {caseStudy.title}
-                    </h1>
-                </div>
-                <p
-                    class="text-xl font-medium text-neutral-600 dark:text-neutral-400 mb-8 max-w-2xl leading-relaxed"
-                >
-                    {caseStudy.subtitle}
-                </p>
+      <div class="max-w-4xl">
+        <p
+          class="mb-4 text-xs font-bold tracking-widest text-neutral-500 uppercase dark:text-neutral-400"
+        >
+          {caseStudy.client} · {caseStudy.year}
+        </p>
+        <div class="mb-6 flex items-start gap-5">
+          <span class="mt-1 shrink-0 text-6xl md:text-7xl" aria-hidden="true"
+            >{caseStudy.emoji}</span
+          >
+          <h1
+            id="case-study-heading"
+            class="text-4xl leading-tight font-black text-pretty md:text-6xl"
+          >
+            {caseStudy.title}
+          </h1>
+        </div>
+        <p
+          class="mb-8 max-w-4xl text-xl leading-relaxed font-medium text-neutral-600 dark:text-neutral-400"
+        >
+          {caseStudy.subtitle}
+        </p>
 
-                <!-- Meta strip -->
-                <div
-                    class="flex flex-wrap gap-6 pt-8 border-t-2 border-zinc-100 dark:border-zinc-800"
-                >
-                    <div>
-                        <p
-                            class="text-xs font-bold uppercase tracking-widest text-neutral-400 mb-1"
-                        >
-                            Role
-                        </p>
-                        <p class="font-bold text-sm">{caseStudy.role}</p>
-                    </div>
-                    <div>
-                        <p
-                            class="text-xs font-bold uppercase tracking-widest text-neutral-400 mb-1"
-                        >
-                            Year
-                        </p>
-                        <p class="font-bold text-sm">{caseStudy.year}</p>
-                    </div>
-                    <div>
-                        <p
-                            class="text-xs font-bold uppercase tracking-widest text-neutral-400 mb-1"
-                        >
-                            Stack
-                        </p>
-                        <p class="font-bold text-sm">
-                            {caseStudy.stack.join(" · ")}
-                        </p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Hero product screenshot -->
-            <div
-                class="mt-12 rounded-2xl overflow-hidden border-2 border-zinc-200 dark:border-zinc-700/50 shadow-xl"
+        <!-- Meta strip -->
+        <div
+          class="flex flex-wrap gap-6 border-t-2 border-zinc-100 pt-8 dark:border-zinc-800"
+        >
+          <div>
+            <p
+              class="mb-1 text-xs font-bold tracking-widest text-neutral-400 uppercase"
             >
+              Role
+            </p>
+            <p class="text-sm font-bold">{caseStudy.role}</p>
+          </div>
+          <div>
+            <p
+              class="mb-1 text-xs font-bold tracking-widest text-neutral-400 uppercase"
+            >
+              Year
+            </p>
+            <p class="text-sm font-bold">{caseStudy.year}</p>
+          </div>
+          <div>
+            <p
+              class="mb-1 text-xs font-bold tracking-widest text-neutral-400 uppercase"
+            >
+              Stack
+            </p>
+            <p class="text-sm font-bold">
+              {caseStudy.stack.join(" · ")}
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Hero product screenshot -->
+      <div
+        class="mt-12 overflow-hidden rounded-2xl border-2 border-zinc-200 shadow-xl dark:border-zinc-700/50"
+      >
+        <img
+          src="/images/project-starter/default-dashboard.webp"
+          alt="Project Starter dashboard — New Project form with template selection, project details, and TinaCMS credentials panel"
+          class="block h-auto w-full"
+          width="1512"
+          height="800"
+        />
+      </div>
+    </div>
+  </section>
+
+  <!-- Executive Summary -->
+  <section class="py-20">
+    <div class="px-4 md:px-8">
+      <div class="grid max-w-6xl gap-12 md:grid-cols-3">
+        <div class="md:col-span-1">
+          <p
+            class="mb-3 text-xs font-bold tracking-widest text-neutral-400 uppercase"
+          >
+            Overview
+          </p>
+          <h2 class="mb-4 text-3xl font-black">Executive Summary</h2>
+        </div>
+        <div class="md:col-span-2">
+          <p
+            class="text-lg leading-relaxed font-medium text-neutral-700 dark:text-neutral-300"
+          >
+            <strong class="text-black dark:text-white">Project Starter</strong> is
+            a locally-hosted web dashboard built to eliminate the repetitive, error-prone
+            process of setting up new client projects from a template. By combining
+            a visual form interface with a smart scaffold engine, it handles folder
+            copying, global string replacement, <em>.env generation</em>, npm
+            install, and git init — all in one click.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Outcomes -->
+  <section class="bg-zinc-50 py-16 dark:bg-neutral-900">
+    <div class="px-4 md:px-8">
+      <div
+        class="mx-auto grid max-w-4xl grid-cols-1 gap-8 text-center md:grid-cols-3"
+      >
+        {
+          outcomes.map((o) => (
+            <div class="rounded-2xl border-2 border-zinc-200 bg-white p-8 dark:border-zinc-700/50 dark:bg-zinc-900">
+              <span class="mb-2 block text-4xl font-black text-black md:text-5xl dark:text-white">
+                {o.value}
+              </span>
+              <span class="text-sm font-bold tracking-widest text-neutral-500 uppercase dark:text-neutral-400">
+                {o.label}
+              </span>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- The Problem -->
+  <section class="py-20">
+    <div class="px-4 md:px-8">
+      <div class="grid max-w-6xl gap-12 md:grid-cols-3">
+        <div class="md:col-span-1">
+          <p
+            class="mb-3 text-xs font-bold tracking-widest text-neutral-400 uppercase"
+          >
+            The Challenge
+          </p>
+          <h2 class="mb-4 text-3xl font-black">The Copy-Paste Setup Tax</h2>
+        </div>
+        <div class="space-y-6 md:col-span-2">
+          <p
+            class="text-lg leading-relaxed font-medium text-neutral-700 dark:text-neutral-300"
+          >
+            Every new project used to start the same way — a 7-step manual
+            ritual that took <strong class="text-black dark:text-white"
+              >5–15 minutes</strong
+            > and introduced small inconsistencies every single time.
+          </p>
+          <ul class="space-y-3">
+            {
+              problems.map((p) => (
+                <li class="flex items-start gap-3 font-medium text-neutral-700 dark:text-neutral-400">
+                  <span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-red-500" />
+                  {p}
+                </li>
+              ))
+            }
+          </ul>
+          <div
+            class="rounded-xl border-l-4 border-red-500 bg-red-50 p-6 dark:bg-red-950/30"
+          >
+            <p class="text-lg font-bold text-red-800 dark:text-red-300">
+              "Setup Tax" — a hidden cost paid at the start of every client
+              engagement, compounding across dozens of projects per year.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- The Solution -->
+  <section class="bg-zinc-50 py-20 dark:bg-neutral-900">
+    <div class="px-4 md:px-8">
+      <div class="grid max-w-6xl gap-12 md:grid-cols-3">
+        <div class="md:col-span-1">
+          <p
+            class="mb-3 text-xs font-bold tracking-widest text-neutral-400 uppercase"
+          >
+            The Solution
+          </p>
+          <h2 class="mb-4 text-3xl font-black">A One-Click Scaffold Engine</h2>
+        </div>
+        <div class="md:col-span-2">
+          <p
+            class="mb-8 text-lg leading-relaxed font-medium text-neutral-700 dark:text-neutral-300"
+          >
+            Project Starter replaces the entire manual flow with a premium local
+            dashboard. Fill in a form, click <strong
+              class="text-black dark:text-white">Create Project</strong
+            >, and the engine handles everything — leaving a consistent, clean
+            foundation every time.
+          </p>
+          <div class="grid gap-4 sm:grid-cols-2">
+            {
+              features.map((f) => (
+                <div class="rounded-xl border-2 border-zinc-200 bg-white p-5 transition-colors hover:border-zinc-400 dark:border-zinc-700/50 dark:bg-zinc-900 dark:hover:border-zinc-500">
+                  <span class="mb-2 block text-2xl">{f.icon}</span>
+                  <h3 class="mb-1 text-base font-black">{f.title}</h3>
+                  <p class="text-sm leading-relaxed font-medium text-neutral-600 dark:text-neutral-400">
+                    {f.description}
+                  </p>
+                </div>
+              ))
+            }
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Design Highlights -->
+  <section class="py-20">
+    <div class="px-4 md:px-8">
+      <div class="grid max-w-6xl gap-12 md:grid-cols-3">
+        <div class="md:col-span-1">
+          <p
+            class="mb-3 text-xs font-bold tracking-widest text-neutral-400 uppercase"
+          >
+            Design
+          </p>
+          <h2 class="mb-4 text-3xl font-black">Key Design Decisions</h2>
+        </div>
+        <div class="space-y-8 md:col-span-2">
+          <div class="flex gap-5">
+            <span class="shrink-0 text-3xl">⚡</span>
+            <div class="w-full">
+              <h3 class="mb-1 text-lg font-black">
+                Deep Recursive Scaffold Engine
+              </h3>
+              <p
+                class="mb-5 leading-relaxed font-medium text-neutral-700 dark:text-neutral-400"
+              >
+                The heart of the tool performs a <strong
+                  class="text-black dark:text-white">deep recursive copy</strong
+                > of the template directory, skipping noise like node_modules, .git,
+                and tina/__generated__. Every text file is read and passed through
+                the replacement engine — swapping template identifiers for the new
+                project slug in a single pass, including inside filenames themselves.
+              </p>
+              <figure
+                class="overflow-hidden rounded-xl border-2 border-zinc-200 shadow-md dark:border-zinc-700/50"
+              >
                 <img
-                    src="/images/project-starter/default-dashboard.webp"
-                    alt="Project Starter dashboard — New Project form with template selection, project details, and TinaCMS credentials panel"
-                    class="w-full h-auto block"
-                    width="1512"
-                    height="800"
+                  src="/images/project-starter/creating-project.webp"
+                  alt="Project Starter scaffold engine in action — progress modal showing template copy, string replacement, .env generation, and npm install steps running live"
+                  class="block h-auto w-full"
+                  width="1512"
+                  height="800"
+                  loading="lazy"
                 />
+                <figcaption
+                  class="bg-zinc-50 px-3 py-2 text-xs font-bold tracking-widest text-neutral-500 uppercase dark:bg-zinc-800"
+                >
+                  Scaffold engine running — live progress output
+                </figcaption>
+              </figure>
             </div>
-        </div>
-    </section>
-
-    <!-- Executive Summary -->
-    <section class="py-20">
-        <div class="px-4 md:px-8">
-            <div class="grid md:grid-cols-3 gap-12 max-w-6xl">
-                <div class="md:col-span-1">
-                    <p
-                        class="text-xs font-bold uppercase tracking-widest text-neutral-400 mb-3"
-                    >
-                        Overview
-                    </p>
-                    <h2 class="text-3xl font-black mb-4">Executive Summary</h2>
-                </div>
-                <div class="md:col-span-2">
-                    <p
-                        class="text-lg font-medium text-neutral-700 dark:text-neutral-300 leading-relaxed"
-                    >
-                        <strong class="text-black dark:text-white"
-                            >Project Starter</strong
-                        > is a locally-hosted web dashboard built to eliminate the
-                        repetitive, error-prone process of setting up new client projects
-                        from a template. By combining a visual form interface with
-                        a smart scaffold engine, it handles folder copying, global
-                        string replacement, <em>.env generation</em>, npm install,
-                        and git init — all in one click.
-                    </p>
-                </div>
+          </div>
+          <div class="flex gap-5">
+            <span class="shrink-0 text-3xl">🔑</span>
+            <div>
+              <h3 class="mb-1 text-lg font-black">
+                TinaCMS Ready Out of the Box
+              </h3>
+              <p
+                class="leading-relaxed font-medium text-neutral-700 dark:text-neutral-400"
+              >
+                During scaffolding, Project Starter generates a
+                <strong class="text-black dark:text-white">.env</strong> with any
+                Tina Cloud credentials provided in the form. If left blank, the project
+                still runs locally without modification. Connecting to Tina Cloud
+                later is as simple as filling in two values.
+              </p>
             </div>
+          </div>
+          <div class="flex gap-5">
+            <span class="shrink-0 text-3xl">◫</span>
+            <div class="w-full">
+              <h3 class="mb-1 text-lg font-black">Project Registry</h3>
+              <p
+                class="mb-5 leading-relaxed font-medium text-neutral-700 dark:text-neutral-400"
+              >
+                Every scaffolded project is recorded in a local
+                <strong class="text-black dark:text-white"
+                  >.project-registry.json</strong
+                >. The <em>My Projects</em> tab displays all past projects with quick
+                actions to open in Finder or VS Code — making it easy to jump back
+                into any client site without hunting through the filesystem.
+              </p>
+              <figure
+                class="overflow-hidden rounded-xl border-2 border-zinc-200 shadow-md dark:border-zinc-700/50"
+              >
+                <img
+                  src="/images/project-starter/my-projects.webp"
+                  alt="Project Starter My Projects tab — project registry listing scaffolded projects with path, template, date, and quick-open actions for Finder and VS Code"
+                  class="block h-auto w-full"
+                  width="1512"
+                  height="800"
+                  loading="lazy"
+                />
+                <figcaption
+                  class="bg-zinc-50 px-3 py-2 text-xs font-bold tracking-widest text-neutral-500 uppercase dark:bg-zinc-800"
+                >
+                  My Projects — full project registry with quick-open actions
+                </figcaption>
+              </figure>
+            </div>
+          </div>
+          <div class="flex gap-5">
+            <span class="shrink-0 text-3xl">🌗</span>
+            <div>
+              <h3 class="mb-1 text-lg font-black">Light / Dark / Auto Theme</h3>
+              <p
+                class="leading-relaxed font-medium text-neutral-700 dark:text-neutral-400"
+              >
+                The dashboard supports full light mode, dark mode, and auto
+                system preference detection — stored in <strong
+                  class="text-black dark:text-white">localStorage</strong
+                > so the preference persists across sessions.
+              </p>
+            </div>
+          </div>
         </div>
-    </section>
+      </div>
+    </div>
+  </section>
 
-    <!-- Outcomes -->
-    <section class="py-16 bg-zinc-50 dark:bg-neutral-900">
-        <div class="px-4 md:px-8">
+  <!-- Technical Architecture -->
+  <section class="bg-zinc-50 py-20 dark:bg-neutral-900">
+    <div class="px-4 md:px-8">
+      <div class="grid max-w-6xl gap-12 md:grid-cols-3">
+        <div class="md:col-span-1">
+          <p
+            class="mb-3 text-xs font-bold tracking-widest text-neutral-400 uppercase"
+          >
+            Engineering
+          </p>
+          <h2 class="mb-4 text-3xl font-black">Technical Architecture</h2>
+        </div>
+        <div class="space-y-6 md:col-span-2">
+          <p
+            class="text-lg leading-relaxed font-medium text-neutral-700 dark:text-neutral-300"
+          >
+            A lightweight local tool with no cloud dependencies — it runs
+            entirely on your machine with zero ongoing cost or latency.
+          </p>
+          <div class="grid gap-4 sm:grid-cols-3">
             <div
-                class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto text-center"
+              class="rounded-xl border-2 border-zinc-200 bg-white p-5 dark:border-zinc-700/50 dark:bg-zinc-900"
             >
-                {
-                    outcomes.map((o) => (
-                        <div class="p-8 rounded-2xl border-2 border-zinc-200 dark:border-zinc-700/50 bg-white dark:bg-zinc-900">
-                            <span class="block text-4xl md:text-5xl font-black mb-2 text-black dark:text-white">
-                                {o.value}
-                            </span>
-                            <span class="text-sm font-bold text-neutral-500 dark:text-neutral-400 uppercase tracking-widest">
-                                {o.label}
-                            </span>
-                        </div>
-                    ))
-                }
+              <p
+                class="mb-2 text-xs font-bold tracking-widest text-neutral-400 uppercase"
+              >
+                Backend
+              </p>
+              <p class="font-black">Node.js + Express</p>
+              <p class="mt-1 text-sm text-neutral-500 dark:text-neutral-400">
+                REST API · scaffold.js
+              </p>
             </div>
-        </div>
-    </section>
-
-    <!-- The Problem -->
-    <section class="py-20">
-        <div class="px-4 md:px-8">
-            <div class="grid md:grid-cols-3 gap-12 max-w-6xl">
-                <div class="md:col-span-1">
-                    <p
-                        class="text-xs font-bold uppercase tracking-widest text-neutral-400 mb-3"
-                    >
-                        The Challenge
-                    </p>
-                    <h2 class="text-3xl font-black mb-4">
-                        The Copy-Paste Setup Tax
-                    </h2>
-                </div>
-                <div class="md:col-span-2 space-y-6">
-                    <p
-                        class="text-lg font-medium text-neutral-700 dark:text-neutral-300 leading-relaxed"
-                    >
-                        Every new project used to start the same way — a 7-step
-                        manual ritual that took <strong
-                            class="text-black dark:text-white"
-                            >5–15 minutes</strong
-                        > and introduced small inconsistencies every single time.
-                    </p>
-                    <ul class="space-y-3">
-                        {
-                            problems.map((p) => (
-                                <li class="flex items-start gap-3 text-neutral-700 dark:text-neutral-400 font-medium">
-                                    <span class="mt-2 w-1.5 h-1.5 rounded-full bg-red-500 shrink-0" />
-                                    {p}
-                                </li>
-                            ))
-                        }
-                    </ul>
-                    <div
-                        class="p-6 rounded-xl bg-red-50 dark:bg-red-950/30 border-l-4 border-red-500"
-                    >
-                        <p
-                            class="font-bold text-red-800 dark:text-red-300 text-lg"
-                        >
-                            "Setup Tax" — a hidden cost paid at the start of
-                            every client engagement, compounding across dozens of
-                            projects per year.
-                        </p>
-                    </div>
-                </div>
+            <div
+              class="rounded-xl border-2 border-zinc-200 bg-white p-5 dark:border-zinc-700/50 dark:bg-zinc-900"
+            >
+              <p
+                class="mb-2 text-xs font-bold tracking-widest text-neutral-400 uppercase"
+              >
+                Frontend
+              </p>
+              <p class="font-black">HTML + CSS + JS</p>
+              <p class="mt-1 text-sm text-neutral-500 dark:text-neutral-400">
+                No build step · instant load
+              </p>
             </div>
-        </div>
-    </section>
-
-    <!-- The Solution -->
-    <section class="py-20 bg-zinc-50 dark:bg-neutral-900">
-        <div class="px-4 md:px-8">
-            <div class="grid md:grid-cols-3 gap-12 max-w-6xl">
-                <div class="md:col-span-1">
-                    <p
-                        class="text-xs font-bold uppercase tracking-widest text-neutral-400 mb-3"
-                    >
-                        The Solution
-                    </p>
-                    <h2 class="text-3xl font-black mb-4">
-                        A One-Click Scaffold Engine
-                    </h2>
-                </div>
-                <div class="md:col-span-2">
-                    <p
-                        class="text-lg font-medium text-neutral-700 dark:text-neutral-300 leading-relaxed mb-8"
-                    >
-                        Project Starter replaces the entire manual flow with a
-                        premium local dashboard. Fill in a form, click <strong
-                            class="text-black dark:text-white"
-                            >Create Project</strong
-                        >, and the engine handles everything — leaving a
-                        consistent, clean foundation every time.
-                    </p>
-                    <div class="grid sm:grid-cols-2 gap-4">
-                        {
-                            features.map((f) => (
-                                <div class="p-5 rounded-xl border-2 border-zinc-200 dark:border-zinc-700/50 bg-white dark:bg-zinc-900 transition-colors hover:border-zinc-400 dark:hover:border-zinc-500">
-                                    <span class="text-2xl block mb-2">
-                                        {f.icon}
-                                    </span>
-                                    <h3 class="font-black text-base mb-1">
-                                        {f.title}
-                                    </h3>
-                                    <p class="text-sm text-neutral-600 dark:text-neutral-400 font-medium leading-relaxed">
-                                        {f.description}
-                                    </p>
-                                </div>
-                            ))
-                        }
-                    </div>
-                </div>
+            <div
+              class="rounded-xl border-2 border-zinc-200 bg-white p-5 dark:border-zinc-700/50 dark:bg-zinc-900"
+            >
+              <p
+                class="mb-2 text-xs font-bold tracking-widest text-neutral-400 uppercase"
+              >
+                Config
+              </p>
+              <p class="font-black">JSON on disk</p>
+              <p class="mt-1 text-sm text-neutral-500 dark:text-neutral-400">
+                Portable · no database
+              </p>
             </div>
-        </div>
-    </section>
+          </div>
 
-    <!-- Design Highlights -->
-    <section class="py-20">
-        <div class="px-4 md:px-8">
-            <div class="grid md:grid-cols-3 gap-12 max-w-6xl">
-                <div class="md:col-span-1">
-                    <p
-                        class="text-xs font-bold uppercase tracking-widest text-neutral-400 mb-3"
-                    >
-                        Design
-                    </p>
-                    <h2 class="text-3xl font-black mb-4">
-                        Key Design Decisions
-                    </h2>
-                </div>
-                <div class="md:col-span-2 space-y-8">
-                    <div class="flex gap-5">
-                        <span class="text-3xl shrink-0">⚡</span>
-                        <div class="w-full">
-                            <h3 class="font-black text-lg mb-1">
-                                Deep Recursive Scaffold Engine
-                            </h3>
-                            <p
-                                class="text-neutral-700 dark:text-neutral-400 font-medium leading-relaxed mb-5"
-                            >
-                                The heart of the tool performs a <strong
-                                    class="text-black dark:text-white"
-                                    >deep recursive copy</strong
-                                > of the template directory, skipping noise like
-                                node_modules, .git, and tina/__generated__. Every
-                                text file is read and passed through the replacement
-                                engine — swapping template identifiers for the new
-                                project slug in a single pass, including inside filenames
-                                themselves.
-                            </p>
-                            <figure class="rounded-xl overflow-hidden border-2 border-zinc-200 dark:border-zinc-700/50 shadow-md">
-                                <img
-                                    src="/images/project-starter/creating-project.webp"
-                                    alt="Project Starter scaffold engine in action — progress modal showing template copy, string replacement, .env generation, and npm install steps running live"
-                                    class="w-full h-auto block"
-                                    width="1512"
-                                    height="800"
-                                    loading="lazy"
-                                />
-                                <figcaption class="px-3 py-2 text-xs font-bold text-neutral-500 bg-zinc-50 dark:bg-zinc-800 uppercase tracking-widest">
-                                    Scaffold engine running — live progress output
-                                </figcaption>
-                            </figure>
-                        </div>
-                    </div>
-                    <div class="flex gap-5">
-                        <span class="text-3xl shrink-0">🔑</span>
-                        <div>
-                            <h3 class="font-black text-lg mb-1">
-                                TinaCMS Ready Out of the Box
-                            </h3>
-                            <p
-                                class="text-neutral-700 dark:text-neutral-400 font-medium leading-relaxed"
-                            >
-                                During scaffolding, Project Starter generates a
-                                <strong class="text-black dark:text-white"
-                                    >.env</strong
-                                > with any Tina Cloud credentials provided in the
-                                form. If left blank, the project still runs locally
-                                without modification. Connecting to Tina Cloud later
-                                is as simple as filling in two values.
-                            </p>
-                        </div>
-                    </div>
-                    <div class="flex gap-5">
-                        <span class="text-3xl shrink-0">◫</span>
-                        <div class="w-full">
-                            <h3 class="font-black text-lg mb-1">
-                                Project Registry
-                            </h3>
-                            <p
-                                class="text-neutral-700 dark:text-neutral-400 font-medium leading-relaxed mb-5"
-                            >
-                                Every scaffolded project is recorded in a local
-                                <strong class="text-black dark:text-white"
-                                    >.project-registry.json</strong
-                                >. The <em>My Projects</em> tab displays all past
-                                projects with quick actions to open in Finder or VS
-                                Code — making it easy to jump back into any client
-                                site without hunting through the filesystem.
-                            </p>
-                            <figure class="rounded-xl overflow-hidden border-2 border-zinc-200 dark:border-zinc-700/50 shadow-md">
-                                <img
-                                    src="/images/project-starter/my-projects.webp"
-                                    alt="Project Starter My Projects tab — project registry listing scaffolded projects with path, template, date, and quick-open actions for Finder and VS Code"
-                                    class="w-full h-auto block"
-                                    width="1512"
-                                    height="800"
-                                    loading="lazy"
-                                />
-                                <figcaption class="px-3 py-2 text-xs font-bold text-neutral-500 bg-zinc-50 dark:bg-zinc-800 uppercase tracking-widest">
-                                    My Projects — full project registry with quick-open actions
-                                </figcaption>
-                            </figure>
-                        </div>
-                    </div>
-                    <div class="flex gap-5">
-                        <span class="text-3xl shrink-0">🌗</span>
-                        <div>
-                            <h3 class="font-black text-lg mb-1">
-                                Light / Dark / Auto Theme
-                            </h3>
-                            <p
-                                class="text-neutral-700 dark:text-neutral-400 font-medium leading-relaxed"
-                            >
-                                The dashboard supports full light mode, dark
-                                mode, and auto system preference detection —
-                                stored in <strong
-                                    class="text-black dark:text-white"
-                                    >localStorage</strong
-                                > so the preference persists across sessions.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Technical Architecture -->
-    <section class="py-20 bg-zinc-50 dark:bg-neutral-900">
-        <div class="px-4 md:px-8">
-            <div class="grid md:grid-cols-3 gap-12 max-w-6xl">
-                <div class="md:col-span-1">
-                    <p
-                        class="text-xs font-bold uppercase tracking-widest text-neutral-400 mb-3"
-                    >
-                        Engineering
-                    </p>
-                    <h2 class="text-3xl font-black mb-4">
-                        Technical Architecture
-                    </h2>
-                </div>
-                <div class="md:col-span-2 space-y-6">
-                    <p
-                        class="text-lg font-medium text-neutral-700 dark:text-neutral-300 leading-relaxed"
-                    >
-                        A lightweight local tool with no cloud dependencies — it
-                        runs entirely on your machine with zero ongoing cost or
-                        latency.
-                    </p>
-                    <div class="grid sm:grid-cols-3 gap-4">
-                        <div
-                            class="p-5 rounded-xl border-2 border-zinc-200 dark:border-zinc-700/50 bg-white dark:bg-zinc-900"
-                        >
-                            <p
-                                class="text-xs font-bold uppercase tracking-widest text-neutral-400 mb-2"
-                            >
-                                Backend
-                            </p>
-                            <p class="font-black">Node.js + Express</p>
-                            <p
-                                class="text-sm text-neutral-500 dark:text-neutral-400 mt-1"
-                            >
-                                REST API · scaffold.js
-                            </p>
-                        </div>
-                        <div
-                            class="p-5 rounded-xl border-2 border-zinc-200 dark:border-zinc-700/50 bg-white dark:bg-zinc-900"
-                        >
-                            <p
-                                class="text-xs font-bold uppercase tracking-widest text-neutral-400 mb-2"
-                            >
-                                Frontend
-                            </p>
-                            <p class="font-black">HTML + CSS + JS</p>
-                            <p
-                                class="text-sm text-neutral-500 dark:text-neutral-400 mt-1"
-                            >
-                                No build step · instant load
-                            </p>
-                        </div>
-                        <div
-                            class="p-5 rounded-xl border-2 border-zinc-200 dark:border-zinc-700/50 bg-white dark:bg-zinc-900"
-                        >
-                            <p
-                                class="text-xs font-bold uppercase tracking-widest text-neutral-400 mb-2"
-                            >
-                                Config
-                            </p>
-                            <p class="font-black">JSON on disk</p>
-                            <p
-                                class="text-sm text-neutral-500 dark:text-neutral-400 mt-1"
-                            >
-                                Portable · no database
-                            </p>
-                        </div>
-                    </div>
-
-                    <!-- Architecture flow diagram -->
-                    <div
-                        class="p-6 rounded-xl bg-zinc-900 dark:bg-black border-2 border-zinc-700 font-mono text-sm overflow-x-auto"
-                    >
-                        <pre
-                            class="text-zinc-300 leading-relaxed whitespace-pre"><span class="text-indigo-400">Browser Dashboard</span>  ── POST /api/create ──▶  <span class="text-green-400">Express Server</span>
+          <!-- Architecture flow diagram -->
+          <div
+            class="overflow-x-auto rounded-xl border-2 border-zinc-700 bg-zinc-900 p-6 font-mono text-sm dark:bg-black"
+          >
+            <pre
+              class="leading-relaxed whitespace-pre text-zinc-300"><span class="text-indigo-400">Browser Dashboard</span>  ── POST /api/create ──▶  <span class="text-green-400">Express Server</span>
                                          │
                                          ▼
                                <span class="text-yellow-400">scaffold.js</span>
@@ -531,154 +500,145 @@ const problems = [
                                             │
                                             ▼
                                   <span class="text-indigo-400">Write Project Registry</span></pre>
-                    </div>
-                </div>
-            </div>
+          </div>
         </div>
-    </section>
+      </div>
+    </div>
+  </section>
 
-    <!-- Results -->
-    <section class="py-20">
-        <div class="px-4 md:px-8">
-            <div class="grid md:grid-cols-3 gap-12 max-w-6xl">
-                <div class="md:col-span-1">
-                    <p
-                        class="text-xs font-bold uppercase tracking-widest text-neutral-400 mb-3"
-                    >
-                        Impact
-                    </p>
-                    <h2 class="text-3xl font-black mb-4">The Result</h2>
-                </div>
-                <div class="md:col-span-2 space-y-6">
-                    <p
-                        class="text-lg font-medium text-neutral-700 dark:text-neutral-300 leading-relaxed"
-                    >
-                        Project Starter compresses a 5–15 minute manual setup
-                        into a <strong class="text-black dark:text-white"
-                            >~2 minute automated flow</strong
-                        > (mostly waiting for npm install). Every project now starts
-                        from a consistent, clean foundation.
-                    </p>
-                    <ul class="space-y-4">
-                        <li
-                            class="flex items-start gap-3 text-neutral-700 dark:text-neutral-300 font-medium text-lg"
-                        >
-                            <span
-                                class="mt-1.5 w-2 h-2 rounded-full bg-green-500 shrink-0"
-                            ></span>
-                            <span
-                                ><strong class="text-black dark:text-white"
-                                    >5–15 minutes saved</strong
-                                > per project setup — no more manual copy-paste ritual.</span
-                            >
-                        </li>
-                        <li
-                            class="flex items-start gap-3 text-neutral-700 dark:text-neutral-300 font-medium text-lg"
-                        >
-                            <span
-                                class="mt-1.5 w-2 h-2 rounded-full bg-green-500 shrink-0"
-                            ></span>
-                            <span
-                                ><strong class="text-black dark:text-white"
-                                    >Zero stray template names</strong
-                                > left in config files — the replacement engine is
-                                exhaustive and recursive.</span
-                            >
-                        </li>
-                        <li
-                            class="flex items-start gap-3 text-neutral-700 dark:text-neutral-300 font-medium text-lg"
-                        >
-                            <span
-                                class="mt-1.5 w-2 h-2 rounded-full bg-green-500 shrink-0"
-                            ></span>
-                            <span
-                                ><strong class="text-black dark:text-white"
-                                    >TinaCMS-ready</strong
-                                > from the first run — each project is CMS-connected
-                                or one step from connection.</span
-                            >
-                        </li>
-                        <li
-                            class="flex items-start gap-3 text-neutral-700 dark:text-neutral-300 font-medium text-lg"
-                        >
-                            <span
-                                class="mt-1.5 w-2 h-2 rounded-full bg-green-500 shrink-0"
-                            ></span>
-                            <span
-                                ><strong class="text-black dark:text-white"
-                                    >Extensible</strong
-                                > — new templates can be registered in seconds via
-                                the Templates tab.</span
-                            >
-                        </li>
-                    </ul>
-
-                    <div
-                        class="p-6 rounded-xl bg-indigo-50 dark:bg-indigo-950/30 border-l-4 border-indigo-500 mt-4"
-                    >
-                        <p
-                            class="font-bold text-indigo-800 dark:text-indigo-300 text-base"
-                        >
-                            💡 Pro Tip: Leave npm start running in the
-                            background alongside Launch Local. Between the two
-                            dashboards, you have a complete local dev command
-                            centre — one to scaffold, one to launch.
-                        </p>
-                    </div>
-                </div>
-            </div>
+  <!-- Results -->
+  <section class="py-20">
+    <div class="px-4 md:px-8">
+      <div class="grid max-w-6xl gap-12 md:grid-cols-3">
+        <div class="md:col-span-1">
+          <p
+            class="mb-3 text-xs font-bold tracking-widest text-neutral-400 uppercase"
+          >
+            Impact
+          </p>
+          <h2 class="mb-4 text-3xl font-black">The Result</h2>
         </div>
-    </section>
-
-    <!-- Last updated -->
-    <section class="pb-12">
-        <div class="px-4 md:px-8">
-            <p
-                class="text-xs font-bold uppercase tracking-widest text-neutral-900 dark:text-white"
+        <div class="space-y-6 md:col-span-2">
+          <p
+            class="text-lg leading-relaxed font-medium text-neutral-700 dark:text-neutral-300"
+          >
+            Project Starter compresses a 5–15 minute manual setup into a <strong
+              class="text-black dark:text-white"
+              >~2 minute automated flow</strong
+            > (mostly waiting for npm install). Every project now starts from a consistent,
+            clean foundation.
+          </p>
+          <ul class="space-y-4">
+            <li
+              class="flex items-start gap-3 text-lg font-medium text-neutral-700 dark:text-neutral-300"
             >
-                Last updated · June 2026
+              <span class="mt-1.5 h-2 w-2 shrink-0 rounded-full bg-green-500"
+              ></span>
+              <span
+                ><strong class="text-black dark:text-white"
+                  >5–15 minutes saved</strong
+                > per project setup — no more manual copy-paste ritual.</span
+              >
+            </li>
+            <li
+              class="flex items-start gap-3 text-lg font-medium text-neutral-700 dark:text-neutral-300"
+            >
+              <span class="mt-1.5 h-2 w-2 shrink-0 rounded-full bg-green-500"
+              ></span>
+              <span
+                ><strong class="text-black dark:text-white"
+                  >Zero stray template names</strong
+                > left in config files — the replacement engine is exhaustive and
+                recursive.</span
+              >
+            </li>
+            <li
+              class="flex items-start gap-3 text-lg font-medium text-neutral-700 dark:text-neutral-300"
+            >
+              <span class="mt-1.5 h-2 w-2 shrink-0 rounded-full bg-green-500"
+              ></span>
+              <span
+                ><strong class="text-black dark:text-white"
+                  >TinaCMS-ready</strong
+                > from the first run — each project is CMS-connected or one step from
+                connection.</span
+              >
+            </li>
+            <li
+              class="flex items-start gap-3 text-lg font-medium text-neutral-700 dark:text-neutral-300"
+            >
+              <span class="mt-1.5 h-2 w-2 shrink-0 rounded-full bg-green-500"
+              ></span>
+              <span
+                ><strong class="text-black dark:text-white">Extensible</strong> —
+                new templates can be registered in seconds via the Templates tab.</span
+              >
+            </li>
+          </ul>
+
+          <div
+            class="mt-4 rounded-xl border-l-4 border-indigo-500 bg-indigo-50 p-6 dark:bg-indigo-950/30"
+          >
+            <p class="text-base font-bold text-indigo-800 dark:text-indigo-300">
+              💡 Pro Tip: Leave npm start running in the background alongside
+              Launch Local. Between the two dashboards, you have a complete
+              local dev command centre — one to scaffold, one to launch.
             </p>
+          </div>
         </div>
-    </section>
+      </div>
+    </div>
+  </section>
 
-    <!-- Next / Back nav -->
-    <section class="py-16 border-t-2 border-zinc-100 dark:border-zinc-800">
-        <div
-            class="px-4 md:px-8 flex flex-col sm:flex-row items-center justify-between gap-6"
+  <!-- Last updated -->
+  <section class="pb-12">
+    <div class="px-4 md:px-8">
+      <p
+        class="text-xs font-bold tracking-widest text-neutral-900 uppercase dark:text-white"
+      >
+        Last updated · June 2026
+      </p>
+    </div>
+  </section>
+
+  <!-- Next / Back nav -->
+  <section class="border-t-2 border-zinc-100 py-16 dark:border-zinc-800">
+    <div
+      class="flex flex-col items-center justify-between gap-6 px-4 sm:flex-row md:px-8"
+    >
+      <a
+        href="/case-studies"
+        class="inline-flex items-center gap-2 font-bold text-neutral-500 transition-colors hover:text-black dark:text-neutral-400 dark:hover:text-white"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="18"
+          height="18"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          aria-hidden="true"><path d="m15 18-6-6 6-6"></path></svg
         >
-            <a
-                href="/case-studies"
-                class="inline-flex items-center gap-2 font-bold text-neutral-500 dark:text-neutral-400 hover:text-black dark:hover:text-white transition-colors"
-            >
-                <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="18"
-                    height="18"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2.5"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    aria-hidden="true"><path d="m15 18-6-6 6-6"></path></svg
-                >
-                All case studies
-            </a>
-            <a
-                href="/#contact"
-                class="group relative inline-flex items-center justify-center overflow-hidden h-12 px-8 font-bold text-white bg-black dark:bg-white dark:text-black transition-all duration-300 rounded-md"
-            >
-                <span
-                    class="transform transition-transform duration-300 group-hover:-translate-x-4"
-                >
-                    Get in touch
-                </span>
-                <span
-                    class="absolute right-5 transform -translate-x-4 opacity-0 transition-all duration-300 group-hover:translate-x-0 group-hover:opacity-100"
-                >
-                    &rarr;
-                </span>
-            </a>
-        </div>
-    </section>
+        All case studies
+      </a>
+      <a
+        href="/#contact"
+        class="group relative inline-flex h-12 items-center justify-center overflow-hidden rounded-full bg-black px-8 font-bold text-white transition-all duration-300 dark:bg-white dark:text-black"
+      >
+        <span
+          class="transform transition-transform duration-300 group-hover:-translate-x-4"
+        >
+          Get in touch
+        </span>
+        <span
+          class="absolute right-5 -translate-x-4 transform opacity-0 transition-all duration-300 group-hover:translate-x-0 group-hover:opacity-100"
+        >
+          &rarr;
+        </span>
+      </a>
+    </div>
+  </section>
 </MainLayout>

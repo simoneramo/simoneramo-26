@@ -1,0 +1,9 @@
+dist
+.vercel
+node_modules
+
+# prettier-plugin-astro can't parse these (Alpine @click/:class directives and
+# HTML comments inside .map() expression returns). Astro itself compiles them fine.
+src/components/global/Header.astro
+src/pages/case-studies.astro
+src/pages/case-studies/paul-jeffers-photography.astro

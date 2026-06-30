@@ -2,590 +2,890 @@
 import MainLayout from "../../layouts/MainLayout.astro";
 
 const caseStudy = {
-    title: "Lead Generation Redesign",
-    subtitle: "Rebuilding a high-volume campaign machine from the ground up — turning underperforming landing pages into conversion-optimised growth engines",
-    client: "Social Garden",
-    year: "2017–2020",
-    role: "Lead Designer & CRO Strategist",
-    stack: ["Figma", "Sketch", "Adobe Creative Suite", "Zeplin", "Marvel", "Asana"],
-    tags: ["Conversion", "Web Design", "Strategy"],
-    emoji: "📈",
+  title: "Lead Generation Redesign",
+  subtitle:
+    "Rebuilding a high-volume campaign machine from the ground up — turning underperforming landing pages into conversion-optimised growth engines",
+  client: "Social Garden",
+  year: "2017–2020",
+  role: "Lead Designer & CRO Strategist",
+  stack: [
+    "Figma",
+    "Sketch",
+    "Adobe Creative Suite",
+    "Zeplin",
+    "Marvel",
+    "Asana",
+  ],
+  tags: ["Conversion", "Web Design", "Strategy"],
+  emoji: "📈",
 };
 
 const outcomes = [
-    { value: "5%+", label: "Avg conversion rate (up from 1.5%)" },
-    { value: "200+", label: "Campaigns designed & optimised" },
-    { value: "50%+", label: "Increase on previous campaign output" },
-    { value: "8", label: "Designers trained & mentored" },
+  { value: "5%+", label: "Avg conversion rate (up from 1.5%)" },
+  { value: "200+", label: "Campaigns designed & optimised" },
+  { value: "50%+", label: "Increase on previous campaign output" },
+  { value: "8", label: "Designers trained & mentored" },
 ];
 
 const clients = [
-    "Mirvac", "Investland", "JG King", "Avid Group",
-    "Little Real Estate", "Woodlea", "Vic Uni", "Swinburne",
-    "Melbourne Uni", "Kangan", "Builders Academy",
+  "Mirvac",
+  "Investland",
+  "JG King",
+  "Avid Group",
+  "Little Real Estate",
+  "Woodlea",
+  "Vic Uni",
+  "Swinburne",
+  "Melbourne Uni",
+  "Kangan",
+  "Builders Academy",
 ];
 
 const problems = [
-    {
-        title: "Flat, Disjointed Campaign Output",
-        description:
-            "Campaigns were being produced reactively, with no unified visual language or structural framework. Each landing page felt like a one-off — inconsistent in hierarchy, typography, and tone — making it impossible to identify what was working and why.",
-    },
-    {
-        title: "Conversion Rates Stuck Below 2%",
-        description:
-            "Average conversion rates across both the property and education verticals were languishing between 1.5–2%. Without a data-informed design process or genuine CRO thinking embedded in the workflow, performance improvements were largely left to chance.",
-    },
-    {
-        title: "No Collaborative Process",
-        description:
-            "The production pipeline was siloed. Designers, copywriters, and strategists operated independently, leading to misaligned briefs, last-minute revisions, and a final product that rarely reflected the full strategic intent of the campaign.",
-    },
-    {
-        title: "Generic Visual Design",
-        description:
-            "With premium property clients like Mirvac and Woodlea, generic landing page aesthetics simply didn't cut it. Low-quality imagery, inconsistent typography, and no emotional resonance in the visual design was actively undermining brand trust — and click-throughs proved it.",
-    },
+  {
+    title: "Flat, Disjointed Campaign Output",
+    description:
+      "Campaigns were being produced reactively, with no unified visual language or structural framework. Each landing page felt like a one-off — inconsistent in hierarchy, typography, and tone — making it impossible to identify what was working and why.",
+  },
+  {
+    title: "Conversion Rates Stuck Below 2%",
+    description:
+      "Average conversion rates across both the property and education verticals were languishing between 1.5–2%. Without a data-informed design process or genuine CRO thinking embedded in the workflow, performance improvements were largely left to chance.",
+  },
+  {
+    title: "No Collaborative Process",
+    description:
+      "The production pipeline was siloed. Designers, copywriters, and strategists operated independently, leading to misaligned briefs, last-minute revisions, and a final product that rarely reflected the full strategic intent of the campaign.",
+  },
+  {
+    title: "Generic Visual Design",
+    description:
+      "With premium property clients like Mirvac and Woodlea, generic landing page aesthetics simply didn't cut it. Low-quality imagery, inconsistent typography, and no emotional resonance in the visual design was actively undermining brand trust — and click-throughs proved it.",
+  },
 ];
 
 const croApproach = [
-    {
-        icon: "🎯",
-        title: "Above-the-Fold Obsession",
-        description:
-            "Every landing page we produced started with a single question: what does the user see in the first three seconds, and does it make them want to stay? Hero sections were designed with a laser focus — one clear value proposition, a single dominant CTA, and visual hierarchy that pulled the eye exactly where we needed it to go.",
-    },
-    {
-        icon: "🧠",
-        title: "Psychological Triggers by Design",
-        description:
-            "We systematically embedded proven persuasion triggers into the visual design itself. Social proof (testimonials, logos, award badges) was placed directly adjacent to CTAs. Scarcity indicators were introduced for property campaigns with limited release stages. Trust signals — certifications, guarantees, media mentions — were elevated above the fold.",
-    },
-    {
-        icon: "📐",
-        title: "Visual Hierarchy as a Conversion Tool",
-        description:
-            "Typography, colour contrast, and whitespace stopped being aesthetic decisions and became strategic ones. Headlines were tested at multiple sizes and weights. CTA buttons were A/B tested for colour, copy, and positioning. The goal was always a frictionless path from first impression to form submission.",
-    },
-    {
-        icon: "📸",
-        title: "Photography & Mood Over Stock",
-        description:
-            "For premium property clients, we moved aggressively away from stock imagery. High-quality lifestyle photography, architectural renders, and on-site production assets became non-negotiable. The emotional impact of the right image — aspirational, human, contextually relevant — consistently outperformed generic alternatives in split testing.",
-    },
-    {
-        icon: "📱",
-        title: "Mobile-First, Always",
-        description:
-            "With the majority of campaign traffic arriving via social ads on mobile, every layout was designed mobile-first without exception. Thumb-friendly CTAs, vertically optimised hero sections, and minimal-friction form fields were standard. Desktop was a refinement of mobile, never the reverse.",
-    },
-    {
-        icon: "⚡",
-        title: "Form UX & Friction Removal",
-        description:
-            "Forms were the final conversion barrier, and we treated them accordingly. Field counts were ruthlessly reduced to the minimum viable set. Multi-step forms were introduced for higher-intent prospects. Auto-fill compatibility, inline validation, and progress indicators were standard across all education campaign forms.",
-    },
+  {
+    icon: "🎯",
+    title: "Above-the-Fold Obsession",
+    description:
+      "Every landing page we produced started with a single question: what does the user see in the first three seconds, and does it make them want to stay? Hero sections were designed with a laser focus — one clear value proposition, a single dominant CTA, and visual hierarchy that pulled the eye exactly where we needed it to go.",
+  },
+  {
+    icon: "🧠",
+    title: "Psychological Triggers by Design",
+    description:
+      "We systematically embedded proven persuasion triggers into the visual design itself. Social proof (testimonials, logos, award badges) was placed directly adjacent to CTAs. Scarcity indicators were introduced for property campaigns with limited release stages. Trust signals — certifications, guarantees, media mentions — were elevated above the fold.",
+  },
+  {
+    icon: "📐",
+    title: "Visual Hierarchy as a Conversion Tool",
+    description:
+      "Typography, colour contrast, and whitespace stopped being aesthetic decisions and became strategic ones. Headlines were tested at multiple sizes and weights. CTA buttons were A/B tested for colour, copy, and positioning. The goal was always a frictionless path from first impression to form submission.",
+  },
+  {
+    icon: "📸",
+    title: "Photography & Mood Over Stock",
+    description:
+      "For premium property clients, we moved aggressively away from stock imagery. High-quality lifestyle photography, architectural renders, and on-site production assets became non-negotiable. The emotional impact of the right image — aspirational, human, contextually relevant — consistently outperformed generic alternatives in split testing.",
+  },
+  {
+    icon: "📱",
+    title: "Mobile-First, Always",
+    description:
+      "With the majority of campaign traffic arriving via social ads on mobile, every layout was designed mobile-first without exception. Thumb-friendly CTAs, vertically optimised hero sections, and minimal-friction form fields were standard. Desktop was a refinement of mobile, never the reverse.",
+  },
+  {
+    icon: "⚡",
+    title: "Form UX & Friction Removal",
+    description:
+      "Forms were the final conversion barrier, and we treated them accordingly. Field counts were ruthlessly reduced to the minimum viable set. Multi-step forms were introduced for higher-intent prospects. Auto-fill compatibility, inline validation, and progress indicators were standard across all education campaign forms.",
+  },
 ];
 
 const processSteps = [
-    {
-        step: "01",
-        title: "Strategic Brief",
-        description:
-            "Campaign goals, audience segmentation, and messaging hierarchy defined in collaboration with the account and strategy teams before a single pixel was touched.",
-    },
-    {
-        step: "02",
-        title: "Concept & Wireframe",
-        description:
-            "Low-fidelity wireframes established the structural layout, information hierarchy, and CTA placement. Shared for stakeholder feedback before any visual design commenced.",
-    },
-    {
-        step: "03",
-        title: "Visual Design",
-        description:
-            "High-fidelity designs produced in Sketch/Figma, referencing the client brand whilst layering our CRO design methodology — informed by data from previous campaign performance.",
-    },
-    {
-        step: "04",
-        title: "Review & Iterate",
-        description:
-            "Structured review cycles with account managers, strategists, and where accessible, clients. Feedback was managed through Zeplin and Asana, with clear version control.",
-    },
-    {
-        step: "05",
-        title: "Build & Launch",
-        description:
-            "Handed off to development with annotated specs via Zeplin. QA sign-off checked against the design on desktop and mobile before campaign traffic was switched on.",
-    },
-    {
-        step: "06",
-        title: "Measure & Optimise",
-        description:
-            "Post-launch, conversion data informed iterative improvements — headline changes, CTA copy tweaks, image swaps. Each campaign fed learnings back into the next.",
-    },
+  {
+    step: "01",
+    title: "Strategic Brief",
+    description:
+      "Campaign goals, audience segmentation, and messaging hierarchy defined in collaboration with the account and strategy teams before a single pixel was touched.",
+  },
+  {
+    step: "02",
+    title: "Concept & Wireframe",
+    description:
+      "Low-fidelity wireframes established the structural layout, information hierarchy, and CTA placement. Shared for stakeholder feedback before any visual design commenced.",
+  },
+  {
+    step: "03",
+    title: "Visual Design",
+    description:
+      "High-fidelity designs produced in Sketch/Figma, referencing the client brand whilst layering our CRO design methodology — informed by data from previous campaign performance.",
+  },
+  {
+    step: "04",
+    title: "Review & Iterate",
+    description:
+      "Structured review cycles with account managers, strategists, and where accessible, clients. Feedback was managed through Zeplin and Asana, with clear version control.",
+  },
+  {
+    step: "05",
+    title: "Build & Launch",
+    description:
+      "Handed off to development with annotated specs via Zeplin. QA sign-off checked against the design on desktop and mobile before campaign traffic was switched on.",
+  },
+  {
+    step: "06",
+    title: "Measure & Optimise",
+    description:
+      "Post-launch, conversion data informed iterative improvements — headline changes, CTA copy tweaks, image swaps. Each campaign fed learnings back into the next.",
+  },
 ];
 
 const designPrinciples = [
-    {
-        title: "One CTA Per Page",
-        description:
-            "Every competing action dilutes attention. Our rule: one primary conversion goal, one primary CTA. Secondary links were removed or deprioritised below the fold.",
-    },
-    {
-        title: "Benefit-Led Headlines",
-        description:
-            "We moved away from feature-led copy ('3 Bedroom, 2 Bath') toward benefit-led emotional hooks ('Wake up to bushland views, every morning'). Testing consistently validated the latter.",
-    },
-    {
-        title: "Contrast as a Weapon",
-        description:
-            "CTA buttons were always designed with maximum contrast against the background — never blending into the colour palette. Accessibility compliance was a fortunate side-effect of good CRO practice.",
-    },
-    {
-        title: "Directional Cues",
-        description:
-            "Photography was selected and cropped so that subjects' eyelines pointed toward forms and CTAs. Visual arrows and directional shapes reinforced the natural reading flow toward the conversion point.",
-    },
+  {
+    title: "One CTA Per Page",
+    description:
+      "Every competing action dilutes attention. Our rule: one primary conversion goal, one primary CTA. Secondary links were removed or deprioritised below the fold.",
+  },
+  {
+    title: "Benefit-Led Headlines",
+    description:
+      "We moved away from feature-led copy ('3 Bedroom, 2 Bath') toward benefit-led emotional hooks ('Wake up to bushland views, every morning'). Testing consistently validated the latter.",
+  },
+  {
+    title: "Contrast as a Weapon",
+    description:
+      "CTA buttons were always designed with maximum contrast against the background — never blending into the colour palette. Accessibility compliance was a fortunate side-effect of good CRO practice.",
+  },
+  {
+    title: "Directional Cues",
+    description:
+      "Photography was selected and cropped so that subjects' eyelines pointed toward forms and CTAs. Visual arrows and directional shapes reinforced the natural reading flow toward the conversion point.",
+  },
 ];
 
 const metrics = [
-    { before: "1.5%", after: "5%+", label: "Average Conversion Rate", improvement: "233% lift" },
-    { before: "Low", after: "High", label: "Design-to-Strategy Alignment", improvement: "Full process redesign" },
-    { before: "~100", after: "200+", label: "Campaigns Produced", improvement: ">50% output increase" },
-    { before: "0", after: "8", label: "Team Members Trained", improvement: "Cross-tool proficiency" },
+  {
+    before: "1.5%",
+    after: "5%+",
+    label: "Average Conversion Rate",
+    improvement: "233% lift",
+  },
+  {
+    before: "Low",
+    after: "High",
+    label: "Design-to-Strategy Alignment",
+    improvement: "Full process redesign",
+  },
+  {
+    before: "~100",
+    after: "200+",
+    label: "Campaigns Produced",
+    improvement: ">50% output increase",
+  },
+  {
+    before: "0",
+    after: "8",
+    label: "Team Members Trained",
+    improvement: "Cross-tool proficiency",
+  },
 ];
 ---
 
 <MainLayout
-    title="Lead Generation Redesign — Case Study | Simon Eramo"
-    description="How I rebuilt a high-volume lead generation campaign process from the ground up — lifting conversion rates from 1.5% to above 5% across 200+ campaigns in property and education."
+  title="Lead Generation Redesign — Case Study | Simon Eramo"
+  description="How I rebuilt a high-volume lead generation campaign process from the ground up — lifting conversion rates from 1.5% to above 5% across 200+ campaigns in property and education."
 >
-    <!-- Hero -->
-    <section class="py-20 md:py-28 border-b-2 border-zinc-100 dark:border-zinc-800">
-        <div class="px-4 md:px-8">
-            <div class="flex items-center gap-3 mb-8">
-                <a
-                    href="/case-studies"
-                    class="inline-flex items-center gap-1.5 text-sm font-bold text-neutral-500 dark:text-neutral-400 hover:text-black dark:hover:text-white transition-colors"
-                >
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg>
-                    Case Studies
-                </a>
-                <span class="text-neutral-300 dark:text-neutral-600">/</span>
-                <span class="text-xs font-bold uppercase tracking-widest text-neutral-400">CRO & Visual Design</span>
-            </div>
+  <!-- Hero -->
+  <section
+    class="border-b-2 border-zinc-100 py-20 md:py-28 dark:border-zinc-800"
+  >
+    <div class="px-4 md:px-8">
+      <div class="mb-8 flex items-center gap-3">
+        <a
+          href="/case-studies"
+          class="inline-flex items-center gap-1.5 text-sm font-bold text-neutral-500 transition-colors hover:text-black dark:text-neutral-400 dark:hover:text-white"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"><path d="m15 18-6-6 6-6"></path></svg
+          >
+          Case Studies
+        </a>
+        <span class="text-neutral-300 dark:text-neutral-600">/</span>
+        <span
+          class="text-xs font-bold tracking-widest text-neutral-400 uppercase"
+          >CRO & Visual Design</span
+        >
+      </div>
 
-            <div class="max-w-4xl">
-                <p class="text-xs font-bold uppercase tracking-widest text-neutral-500 dark:text-neutral-400 mb-4">
-                    {caseStudy.client} · {caseStudy.year}
-                </p>
-                <div class="flex items-start gap-5 mb-6">
-                    <span class="text-6xl md:text-7xl shrink-0 mt-1" aria-hidden="true">{caseStudy.emoji}</span>
-                    <h1
-                        id="case-study-heading"
-                        class="text-4xl md:text-6xl font-black leading-tight text-pretty"
-                    >
-                        {caseStudy.title}
-                    </h1>
-                </div>
-                <p class="text-xl font-medium text-neutral-600 dark:text-neutral-400 mb-8 max-w-2xl leading-relaxed">
-                    {caseStudy.subtitle} — lifting average conversion rates from <strong class="text-bold dark:text-white">1.5% to above 5%</strong> across two of Australia's most competitive digital verticals.
-                </p>
-
-                <!-- Client logos strip -->
-                <div class="mb-8">
-                    <p class="text-xs font-bold uppercase tracking-widest text-neutral-400 mb-3">Clients Include</p>
-                    <div class="flex flex-wrap gap-2">
-                        {clients.map((c) => (
-                            <span class="text-xs font-bold px-3 py-1.5 rounded-full bg-zinc-100 dark:bg-zinc-800 text-neutral-700 dark:text-neutral-300">
-                                {c}
-                            </span>
-                        ))}
-                    </div>
-                </div>
-
-                <!-- Meta strip -->
-                <div class="flex flex-wrap gap-6 pt-8 border-t-2 border-zinc-100 dark:border-zinc-800">
-                    <div>
-                        <p class="text-xs font-bold uppercase tracking-widest text-neutral-400 mb-1">Role</p>
-                        <p class="font-bold text-sm">{caseStudy.role}</p>
-                    </div>
-                    <div>
-                        <p class="text-xs font-bold uppercase tracking-widest text-neutral-400 mb-1">Timeline</p>
-                        <p class="font-bold text-sm">{caseStudy.year}</p>
-                    </div>
-                    <div>
-                        <p class="text-xs font-bold uppercase tracking-widest text-neutral-400 mb-1">Tools</p>
-                        <p class="font-bold text-sm">{caseStudy.stack.join(" · ")}</p>
-                    </div>
-                </div>
-            </div>
+      <div class="max-w-4xl">
+        <p
+          class="mb-4 text-xs font-bold tracking-widest text-neutral-500 uppercase dark:text-neutral-400"
+        >
+          {caseStudy.client} · {caseStudy.year}
+        </p>
+        <div class="mb-6 flex items-start gap-5">
+          <span class="mt-1 shrink-0 text-6xl md:text-7xl" aria-hidden="true"
+            >{caseStudy.emoji}</span
+          >
+          <h1
+            id="case-study-heading"
+            class="text-4xl leading-tight font-black text-pretty md:text-6xl"
+          >
+            {caseStudy.title}
+          </h1>
         </div>
-    </section>
+        <p
+          class="mb-8 max-w-4xl text-xl leading-relaxed font-medium text-neutral-600 dark:text-neutral-400"
+        >
+          {caseStudy.subtitle} — lifting average conversion rates from <strong
+            class="text-bold dark:text-white">1.5% to above 5%</strong
+          > across two of Australia's most competitive digital verticals.
+        </p>
 
-    <!-- Outcomes -->
-    <section class="py-16 bg-zinc-50 dark:bg-neutral-900">
-        <div class="px-4 md:px-8">
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto text-center">
-                {outcomes.map((o) => (
-                    <div class="p-6 md:p-8 rounded-2xl border-2 border-zinc-200 dark:border-zinc-700/50 bg-white dark:bg-zinc-900">
-                        <span class="block text-3xl md:text-4xl font-black mb-2 text-black dark:text-white">
-                            {o.value}
-                        </span>
-                        <span class="text-xs font-bold text-neutral-500 dark:text-neutral-400 uppercase tracking-widest leading-snug block">
-                            {o.label}
-                        </span>
-                    </div>
-                ))}
-            </div>
+        <!-- Client logos strip -->
+        <div class="mb-8">
+          <p
+            class="mb-3 text-xs font-bold tracking-widest text-neutral-400 uppercase"
+          >
+            Clients Include
+          </p>
+          <div class="flex flex-wrap gap-2">
+            {
+              clients.map((c) => (
+                <span class="rounded-full bg-zinc-100 px-3 py-1.5 text-xs font-bold text-neutral-700 dark:bg-zinc-800 dark:text-neutral-300">
+                  {c}
+                </span>
+              ))
+            }
+          </div>
         </div>
-    </section>
 
-    <!-- Overview -->
-    <section class="py-20">
-        <div class="px-4 md:px-8">
-            <div class="grid md:grid-cols-3 gap-12 max-w-6xl">
-                <div class="md:col-span-1">
-                    <p class="text-xs font-bold uppercase tracking-widest text-neutral-400 mb-3">Overview</p>
-                    <h2 class="text-3xl font-black mb-4">The Campaign Machine</h2>
-                </div>
-                <div class="md:col-span-2 space-y-5">
-                    <p class="text-lg font-medium text-neutral-700 dark:text-neutral-300 leading-relaxed">
-                        At Social Garden, I operated at scale. Over three years, I led the design of hundreds of lead generation campaigns across <strong class="text-black dark:text-white">property and education</strong> — two verticals where the margin between a high-converting campaign and a failed one can represent millions of dollars in pipeline value.
-                    </p>
-                    <p class="text-lg font-medium text-neutral-700 dark:text-neutral-300 leading-relaxed">
-                        The brief was clear: <strong class="text-black dark:text-white">make the numbers move</strong>. But what that actually required was a fundamental reimagining of how campaigns were conceived, designed, and delivered — from a reactive, output-focused production line into a <strong class="text-black dark:text-white">strategic, data-informed, human-centred design operation</strong>.
-                    </p>
-                    <p class="text-lg font-medium text-neutral-700 dark:text-neutral-300 leading-relaxed">
-                        Everything from the visual design approach to the internal collaboration process was rebuilt from the ground up. The result: conversion rates lifted from an industry-average 1.5% to consistently above 5% — and a design team that understood not just how to create beautiful work, but why it performed.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Before & After Metrics -->
-    <section class="py-16 bg-zinc-50 dark:bg-neutral-900">
-        <div class="px-4 md:px-8">
-            <div class="max-w-4xl mx-auto">
-                <p class="text-xs font-bold uppercase tracking-widest text-neutral-400 mb-6 text-center">Before & After</p>
-                <div class="space-y-4">
-                    {metrics.map((m) => (
-                        <div class="grid grid-cols-3 gap-4 p-5 rounded-xl border-2 border-zinc-200 dark:border-zinc-700/50 bg-white dark:bg-zinc-900 items-center">
-                            <div class="text-center">
-                                <p class="text-xs font-bold uppercase tracking-widest text-neutral-400 mb-1">Before</p>
-                                <p class="text-xl font-black text-red-500">{m.before}</p>
-                            </div>
-                            <div class="text-center">
-                                <p class="font-black text-sm">{m.label}</p>
-                                <p class="text-xs text-emerald-600 dark:text-emerald-400 font-bold mt-1">{m.improvement}</p>
-                            </div>
-                            <div class="text-center">
-                                <p class="text-xs font-bold uppercase tracking-widest text-neutral-400 mb-1">After</p>
-                                <p class="text-xl font-black text-green-500">{m.after}</p>
-                            </div>
-                        </div>
-                    ))}
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- The Challenge -->
-    <section class="py-20">
-        <div class="px-4 md:px-8">
-            <div class="grid md:grid-cols-3 gap-12 max-w-6xl">
-                <div class="md:col-span-1">
-                    <p class="text-xs font-bold uppercase tracking-widest text-neutral-400 mb-3">The Challenge</p>
-                    <h2 class="text-3xl font-black mb-4">Design Without a Strategy Is Just Decoration</h2>
-                    <p class="text-neutral-600 dark:text-neutral-400 font-medium leading-relaxed text-sm">
-                        When I joined, campaigns were being shipped at volume but not at quality. The output was prolific; the performance was not.
-                    </p>
-                </div>
-                <div class="md:col-span-2 space-y-5">
-                    {problems.map((p) => (
-                        <div class="flex gap-4">
-                            <span class="mt-1.5 w-2 h-2 rounded-full bg-red-500 shrink-0" />
-                            <div>
-                                <h3 class="font-black text-base mb-1">{p.title}</h3>
-                                <p class="text-neutral-600 dark:text-neutral-400 font-medium leading-relaxed text-sm">{p.description}</p>
-                            </div>
-                        </div>
-                    ))}
-                    <div class="p-6 rounded-xl bg-red-50 dark:bg-red-950/30 border-l-4 border-red-500 mt-2">
-                        <p class="font-bold text-red-800 dark:text-red-300">
-                            The core problem wasn't a lack of design skill — it was a lack of design thinking. The team was executing briefs, not solving conversion problems.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- CRO Design Approach -->
-    <section class="py-20 bg-zinc-50 dark:bg-neutral-900">
-        <div class="px-4 md:px-8">
-            <div class="grid md:grid-cols-3 gap-12 max-w-6xl">
-                <div class="md:col-span-1">
-                    <p class="text-xs font-bold uppercase tracking-widest text-neutral-400 mb-3">The Method</p>
-                    <h2 class="text-3xl font-black mb-4">CRO-First Visual Design</h2>
-                    <p class="text-neutral-600 dark:text-neutral-400 font-medium leading-relaxed text-sm">
-                        Conversion Rate Optimisation isn't a post-launch task — it's baked into every design decision from the first wireframe. Here's how we made visual design do the heavy lifting.
-                    </p>
-                </div>
-                <div class="md:col-span-2 grid sm:grid-cols-2 gap-4">
-                    {croApproach.map((a) => (
-                        <div class="p-5 rounded-xl border-2 border-zinc-200 dark:border-zinc-700/50 bg-white dark:bg-zinc-900 hover:border-zinc-400 dark:hover:border-zinc-500 transition-colors">
-                            <span class="text-2xl block mb-3">{a.icon}</span>
-                            <h3 class="font-black text-base mb-2">{a.title}</h3>
-                            <p class="text-sm text-neutral-600 dark:text-neutral-400 font-medium leading-relaxed">{a.description}</p>
-                        </div>
-                    ))}
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Design Principles -->
-    <section class="py-20">
-        <div class="px-4 md:px-8">
-            <div class="grid md:grid-cols-3 gap-12 max-w-6xl">
-                <div class="md:col-span-1">
-                    <p class="text-xs font-bold uppercase tracking-widest text-neutral-400 mb-3">Our Rules</p>
-                    <h2 class="text-3xl font-black mb-4">The Four Design Principles We Never Broke</h2>
-                    <p class="text-neutral-600 dark:text-neutral-400 font-medium leading-relaxed text-sm">
-                        Across hundreds of campaigns and dozens of clients, these four principles proved their worth time and again. They became the backbone of every brief review and design critique.
-                    </p>
-                </div>
-                <div class="md:col-span-2 space-y-4">
-                    {designPrinciples.map((p, i) => (
-                        <div class="flex gap-5 p-6 rounded-xl border-2 border-zinc-200 dark:border-zinc-700/50 bg-white dark:bg-zinc-900 hover:border-zinc-400 dark:hover:border-zinc-500 transition-colors">
-                            <span class="w-9 h-9 rounded-lg bg-emerald-500 text-white font-black text-sm flex items-center justify-center shrink-0">
-                                {i + 1}
-                            </span>
-                            <div>
-                                <h3 class="font-black text-base mb-1">{p.title}</h3>
-                                <p class="text-sm text-neutral-600 dark:text-neutral-400 font-medium leading-relaxed">{p.description}</p>
-                            </div>
-                        </div>
-                    ))}
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- The Process -->
-    <section class="py-20 bg-zinc-50 dark:bg-neutral-900">
-        <div class="px-4 md:px-8">
-            <div class="grid md:grid-cols-3 gap-12 max-w-6xl">
-                <div class="md:col-span-1">
-                    <p class="text-xs font-bold uppercase tracking-widest text-neutral-400 mb-3">Process</p>
-                    <h2 class="text-3xl font-black mb-4">The End-to-End Campaign Process Redesign</h2>
-                    <p class="text-neutral-600 dark:text-neutral-400 font-medium leading-relaxed text-sm">
-                        Before the process redesign, campaigns moved from brief to launch with minimal structured checkpoints. After: a six-stage collaborative process that aligned design, strategy, and client expectations at every step.
-                    </p>
-                </div>
-                <div class="md:col-span-2">
-                    <div class="space-y-3">
-                        {processSteps.map((s, i) => (
-                            <div class="flex gap-5 p-5 rounded-xl border-2 border-zinc-200 dark:border-zinc-700/50 bg-white dark:bg-zinc-900">
-                                <div class="shrink-0">
-                                    <span class="block w-10 h-10 rounded-full border-2 border-zinc-200 dark:border-zinc-700 flex items-center justify-center font-black text-xs text-neutral-400">
-                                        {s.step}
-                                    </span>
-                                    {i < processSteps.length - 1 && (
-                                        <div class="w-px h-3 bg-zinc-200 dark:bg-zinc-700 mx-auto mt-1" />
-                                    )}
-                                </div>
-                                <div class="pb-1">
-                                    <h3 class="font-black text-base mb-1">{s.title}</h3>
-                                    <p class="text-sm text-neutral-600 dark:text-neutral-400 font-medium leading-relaxed">{s.description}</p>
-                                </div>
-                            </div>
-                        ))}
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Team & Mentorship -->
-    <section class="py-20">
-        <div class="px-4 md:px-8">
-            <div class="grid md:grid-cols-3 gap-12 max-w-6xl">
-                <div class="md:col-span-1">
-                    <p class="text-xs font-bold uppercase tracking-widest text-neutral-400 mb-3">Leadership</p>
-                    <h2 class="text-3xl font-black mb-4">Building a Design Team That Understood CRO</h2>
-                </div>
-                <div class="md:col-span-2 space-y-6">
-                    <p class="text-lg font-medium text-neutral-700 dark:text-neutral-300 leading-relaxed">
-                        Growing the team's capability wasn't just about showing them how to use the tools — it was about shifting the way they thought about design. A beautiful landing page that doesn't convert is a failed campaign, regardless of how it looks in the portfolio.
-                    </p>
-                    <div class="grid sm:grid-cols-2 gap-4">
-                        <div class="p-5 rounded-xl border-2 border-zinc-200 dark:border-zinc-700/50 bg-white dark:bg-zinc-900">
-                            <span class="text-2xl block mb-2">🛠️</span>
-                            <h3 class="font-black text-base mb-2">Tool Proficiency</h3>
-                            <p class="text-sm text-neutral-600 dark:text-neutral-400 font-medium leading-relaxed">
-                                Trained the team on the full design-to-development stack — Adobe Creative Suite, Sketch, Zeplin for handoff, Marvel for rapid prototyping, and Asana for campaign project management.
-                            </p>
-                        </div>
-                        <div class="p-5 rounded-xl border-2 border-zinc-200 dark:border-zinc-700/50 bg-white dark:bg-zinc-900">
-                            <span class="text-2xl block mb-2">🧭</span>
-                            <h3 class="font-black text-base mb-2">Strategic Thinking</h3>
-                            <p class="text-sm text-neutral-600 dark:text-neutral-400 font-medium leading-relaxed">
-                                Implemented regular design critique sessions focused not on aesthetics alone, but on conversion rationale — why does this button placement work? Why does this image choice support the headline?
-                            </p>
-                        </div>
-                        <div class="p-5 rounded-xl border-2 border-zinc-200 dark:border-zinc-700/50 bg-white dark:bg-zinc-900">
-                            <span class="text-2xl block mb-2">🤝</span>
-                            <h3 class="font-black text-base mb-2">Cross-Functional Collaboration</h3>
-                            <p class="text-sm text-neutral-600 dark:text-neutral-400 font-medium leading-relaxed">
-                                Led the introduction of a human-centred design thinking approach across the business — not just within the design team, but influencing how account managers briefed campaigns and how strategists framed success metrics.
-                            </p>
-                        </div>
-                        <div class="p-5 rounded-xl border-2 border-zinc-200 dark:border-zinc-700/50 bg-white dark:bg-zinc-900">
-                            <span class="text-2xl block mb-2">🌱</span>
-                            <h3 class="font-black text-base mb-2">Process & Wellbeing</h3>
-                            <p class="text-sm text-neutral-600 dark:text-neutral-400 font-medium leading-relaxed">
-                                In a high-volume, deadline-driven environment, sustainable output required sustainable people. Training covered productivity habits, creative health, feedback frameworks, and managing high-pressure campaign cycles.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Image gallery -->
-    <section class="py-16 bg-zinc-50 dark:bg-neutral-900">
-        <div class="px-4 md:px-8 max-w-6xl">
-            <p class="text-xs font-bold uppercase tracking-widest text-neutral-400 mb-6">Campaign Gallery</p>
-            <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
-                <div class="aspect-4/3 rounded-xl overflow-hidden border-2 border-zinc-200 dark:border-zinc-700 bg-white dark:bg-zinc-900">
-                    <img 
-                        src="/images/landing-pages/original-17aca01c1bc060b5f83a53bf6ce26f39.webp" 
-                        alt="Waterfall — premium apartment development landing page with lifestyle hero photography and editorial typography" 
-                        class="w-full h-full object-cover object-top"
-                        loading="lazy"
-                    />
-                </div>
-                <div class="aspect-4/3 rounded-xl overflow-hidden border-2 border-zinc-200 dark:border-zinc-700 bg-white dark:bg-zinc-900">
-                    <img 
-                        src="/images/landing-pages/original-45e6999a829c74820ba16ef447b366c2.webp" 
-                        alt="OTP Finance — off-the-plan property finance lead generation page with purple hero and trusted lender logos" 
-                        class="w-full h-full object-cover object-top"
-                        loading="lazy"
-                    />
-                </div>
-                <div class="aspect-4/3 rounded-xl overflow-hidden border-2 border-zinc-200 dark:border-zinc-700 bg-white dark:bg-zinc-900">
-                    <img 
-                        src="/images/landing-pages/original-49d60d832d25aa129d301a3de55056bb.webp" 
-                        alt="Ponder.io — SaaS lead generation page with dark gradient hero and inline sign-up form" 
-                        class="w-full h-full object-cover object-top"
-                        loading="lazy"
-                    />
-                </div>
-                <div class="aspect-4/3 rounded-xl overflow-hidden border-2 border-zinc-200 dark:border-zinc-700 bg-white dark:bg-zinc-900">
-                    <img 
-                        src="/images/landing-pages/original-53cd50c2281b3903193b409198e55b87.webp" 
-                        alt="Vic Square — luxury apartment development landing page with dark premium aesthetic and city skyline photography" 
-                        class="w-full h-full object-cover object-top"
-                        loading="lazy"
-                    />
-                </div>
-                <div class="aspect-4/3 rounded-xl overflow-hidden border-2 border-zinc-200 dark:border-zinc-700 bg-white dark:bg-zinc-900">
-                    <img 
-                        src="/images/landing-pages/original-8a4db45008adad9489b916ab33082af1.webp" 
-                        alt="Little Real Estate — property investor competition landing page with hero CTA and team trust section" 
-                        class="w-full h-full object-cover object-top"
-                        loading="lazy"
-                    />
-                </div>
-                <div class="aspect-4/3 rounded-xl overflow-hidden border-2 border-zinc-200 dark:border-zinc-700 bg-white dark:bg-zinc-900">
-                    <img 
-                        src="/images/landing-pages/original-a19a95939490c1e9b0f47c8eb7b62d22.webp" 
-                        alt="Pipsqueaks — education lead generation landing page with vibrant teal branding and lifestyle photography" 
-                        class="w-full h-full object-cover object-top"
-                        loading="lazy"
-                    />
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Result -->
-    <section class="py-20">
-        <div class="px-4 md:px-8">
-            <div class="grid md:grid-cols-3 gap-12 max-w-6xl">
-                <div class="md:col-span-1">
-                    <p class="text-xs font-bold uppercase tracking-widest text-neutral-400 mb-3">Result</p>
-                    <h2 class="text-3xl font-black mb-4">Numbers That Spoke for Themselves</h2>
-                </div>
-                <div class="md:col-span-2 space-y-6">
-                    <p class="text-lg font-medium text-neutral-700 dark:text-neutral-300 leading-relaxed">
-                        Three years, 200+ campaigns, and a complete transformation in how a digital agency approached visual design and conversion. The results weren't a lucky streak — they were the compound output of a disciplined, repeatable design process with CRO baked in from day one.
-                    </p>
-                    <ul class="space-y-4">
-                        <li class="flex items-start gap-3 text-neutral-700 dark:text-neutral-300 font-medium text-lg">
-                            <span class="mt-1.5 w-2 h-2 rounded-full bg-green-500 shrink-0" />
-                            <span>Average conversion rate lifted from <strong class="text-black dark:text-white">1.5% to above 5%</strong> across both property and education verticals — a 233% improvement.</span>
-                        </li>
-                        <li class="flex items-start gap-3 text-neutral-700 dark:text-neutral-300 font-medium text-lg">
-                            <span class="mt-1.5 w-2 h-2 rounded-full bg-green-500 shrink-0" />
-                            <span><strong class="text-black dark:text-white">200+ campaigns</strong> designed and optimised, increasing the team's previous output by more than 50%.</span>
-                        </li>
-                        <li class="flex items-start gap-3 text-neutral-700 dark:text-neutral-300 font-medium text-lg">
-                            <span class="mt-1.5 w-2 h-2 rounded-full bg-green-500 shrink-0" />
-                            <span>End-to-end process redesign improved <strong class="text-black dark:text-white">collaboration, quality, and client satisfaction</strong> across every campaign type.</span>
-                        </li>
-                        <li class="flex items-start gap-3 text-neutral-700 dark:text-neutral-300 font-medium text-lg">
-                            <span class="mt-1.5 w-2 h-2 rounded-full bg-green-500 shrink-0" />
-                            <span>A design team of <strong class="text-black dark:text-white">8 trained in CRO thinking</strong>, not just visual execution — a lasting capability shift that outlived any individual campaign.</span>
-                        </li>
-                    </ul>
-                    <div class="p-6 rounded-xl bg-emerald-50 dark:bg-emerald-950/20 border-l-4 border-emerald-500 mt-2">
-                        <p class="font-bold text-emerald-800 dark:text-emerald-300">
-                            💡 The biggest insight from this chapter: when design and strategy are genuinely aligned — not just in the brief, but in the daily workflow and the team's mental model — conversion isn't an outcome. It's a by-product.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Last updated -->
-    <section class="pb-12">
-        <div class="px-4 md:px-8">
+        <!-- Meta strip -->
+        <div
+          class="flex flex-wrap gap-6 border-t-2 border-zinc-100 pt-8 dark:border-zinc-800"
+        >
+          <div>
             <p
-                class="text-xs font-bold uppercase tracking-widest text-neutral-900 dark:text-white"
+              class="mb-1 text-xs font-bold tracking-widest text-neutral-400 uppercase"
             >
-                Last updated · June 2026
+              Role
             </p>
+            <p class="text-sm font-bold">{caseStudy.role}</p>
+          </div>
+          <div>
+            <p
+              class="mb-1 text-xs font-bold tracking-widest text-neutral-400 uppercase"
+            >
+              Timeline
+            </p>
+            <p class="text-sm font-bold">{caseStudy.year}</p>
+          </div>
+          <div>
+            <p
+              class="mb-1 text-xs font-bold tracking-widest text-neutral-400 uppercase"
+            >
+              Tools
+            </p>
+            <p class="text-sm font-bold">{caseStudy.stack.join(" · ")}</p>
+          </div>
         </div>
-    </section>
+      </div>
+    </div>
+  </section>
 
-    <!-- Next / Back nav -->
-    <section class="py-16 border-t-2 border-zinc-100 dark:border-zinc-800">
-        <div class="px-4 md:px-8 flex flex-col sm:flex-row items-center justify-between gap-6">
-            <a
-                href="/case-studies"
-                class="inline-flex items-center gap-2 font-bold text-neutral-500 dark:text-neutral-400 hover:text-black dark:hover:text-white transition-colors"
-            >
-                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg>
-                All case studies
-            </a>
-            <a
-                href="/#contact"
-                class="group relative inline-flex items-center justify-center overflow-hidden h-12 px-8 font-bold text-white bg-black dark:bg-white dark:text-black transition-all duration-300 rounded-md"
-            >
-                <span class="transform transition-transform duration-300 group-hover:-translate-x-4">
-                    Get in touch
-                </span>
-                <span class="absolute right-5 transform -translate-x-4 opacity-0 transition-all duration-300 group-hover:translate-x-0 group-hover:opacity-100">
-                    &rarr;
-                </span>
-            </a>
+  <!-- Outcomes -->
+  <section class="bg-zinc-50 py-16 dark:bg-neutral-900">
+    <div class="px-4 md:px-8">
+      <div
+        class="mx-auto grid max-w-4xl grid-cols-2 gap-6 text-center md:grid-cols-4"
+      >
+        {
+          outcomes.map((o) => (
+            <div class="rounded-2xl border-2 border-zinc-200 bg-white p-6 md:p-8 dark:border-zinc-700/50 dark:bg-zinc-900">
+              <span class="mb-2 block text-3xl font-black text-black md:text-4xl dark:text-white">
+                {o.value}
+              </span>
+              <span class="block text-xs leading-snug font-bold tracking-widest text-neutral-500 uppercase dark:text-neutral-400">
+                {o.label}
+              </span>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- Overview -->
+  <section class="py-20">
+    <div class="px-4 md:px-8">
+      <div class="grid max-w-6xl gap-12 md:grid-cols-3">
+        <div class="md:col-span-1">
+          <p
+            class="mb-3 text-xs font-bold tracking-widest text-neutral-400 uppercase"
+          >
+            Overview
+          </p>
+          <h2 class="mb-4 text-3xl font-black">The Campaign Machine</h2>
         </div>
-    </section>
+        <div class="space-y-5 md:col-span-2">
+          <p
+            class="text-lg leading-relaxed font-medium text-neutral-700 dark:text-neutral-300"
+          >
+            At Social Garden, I operated at scale. Over three years, I led the
+            design of hundreds of lead generation campaigns across <strong
+              class="text-black dark:text-white">property and education</strong
+            > — two verticals where the margin between a high-converting campaign
+            and a failed one can represent millions of dollars in pipeline value.
+          </p>
+          <p
+            class="text-lg leading-relaxed font-medium text-neutral-700 dark:text-neutral-300"
+          >
+            The brief was clear: <strong class="text-black dark:text-white"
+              >make the numbers move</strong
+            >. But what that actually required was a fundamental reimagining of
+            how campaigns were conceived, designed, and delivered — from a
+            reactive, output-focused production line into a <strong
+              class="text-black dark:text-white"
+              >strategic, data-informed, human-centred design operation</strong
+            >.
+          </p>
+          <p
+            class="text-lg leading-relaxed font-medium text-neutral-700 dark:text-neutral-300"
+          >
+            Everything from the visual design approach to the internal
+            collaboration process was rebuilt from the ground up. The result:
+            conversion rates lifted from an industry-average 1.5% to
+            consistently above 5% — and a design team that understood not just
+            how to create beautiful work, but why it performed.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Before & After Metrics -->
+  <section class="bg-zinc-50 py-16 dark:bg-neutral-900">
+    <div class="px-4 md:px-8">
+      <div class="mx-auto max-w-4xl">
+        <p
+          class="mb-6 text-center text-xs font-bold tracking-widest text-neutral-400 uppercase"
+        >
+          Before & After
+        </p>
+        <div class="space-y-4">
+          {
+            metrics.map((m) => (
+              <div class="grid grid-cols-3 items-center gap-4 rounded-xl border-2 border-zinc-200 bg-white p-5 dark:border-zinc-700/50 dark:bg-zinc-900">
+                <div class="text-center">
+                  <p class="mb-1 text-xs font-bold tracking-widest text-neutral-400 uppercase">
+                    Before
+                  </p>
+                  <p class="text-xl font-black text-red-500">{m.before}</p>
+                </div>
+                <div class="text-center">
+                  <p class="text-sm font-black">{m.label}</p>
+                  <p class="mt-1 text-xs font-bold text-emerald-600 dark:text-emerald-400">
+                    {m.improvement}
+                  </p>
+                </div>
+                <div class="text-center">
+                  <p class="mb-1 text-xs font-bold tracking-widest text-neutral-400 uppercase">
+                    After
+                  </p>
+                  <p class="text-xl font-black text-green-500">{m.after}</p>
+                </div>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- The Challenge -->
+  <section class="py-20">
+    <div class="px-4 md:px-8">
+      <div class="grid max-w-6xl gap-12 md:grid-cols-3">
+        <div class="md:col-span-1">
+          <p
+            class="mb-3 text-xs font-bold tracking-widest text-neutral-400 uppercase"
+          >
+            The Challenge
+          </p>
+          <h2 class="mb-4 text-3xl font-black">
+            Design Without a Strategy Is Just Decoration
+          </h2>
+          <p
+            class="text-sm leading-relaxed font-medium text-neutral-600 dark:text-neutral-400"
+          >
+            When I joined, campaigns were being shipped at volume but not at
+            quality. The output was prolific; the performance was not.
+          </p>
+        </div>
+        <div class="space-y-5 md:col-span-2">
+          {
+            problems.map((p) => (
+              <div class="flex gap-4">
+                <span class="mt-1.5 h-2 w-2 shrink-0 rounded-full bg-red-500" />
+                <div>
+                  <h3 class="mb-1 text-base font-black">{p.title}</h3>
+                  <p class="text-sm leading-relaxed font-medium text-neutral-600 dark:text-neutral-400">
+                    {p.description}
+                  </p>
+                </div>
+              </div>
+            ))
+          }
+          <div
+            class="mt-2 rounded-xl border-l-4 border-red-500 bg-red-50 p-6 dark:bg-red-950/30"
+          >
+            <p class="font-bold text-red-800 dark:text-red-300">
+              The core problem wasn't a lack of design skill — it was a lack of
+              design thinking. The team was executing briefs, not solving
+              conversion problems.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CRO Design Approach -->
+  <section class="bg-zinc-50 py-20 dark:bg-neutral-900">
+    <div class="px-4 md:px-8">
+      <div class="grid max-w-6xl gap-12 md:grid-cols-3">
+        <div class="md:col-span-1">
+          <p
+            class="mb-3 text-xs font-bold tracking-widest text-neutral-400 uppercase"
+          >
+            The Method
+          </p>
+          <h2 class="mb-4 text-3xl font-black">CRO-First Visual Design</h2>
+          <p
+            class="text-sm leading-relaxed font-medium text-neutral-600 dark:text-neutral-400"
+          >
+            Conversion Rate Optimisation isn't a post-launch task — it's baked
+            into every design decision from the first wireframe. Here's how we
+            made visual design do the heavy lifting.
+          </p>
+        </div>
+        <div class="grid gap-4 sm:grid-cols-2 md:col-span-2">
+          {
+            croApproach.map((a) => (
+              <div class="rounded-xl border-2 border-zinc-200 bg-white p-5 transition-colors hover:border-zinc-400 dark:border-zinc-700/50 dark:bg-zinc-900 dark:hover:border-zinc-500">
+                <span class="mb-3 block text-2xl">{a.icon}</span>
+                <h3 class="mb-2 text-base font-black">{a.title}</h3>
+                <p class="text-sm leading-relaxed font-medium text-neutral-600 dark:text-neutral-400">
+                  {a.description}
+                </p>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Design Principles -->
+  <section class="py-20">
+    <div class="px-4 md:px-8">
+      <div class="grid max-w-6xl gap-12 md:grid-cols-3">
+        <div class="md:col-span-1">
+          <p
+            class="mb-3 text-xs font-bold tracking-widest text-neutral-400 uppercase"
+          >
+            Our Rules
+          </p>
+          <h2 class="mb-4 text-3xl font-black">
+            The Four Design Principles We Never Broke
+          </h2>
+          <p
+            class="text-sm leading-relaxed font-medium text-neutral-600 dark:text-neutral-400"
+          >
+            Across hundreds of campaigns and dozens of clients, these four
+            principles proved their worth time and again. They became the
+            backbone of every brief review and design critique.
+          </p>
+        </div>
+        <div class="space-y-4 md:col-span-2">
+          {
+            designPrinciples.map((p, i) => (
+              <div class="flex gap-5 rounded-xl border-2 border-zinc-200 bg-white p-6 transition-colors hover:border-zinc-400 dark:border-zinc-700/50 dark:bg-zinc-900 dark:hover:border-zinc-500">
+                <span class="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-emerald-500 text-sm font-black text-white">
+                  {i + 1}
+                </span>
+                <div>
+                  <h3 class="mb-1 text-base font-black">{p.title}</h3>
+                  <p class="text-sm leading-relaxed font-medium text-neutral-600 dark:text-neutral-400">
+                    {p.description}
+                  </p>
+                </div>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- The Process -->
+  <section class="bg-zinc-50 py-20 dark:bg-neutral-900">
+    <div class="px-4 md:px-8">
+      <div class="grid max-w-6xl gap-12 md:grid-cols-3">
+        <div class="md:col-span-1">
+          <p
+            class="mb-3 text-xs font-bold tracking-widest text-neutral-400 uppercase"
+          >
+            Process
+          </p>
+          <h2 class="mb-4 text-3xl font-black">
+            The End-to-End Campaign Process Redesign
+          </h2>
+          <p
+            class="text-sm leading-relaxed font-medium text-neutral-600 dark:text-neutral-400"
+          >
+            Before the process redesign, campaigns moved from brief to launch
+            with minimal structured checkpoints. After: a six-stage
+            collaborative process that aligned design, strategy, and client
+            expectations at every step.
+          </p>
+        </div>
+        <div class="md:col-span-2">
+          <div class="space-y-3">
+            {
+              processSteps.map((s, i) => (
+                <div class="flex gap-5 rounded-xl border-2 border-zinc-200 bg-white p-5 dark:border-zinc-700/50 dark:bg-zinc-900">
+                  <div class="shrink-0">
+                    <span class="block flex h-10 w-10 items-center justify-center rounded-full border-2 border-zinc-200 text-xs font-black text-neutral-400 dark:border-zinc-700">
+                      {s.step}
+                    </span>
+                    {i < processSteps.length - 1 && (
+                      <div class="mx-auto mt-1 h-3 w-px bg-zinc-200 dark:bg-zinc-700" />
+                    )}
+                  </div>
+                  <div class="pb-1">
+                    <h3 class="mb-1 text-base font-black">{s.title}</h3>
+                    <p class="text-sm leading-relaxed font-medium text-neutral-600 dark:text-neutral-400">
+                      {s.description}
+                    </p>
+                  </div>
+                </div>
+              ))
+            }
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Team & Mentorship -->
+  <section class="py-20">
+    <div class="px-4 md:px-8">
+      <div class="grid max-w-6xl gap-12 md:grid-cols-3">
+        <div class="md:col-span-1">
+          <p
+            class="mb-3 text-xs font-bold tracking-widest text-neutral-400 uppercase"
+          >
+            Leadership
+          </p>
+          <h2 class="mb-4 text-3xl font-black">
+            Building a Design Team That Understood CRO
+          </h2>
+        </div>
+        <div class="space-y-6 md:col-span-2">
+          <p
+            class="text-lg leading-relaxed font-medium text-neutral-700 dark:text-neutral-300"
+          >
+            Growing the team's capability wasn't just about showing them how to
+            use the tools — it was about shifting the way they thought about
+            design. A beautiful landing page that doesn't convert is a failed
+            campaign, regardless of how it looks in the portfolio.
+          </p>
+          <div class="grid gap-4 sm:grid-cols-2">
+            <div
+              class="rounded-xl border-2 border-zinc-200 bg-white p-5 dark:border-zinc-700/50 dark:bg-zinc-900"
+            >
+              <span class="mb-2 block text-2xl">🛠️</span>
+              <h3 class="mb-2 text-base font-black">Tool Proficiency</h3>
+              <p
+                class="text-sm leading-relaxed font-medium text-neutral-600 dark:text-neutral-400"
+              >
+                Trained the team on the full design-to-development stack — Adobe
+                Creative Suite, Sketch, Zeplin for handoff, Marvel for rapid
+                prototyping, and Asana for campaign project management.
+              </p>
+            </div>
+            <div
+              class="rounded-xl border-2 border-zinc-200 bg-white p-5 dark:border-zinc-700/50 dark:bg-zinc-900"
+            >
+              <span class="mb-2 block text-2xl">🧭</span>
+              <h3 class="mb-2 text-base font-black">Strategic Thinking</h3>
+              <p
+                class="text-sm leading-relaxed font-medium text-neutral-600 dark:text-neutral-400"
+              >
+                Implemented regular design critique sessions focused not on
+                aesthetics alone, but on conversion rationale — why does this
+                button placement work? Why does this image choice support the
+                headline?
+              </p>
+            </div>
+            <div
+              class="rounded-xl border-2 border-zinc-200 bg-white p-5 dark:border-zinc-700/50 dark:bg-zinc-900"
+            >
+              <span class="mb-2 block text-2xl">🤝</span>
+              <h3 class="mb-2 text-base font-black">
+                Cross-Functional Collaboration
+              </h3>
+              <p
+                class="text-sm leading-relaxed font-medium text-neutral-600 dark:text-neutral-400"
+              >
+                Led the introduction of a human-centred design thinking approach
+                across the business — not just within the design team, but
+                influencing how account managers briefed campaigns and how
+                strategists framed success metrics.
+              </p>
+            </div>
+            <div
+              class="rounded-xl border-2 border-zinc-200 bg-white p-5 dark:border-zinc-700/50 dark:bg-zinc-900"
+            >
+              <span class="mb-2 block text-2xl">🌱</span>
+              <h3 class="mb-2 text-base font-black">Process & Wellbeing</h3>
+              <p
+                class="text-sm leading-relaxed font-medium text-neutral-600 dark:text-neutral-400"
+              >
+                In a high-volume, deadline-driven environment, sustainable
+                output required sustainable people. Training covered
+                productivity habits, creative health, feedback frameworks, and
+                managing high-pressure campaign cycles.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Image gallery -->
+  <section class="bg-zinc-50 py-16 dark:bg-neutral-900">
+    <div class="max-w-6xl px-4 md:px-8">
+      <p
+        class="mb-6 text-xs font-bold tracking-widest text-neutral-400 uppercase"
+      >
+        Campaign Gallery
+      </p>
+      <div class="grid grid-cols-2 gap-4 md:grid-cols-3">
+        <div
+          class="aspect-4/3 overflow-hidden rounded-xl border-2 border-zinc-200 bg-white dark:border-zinc-700 dark:bg-zinc-900"
+        >
+          <img
+            src="/images/landing-pages/original-17aca01c1bc060b5f83a53bf6ce26f39.webp"
+            alt="Waterfall — premium apartment development landing page with lifestyle hero photography and editorial typography"
+            class="h-full w-full object-cover object-top"
+            loading="lazy"
+          />
+        </div>
+        <div
+          class="aspect-4/3 overflow-hidden rounded-xl border-2 border-zinc-200 bg-white dark:border-zinc-700 dark:bg-zinc-900"
+        >
+          <img
+            src="/images/landing-pages/original-45e6999a829c74820ba16ef447b366c2.webp"
+            alt="OTP Finance — off-the-plan property finance lead generation page with purple hero and trusted lender logos"
+            class="h-full w-full object-cover object-top"
+            loading="lazy"
+          />
+        </div>
+        <div
+          class="aspect-4/3 overflow-hidden rounded-xl border-2 border-zinc-200 bg-white dark:border-zinc-700 dark:bg-zinc-900"
+        >
+          <img
+            src="/images/landing-pages/original-49d60d832d25aa129d301a3de55056bb.webp"
+            alt="Ponder.io — SaaS lead generation page with dark gradient hero and inline sign-up form"
+            class="h-full w-full object-cover object-top"
+            loading="lazy"
+          />
+        </div>
+        <div
+          class="aspect-4/3 overflow-hidden rounded-xl border-2 border-zinc-200 bg-white dark:border-zinc-700 dark:bg-zinc-900"
+        >
+          <img
+            src="/images/landing-pages/original-53cd50c2281b3903193b409198e55b87.webp"
+            alt="Vic Square — luxury apartment development landing page with dark premium aesthetic and city skyline photography"
+            class="h-full w-full object-cover object-top"
+            loading="lazy"
+          />
+        </div>
+        <div
+          class="aspect-4/3 overflow-hidden rounded-xl border-2 border-zinc-200 bg-white dark:border-zinc-700 dark:bg-zinc-900"
+        >
+          <img
+            src="/images/landing-pages/original-8a4db45008adad9489b916ab33082af1.webp"
+            alt="Little Real Estate — property investor competition landing page with hero CTA and team trust section"
+            class="h-full w-full object-cover object-top"
+            loading="lazy"
+          />
+        </div>
+        <div
+          class="aspect-4/3 overflow-hidden rounded-xl border-2 border-zinc-200 bg-white dark:border-zinc-700 dark:bg-zinc-900"
+        >
+          <img
+            src="/images/landing-pages/original-a19a95939490c1e9b0f47c8eb7b62d22.webp"
+            alt="Pipsqueaks — education lead generation landing page with vibrant teal branding and lifestyle photography"
+            class="h-full w-full object-cover object-top"
+            loading="lazy"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Result -->
+  <section class="py-20">
+    <div class="px-4 md:px-8">
+      <div class="grid max-w-6xl gap-12 md:grid-cols-3">
+        <div class="md:col-span-1">
+          <p
+            class="mb-3 text-xs font-bold tracking-widest text-neutral-400 uppercase"
+          >
+            Result
+          </p>
+          <h2 class="mb-4 text-3xl font-black">
+            Numbers That Spoke for Themselves
+          </h2>
+        </div>
+        <div class="space-y-6 md:col-span-2">
+          <p
+            class="text-lg leading-relaxed font-medium text-neutral-700 dark:text-neutral-300"
+          >
+            Three years, 200+ campaigns, and a complete transformation in how a
+            digital agency approached visual design and conversion. The results
+            weren't a lucky streak — they were the compound output of a
+            disciplined, repeatable design process with CRO baked in from day
+            one.
+          </p>
+          <ul class="space-y-4">
+            <li
+              class="flex items-start gap-3 text-lg font-medium text-neutral-700 dark:text-neutral-300"
+            >
+              <span class="mt-1.5 h-2 w-2 shrink-0 rounded-full bg-green-500"
+              ></span>
+              <span
+                >Average conversion rate lifted from <strong
+                  class="text-black dark:text-white">1.5% to above 5%</strong
+                > across both property and education verticals — a 233% improvement.</span
+              >
+            </li>
+            <li
+              class="flex items-start gap-3 text-lg font-medium text-neutral-700 dark:text-neutral-300"
+            >
+              <span class="mt-1.5 h-2 w-2 shrink-0 rounded-full bg-green-500"
+              ></span>
+              <span
+                ><strong class="text-black dark:text-white"
+                  >200+ campaigns</strong
+                > designed and optimised, increasing the team's previous output by
+                more than 50%.</span
+              >
+            </li>
+            <li
+              class="flex items-start gap-3 text-lg font-medium text-neutral-700 dark:text-neutral-300"
+            >
+              <span class="mt-1.5 h-2 w-2 shrink-0 rounded-full bg-green-500"
+              ></span>
+              <span
+                >End-to-end process redesign improved <strong
+                  class="text-black dark:text-white"
+                  >collaboration, quality, and client satisfaction</strong
+                > across every campaign type.</span
+              >
+            </li>
+            <li
+              class="flex items-start gap-3 text-lg font-medium text-neutral-700 dark:text-neutral-300"
+            >
+              <span class="mt-1.5 h-2 w-2 shrink-0 rounded-full bg-green-500"
+              ></span>
+              <span
+                >A design team of <strong class="text-black dark:text-white"
+                  >8 trained in CRO thinking</strong
+                >, not just visual execution — a lasting capability shift that
+                outlived any individual campaign.</span
+              >
+            </li>
+          </ul>
+          <div
+            class="mt-2 rounded-xl border-l-4 border-emerald-500 bg-emerald-50 p-6 dark:bg-emerald-950/20"
+          >
+            <p class="font-bold text-emerald-800 dark:text-emerald-300">
+              💡 The biggest insight from this chapter: when design and strategy
+              are genuinely aligned — not just in the brief, but in the daily
+              workflow and the team's mental model — conversion isn't an
+              outcome. It's a by-product.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Last updated -->
+  <section class="pb-12">
+    <div class="px-4 md:px-8">
+      <p
+        class="text-xs font-bold tracking-widest text-neutral-900 uppercase dark:text-white"
+      >
+        Last updated · June 2026
+      </p>
+    </div>
+  </section>
+
+  <!-- Next / Back nav -->
+  <section class="border-t-2 border-zinc-100 py-16 dark:border-zinc-800">
+    <div
+      class="flex flex-col items-center justify-between gap-6 px-4 sm:flex-row md:px-8"
+    >
+      <a
+        href="/case-studies"
+        class="inline-flex items-center gap-2 font-bold text-neutral-500 transition-colors hover:text-black dark:text-neutral-400 dark:hover:text-white"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="18"
+          height="18"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          aria-hidden="true"><path d="m15 18-6-6 6-6"></path></svg
+        >
+        All case studies
+      </a>
+      <a
+        href="/#contact"
+        class="group relative inline-flex h-12 items-center justify-center overflow-hidden rounded-full bg-black px-8 font-bold text-white transition-all duration-300 dark:bg-white dark:text-black"
+      >
+        <span
+          class="transform transition-transform duration-300 group-hover:-translate-x-4"
+        >
+          Get in touch
+        </span>
+        <span
+          class="absolute right-5 -translate-x-4 transform opacity-0 transition-all duration-300 group-hover:translate-x-0 group-hover:opacity-100"
+        >
+          &rarr;
+        </span>
+      </a>
+    </div>
+  </section>
 </MainLayout>

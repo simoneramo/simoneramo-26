@@ -2,497 +2,462 @@
 import MainLayout from "../../layouts/MainLayout.astro";
 
 const caseStudy = {
-    title: "Design Prompt Builder",
-    subtitle: "Automating System Prompt Generation for UI/UX Design",
-    client: "Personal Project",
-    year: "2026",
-    role: "Product Designer & Front-End Developer",
-    stack: ["Alpine.js", "Tailwind CSS", "Vanilla HTML"],
-    tags: ["Developer Tools", "UI/UX", "Prompt Engineering"],
-    emoji: "✍️",
+  title: "Design Prompt Builder",
+  subtitle: "Automating System Prompt Generation for UI/UX Design",
+  client: "Personal Project",
+  year: "2026",
+  role: "Product Designer & Front-End Developer",
+  stack: ["Alpine.js", "Tailwind CSS", "Vanilla HTML"],
+  tags: ["Developer Tools", "UI/UX", "Prompt Engineering"],
+  emoji: "✍️",
 };
 
 const features = [
-    {
-        icon: "🏗️",
-        title: "Project Basics",
-        description:
-            "Define page type, business name, suburb and city to ground every prompt in real-world context.",
-    },
-    {
-        icon: "🎯",
-        title: "Strategy Layer",
-        description:
-            "Select a strategy focus (CRO, SEO, Lead Gen), target audience, and unique selling point to shape intent.",
-    },
-    {
-        icon: "🎨",
-        title: "Design & Vibe",
-        description:
-            "Choose design style, emotional tone, colour palette, border radius, shadow depth, and typography — all with custom overrides.",
-    },
-    {
-        icon: "📐",
-        title: "Included Sections",
-        description:
-            "Toggle the exact page sections needed (Hero, Features, Testimonials, FAQ, etc.) and they're woven into the output automatically.",
-    },
-    {
-        icon: "✍️",
-        title: "Content Strategy",
-        description:
-            "Set primary and secondary CTAs, phone numbers, and copywriting approach, from placeholder copy to exact content.",
-    },
-    {
-        icon: "⚡",
-        title: "Live Preview",
-        description:
-            "The generated prompt updates in real-time as you fill in the form — copy to clipboard in one click.",
-    },
+  {
+    icon: "🏗️",
+    title: "Project Basics",
+    description:
+      "Define page type, business name, suburb and city to ground every prompt in real-world context.",
+  },
+  {
+    icon: "🎯",
+    title: "Strategy Layer",
+    description:
+      "Select a strategy focus (CRO, SEO, Lead Gen), target audience, and unique selling point to shape intent.",
+  },
+  {
+    icon: "🎨",
+    title: "Design & Vibe",
+    description:
+      "Choose design style, emotional tone, colour palette, border radius, shadow depth, and typography — all with custom overrides.",
+  },
+  {
+    icon: "📐",
+    title: "Included Sections",
+    description:
+      "Toggle the exact page sections needed (Hero, Features, Testimonials, FAQ, etc.) and they're woven into the output automatically.",
+  },
+  {
+    icon: "✍️",
+    title: "Content Strategy",
+    description:
+      "Set primary and secondary CTAs, phone numbers, and copywriting approach, from placeholder copy to exact content.",
+  },
+  {
+    icon: "⚡",
+    title: "Live Preview",
+    description:
+      "The generated prompt updates in real-time as you fill in the form — copy to clipboard in one click.",
+  },
 ];
 
 const outcomes = [
-    { value: "30 sec", label: "From blank slate to full prompt" },
-    { value: "Zero", label: "Repeated prompt writing per project" },
-    { value: "100%", label: "Consistent output structure, every time" },
+  { value: "30 sec", label: "From blank slate to full prompt" },
+  { value: "Zero", label: "Repeated prompt writing per project" },
+  { value: "100%", label: "Consistent output structure, every time" },
 ];
 
 const problems = [
-    "Writing the same boilerplate prompt context for every new client project",
-    "Forgetting to include key design constraints like border radius or shadow depth",
-    "Inconsistent results when prompt structure varied between sessions",
-    "Time lost context-switching between the brief, the AI tool, and design decisions",
-    "No standard way to communicate emotional tone and colour strategy to an AI",
+  "Writing the same boilerplate prompt context for every new client project",
+  "Forgetting to include key design constraints like border radius or shadow depth",
+  "Inconsistent results when prompt structure varied between sessions",
+  "Time lost context-switching between the brief, the AI tool, and design decisions",
+  "No standard way to communicate emotional tone and colour strategy to an AI",
 ];
 ---
 
 <MainLayout
-    title="Design Prompt Builder — Case Study | Simon Eramo"
-    description="How I designed and built the Design Prompt Builder — a reactive tool that generates structured UI/UX system prompts in seconds, eliminating repetitive prompt writing for every client project."
+  title="Design Prompt Builder — Case Study | Simon Eramo"
+  description="How I designed and built the Design Prompt Builder — a reactive tool that generates structured UI/UX system prompts in seconds, eliminating repetitive prompt writing for every client project."
 >
-    <!-- Hero -->
-    <section
-        class="py-20 md:py-28 border-b-2 border-zinc-100 dark:border-zinc-800"
-    >
-        <div class="px-4 md:px-8">
-            <div class="flex items-center gap-3 mb-8">
-                <a
-                    href="/case-studies"
-                    class="inline-flex items-center gap-1.5 text-sm font-bold text-neutral-500 dark:text-neutral-400 hover:text-black dark:hover:text-white transition-colors"
-                >
-                    <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="16"
-                        height="16"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        stroke-width="2.5"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        aria-hidden="true"><path d="m15 18-6-6 6-6"></path></svg
-                    >
-                    Case Studies
-                </a>
-            </div>
+  <!-- Hero -->
+  <section
+    class="border-b-2 border-zinc-100 py-20 md:py-28 dark:border-zinc-800"
+  >
+    <div class="px-4 md:px-8">
+      <div class="mb-8 flex items-center gap-3">
+        <a
+          href="/case-studies"
+          class="inline-flex items-center gap-1.5 text-sm font-bold text-neutral-500 transition-colors hover:text-black dark:text-neutral-400 dark:hover:text-white"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"><path d="m15 18-6-6 6-6"></path></svg
+          >
+          Case Studies
+        </a>
+      </div>
 
-            <div class="max-w-4xl">
-                <p
-                    class="text-xs font-bold uppercase tracking-widest text-neutral-500 dark:text-neutral-400 mb-4"
-                >
-                    {caseStudy.client} · {caseStudy.year}
-                </p>
-                <div class="flex items-start gap-5 mb-6">
-                    <span
-                        class="text-6xl md:text-7xl shrink-0 mt-1"
-                        aria-hidden="true">{caseStudy.emoji}</span
-                    >
-                    <h1
-                        id="case-study-heading"
-                        class="text-4xl md:text-6xl font-black leading-tight text-pretty"
-                    >
-                        {caseStudy.title}
-                    </h1>
-                </div>
-                <p
-                    class="text-xl font-medium text-neutral-600 dark:text-neutral-400 mb-8 max-w-2xl leading-relaxed"
-                >
-                    {caseStudy.subtitle}
-                </p>
+      <div class="max-w-4xl">
+        <p
+          class="mb-4 text-xs font-bold tracking-widest text-neutral-500 uppercase dark:text-neutral-400"
+        >
+          {caseStudy.client} · {caseStudy.year}
+        </p>
+        <div class="mb-6 flex items-start gap-5">
+          <span class="mt-1 shrink-0 text-6xl md:text-7xl" aria-hidden="true"
+            >{caseStudy.emoji}</span
+          >
+          <h1
+            id="case-study-heading"
+            class="text-4xl leading-tight font-black text-pretty md:text-6xl"
+          >
+            {caseStudy.title}
+          </h1>
+        </div>
+        <p
+          class="mb-8 max-w-4xl text-xl leading-relaxed font-medium text-neutral-600 dark:text-neutral-400"
+        >
+          {caseStudy.subtitle}
+        </p>
 
-                <!-- Meta strip -->
-                <div
-                    class="flex flex-wrap gap-6 pt-8 border-t-2 border-zinc-100 dark:border-zinc-800"
-                >
-                    <div>
-                        <p
-                            class="text-xs font-bold uppercase tracking-widest text-neutral-400 mb-1"
-                        >
-                            Role
-                        </p>
-                        <p class="font-bold text-sm">{caseStudy.role}</p>
-                    </div>
-                    <div>
-                        <p
-                            class="text-xs font-bold uppercase tracking-widest text-neutral-400 mb-1"
-                        >
-                            Year
-                        </p>
-                        <p class="font-bold text-sm">{caseStudy.year}</p>
-                    </div>
-                    <div>
-                        <p
-                            class="text-xs font-bold uppercase tracking-widest text-neutral-400 mb-1"
-                        >
-                            Stack
-                        </p>
-                        <p class="font-bold text-sm">
-                            {caseStudy.stack.join(" · ")}
-                        </p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Hero product screenshot -->
-            <div
-                class="mt-12 rounded-2xl overflow-hidden border-2 border-zinc-200 dark:border-zinc-700/50 shadow-xl"
+        <!-- Meta strip -->
+        <div
+          class="flex flex-wrap gap-6 border-t-2 border-zinc-100 pt-8 dark:border-zinc-800"
+        >
+          <div>
+            <p
+              class="mb-1 text-xs font-bold tracking-widest text-neutral-400 uppercase"
             >
-                <img
-                    src="/images/design-prompt.png"
-                    alt="Design Prompt Builder — live prompt generation interface showing the two-panel layout with form inputs on the left and real-time prompt output on the right"
-                    class="w-full h-auto block"
-                    width="1456"
-                    height="816"
-                />
-            </div>
-        </div>
-    </section>
-
-    <!-- Executive Summary -->
-    <section class="py-20">
-        <div class="px-4 md:px-8">
-            <div class="grid md:grid-cols-3 gap-12 max-w-6xl">
-                <div class="md:col-span-1">
-                    <p
-                        class="text-xs font-bold uppercase tracking-widest text-neutral-400 mb-3"
-                    >
-                        Overview
-                    </p>
-                    <h2 class="text-3xl font-black mb-4">Executive Summary</h2>
-                </div>
-                <div class="md:col-span-2">
-                    <p
-                        class="text-lg font-medium text-neutral-700 dark:text-neutral-300 leading-relaxed"
-                    >
-                        <strong class="text-black dark:text-white"
-                            >Design Prompt Builder</strong
-                        > is a reactive, single-page tool built to eliminate the repetitive
-                        overhead of writing AI design prompts from scratch. By structuring
-                        inputs across project basics, strategy, design style, and
-                        content — it outputs a complete, ready-to-paste system prompt
-                        in real-time, ensuring <em
-                            >consistent, high-quality results</em
-                        > every session.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Outcomes -->
-    <section class="py-16 bg-zinc-50 dark:bg-neutral-900">
-        <div class="px-4 md:px-8">
-            <div
-                class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto text-center"
+              Role
+            </p>
+            <p class="text-sm font-bold">{caseStudy.role}</p>
+          </div>
+          <div>
+            <p
+              class="mb-1 text-xs font-bold tracking-widest text-neutral-400 uppercase"
             >
-                {
-                    outcomes.map((o) => (
-                        <div class="p-8 rounded-2xl border-2 border-zinc-200 dark:border-zinc-700/50 bg-white dark:bg-zinc-900">
-                            <span class="block text-4xl md:text-5xl font-black mb-2 text-black dark:text-white">
-                                {o.value}
-                            </span>
-                            <span class="text-sm font-bold text-neutral-500 dark:text-neutral-400 uppercase tracking-widest">
-                                {o.label}
-                            </span>
-                        </div>
-                    ))
-                }
-            </div>
+              Year
+            </p>
+            <p class="text-sm font-bold">{caseStudy.year}</p>
+          </div>
+          <div>
+            <p
+              class="mb-1 text-xs font-bold tracking-widest text-neutral-400 uppercase"
+            >
+              Stack
+            </p>
+            <p class="text-sm font-bold">
+              {caseStudy.stack.join(" · ")}
+            </p>
+          </div>
         </div>
-    </section>
+      </div>
 
-    <!-- The Problem -->
-    <section class="py-20">
-        <div class="px-4 md:px-8">
-            <div class="grid md:grid-cols-3 gap-12 max-w-6xl">
-                <div class="md:col-span-1">
-                    <p
-                        class="text-xs font-bold uppercase tracking-widest text-neutral-400 mb-3"
-                    >
-                        The Challenge
-                    </p>
-                    <h2 class="text-3xl font-black mb-4">
-                        Repetitive Prompts & Inconsistent Results
-                    </h2>
-                </div>
-                <div class="md:col-span-2 space-y-6">
-                    <p
-                        class="text-lg font-medium text-neutral-700 dark:text-neutral-300 leading-relaxed"
-                    >
-                        Every new client project meant writing a <strong
-                            class="text-black dark:text-white"
-                            >fresh AI prompt from memory</strong
-                        >. The process was slow, error-prone, and produced
-                        wildly inconsistent outputs depending on what was
-                        remembered to include that day.
-                    </p>
-                    <ul class="space-y-3">
-                        {
-                            problems.map((p) => (
-                                <li class="flex items-start gap-3 text-neutral-700 dark:text-neutral-400 font-medium">
-                                    <span class="mt-2 w-1.5 h-1.5 rounded-full bg-red-500 shrink-0" />
-                                    {p}
-                                </li>
-                            ))
-                        }
-                    </ul>
-                    <div
-                        class="p-6 rounded-xl bg-red-50 dark:bg-red-950/30 border-l-4 border-red-500"
-                    >
-                        <p
-                            class="font-bold text-red-800 dark:text-red-300 text-lg"
-                        >
-                            "Prompt Drift" — the gradual degradation in AI
-                            output quality caused by inconsistent, freeform
-                            prompting across sessions.
-                        </p>
-                    </div>
-                </div>
-            </div>
+      <!-- Hero product screenshot -->
+      <div
+        class="mt-12 overflow-hidden rounded-2xl border-2 border-zinc-200 shadow-xl dark:border-zinc-700/50"
+      >
+        <img
+          src="/images/design-prompt.png"
+          alt="Design Prompt Builder — live prompt generation interface showing the two-panel layout with form inputs on the left and real-time prompt output on the right"
+          class="block h-auto w-full"
+          width="1456"
+          height="816"
+        />
+      </div>
+    </div>
+  </section>
+
+  <!-- Executive Summary -->
+  <section class="py-20">
+    <div class="px-4 md:px-8">
+      <div class="grid max-w-6xl gap-12 md:grid-cols-3">
+        <div class="md:col-span-1">
+          <p
+            class="mb-3 text-xs font-bold tracking-widest text-neutral-400 uppercase"
+          >
+            Overview
+          </p>
+          <h2 class="mb-4 text-3xl font-black">Executive Summary</h2>
         </div>
-    </section>
-
-    <!-- The Solution -->
-    <section class="py-20 bg-zinc-50 dark:bg-neutral-900">
-        <div class="px-4 md:px-8">
-            <div class="grid md:grid-cols-3 gap-12 max-w-6xl">
-                <div class="md:col-span-1">
-                    <p
-                        class="text-xs font-bold uppercase tracking-widest text-neutral-400 mb-3"
-                    >
-                        The Solution
-                    </p>
-                    <h2 class="text-3xl font-black mb-4">
-                        A Structured Prompt Engine
-                    </h2>
-                </div>
-                <div class="md:col-span-2">
-                    <p
-                        class="text-lg font-medium text-neutral-700 dark:text-neutral-300 leading-relaxed mb-8"
-                    >
-                        Design Prompt Builder replaces freeform prompt writing
-                        with a guided, form-driven interface. Every design
-                        decision — from emotional tone to shadow depth — is
-                        captured and assembled into a <strong
-                            class="text-black dark:text-white"
-                            >single, structured prompt</strong
-                        > that an AI can reliably act on.
-                    </p>
-                    <div class="grid sm:grid-cols-2 gap-4">
-                        {
-                            features.map((f) => (
-                                <div class="p-5 rounded-xl border-2 border-zinc-200 dark:border-zinc-700/50 bg-white dark:bg-zinc-900 transition-colors hover:border-zinc-400 dark:hover:border-zinc-500">
-                                    <span class="text-2xl block mb-2">
-                                        {f.icon}
-                                    </span>
-                                    <h3 class="font-black text-base mb-1">
-                                        {f.title}
-                                    </h3>
-                                    <p class="text-sm text-neutral-600 dark:text-neutral-400 font-medium leading-relaxed">
-                                        {f.description}
-                                    </p>
-                                </div>
-                            ))
-                        }
-                    </div>
-                </div>
-            </div>
+        <div class="md:col-span-2">
+          <p
+            class="text-lg leading-relaxed font-medium text-neutral-700 dark:text-neutral-300"
+          >
+            <strong class="text-black dark:text-white"
+              >Design Prompt Builder</strong
+            > is a reactive, single-page tool built to eliminate the repetitive overhead
+            of writing AI design prompts from scratch. By structuring inputs across
+            project basics, strategy, design style, and content — it outputs a complete,
+            ready-to-paste system prompt in real-time, ensuring <em
+              >consistent, high-quality results</em
+            > every session.
+          </p>
         </div>
-    </section>
+      </div>
+    </div>
+  </section>
 
-    <!-- Design Highlights -->
-    <section class="py-20">
-        <div class="px-4 md:px-8">
-            <div class="grid md:grid-cols-3 gap-12 max-w-6xl">
-                <div class="md:col-span-1">
-                    <p
-                        class="text-xs font-bold uppercase tracking-widest text-neutral-400 mb-3"
-                    >
-                        Design
-                    </p>
-                    <h2 class="text-3xl font-black mb-4">
-                        Key Design Decisions
-                    </h2>
-                </div>
-                <div class="md:col-span-2 space-y-8">
-                    <div class="flex gap-5">
-                        <span class="text-3xl shrink-0">🎨</span>
-                        <div>
-                            <h3 class="font-black text-lg mb-1">
-                                Premium Dark UI
-                            </h3>
-                            <p
-                                class="text-neutral-700 dark:text-neutral-400 font-medium leading-relaxed"
-                            >
-                                Built with <strong
-                                    class="text-black dark:text-white"
-                                    >Glassmorphism panels</strong
-                                >, <strong class="text-black dark:text-white"
-                                    >brand gradient accents</strong
-                                >, and <strong
-                                    class="text-black dark:text-white"
-                                    >subtle fade-in animations</strong
-                                > — the UI feels as considered as the prompts it produces.
-                                It's a tool you enjoy using, not just a utility.
-                            </p>
-                        </div>
-                    </div>
-                    <div class="flex gap-5">
-                        <span class="text-3xl shrink-0">⚡</span>
-                        <div>
-                            <h3 class="font-black text-lg mb-1">
-                                Zero-Latency Reactivity
-                            </h3>
-                            <p
-                                class="text-neutral-700 dark:text-neutral-400 font-medium leading-relaxed"
-                            >
-                                Powered by <strong
-                                    class="text-black dark:text-white"
-                                    >Alpine.js</strong
-                                >, the prompt preview updates on every keystroke
-                                and dropdown change — no submit button, no page
-                                reload. The right panel is always in sync with
-                                the left, giving instant feedback as the brief
-                                takes shape.
-                            </p>
-                        </div>
-                    </div>
-                    <div class="flex gap-5">
-                        <span class="text-3xl shrink-0">🔧</span>
-                        <div>
-                            <h3 class="font-black text-lg mb-1">
-                                Custom Override Pattern
-                            </h3>
-                            <p
-                                class="text-neutral-700 dark:text-neutral-400 font-medium leading-relaxed"
-                            >
-                                Every dropdown includes a <strong
-                                    class="text-black dark:text-white"
-                                    >"Custom" escape hatch</strong
-                                > — when selected, a free-text input slides in, replacing
-                                the dropdown. This keeps the interface fast for common
-                                cases while remaining fully flexible for edge cases.
-                            </p>
-                        </div>
-                    </div>
-                    <div class="flex gap-5">
-                        <span class="text-3xl shrink-0">📋</span>
-                        <div>
-                            <h3 class="font-black text-lg mb-1">
-                                Collapsible Sections
-                            </h3>
-                            <p
-                                class="text-neutral-700 dark:text-neutral-400 font-medium leading-relaxed"
-                            >
-                                The form is grouped into collapsible accordion
-                                panels — Project Basics, Strategy, Design &
-                                Vibe, Sections, and Content. Only what's
-                                relevant is open, keeping the interface clean
-                                and focused without sacrificing depth.
-                            </p>
-                        </div>
-                    </div>
-                </div>
+  <!-- Outcomes -->
+  <section class="bg-zinc-50 py-16 dark:bg-neutral-900">
+    <div class="px-4 md:px-8">
+      <div
+        class="mx-auto grid max-w-4xl grid-cols-1 gap-8 text-center md:grid-cols-3"
+      >
+        {
+          outcomes.map((o) => (
+            <div class="rounded-2xl border-2 border-zinc-200 bg-white p-8 dark:border-zinc-700/50 dark:bg-zinc-900">
+              <span class="mb-2 block text-4xl font-black text-black md:text-5xl dark:text-white">
+                {o.value}
+              </span>
+              <span class="text-sm font-bold tracking-widest text-neutral-500 uppercase dark:text-neutral-400">
+                {o.label}
+              </span>
             </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- The Problem -->
+  <section class="py-20">
+    <div class="px-4 md:px-8">
+      <div class="grid max-w-6xl gap-12 md:grid-cols-3">
+        <div class="md:col-span-1">
+          <p
+            class="mb-3 text-xs font-bold tracking-widest text-neutral-400 uppercase"
+          >
+            The Challenge
+          </p>
+          <h2 class="mb-4 text-3xl font-black">
+            Repetitive Prompts & Inconsistent Results
+          </h2>
         </div>
-    </section>
+        <div class="space-y-6 md:col-span-2">
+          <p
+            class="text-lg leading-relaxed font-medium text-neutral-700 dark:text-neutral-300"
+          >
+            Every new client project meant writing a <strong
+              class="text-black dark:text-white"
+              >fresh AI prompt from memory</strong
+            >. The process was slow, error-prone, and produced wildly
+            inconsistent outputs depending on what was remembered to include
+            that day.
+          </p>
+          <ul class="space-y-3">
+            {
+              problems.map((p) => (
+                <li class="flex items-start gap-3 font-medium text-neutral-700 dark:text-neutral-400">
+                  <span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-red-500" />
+                  {p}
+                </li>
+              ))
+            }
+          </ul>
+          <div
+            class="rounded-xl border-l-4 border-red-500 bg-red-50 p-6 dark:bg-red-950/30"
+          >
+            <p class="text-lg font-bold text-red-800 dark:text-red-300">
+              "Prompt Drift" — the gradual degradation in AI output quality
+              caused by inconsistent, freeform prompting across sessions.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    <!-- Technical Architecture -->
-    <section class="py-20 bg-zinc-50 dark:bg-neutral-900">
-        <div class="px-4 md:px-8">
-            <div class="grid md:grid-cols-3 gap-12 max-w-6xl">
-                <div class="md:col-span-1">
-                    <p
-                        class="text-xs font-bold uppercase tracking-widest text-neutral-400 mb-3"
-                    >
-                        Engineering
-                    </p>
-                    <h2 class="text-3xl font-black mb-4">
-                        Technical Architecture
-                    </h2>
+  <!-- The Solution -->
+  <section class="bg-zinc-50 py-20 dark:bg-neutral-900">
+    <div class="px-4 md:px-8">
+      <div class="grid max-w-6xl gap-12 md:grid-cols-3">
+        <div class="md:col-span-1">
+          <p
+            class="mb-3 text-xs font-bold tracking-widest text-neutral-400 uppercase"
+          >
+            The Solution
+          </p>
+          <h2 class="mb-4 text-3xl font-black">A Structured Prompt Engine</h2>
+        </div>
+        <div class="md:col-span-2">
+          <p
+            class="mb-8 text-lg leading-relaxed font-medium text-neutral-700 dark:text-neutral-300"
+          >
+            Design Prompt Builder replaces freeform prompt writing with a
+            guided, form-driven interface. Every design decision — from
+            emotional tone to shadow depth — is captured and assembled into a <strong
+              class="text-black dark:text-white"
+              >single, structured prompt</strong
+            > that an AI can reliably act on.
+          </p>
+          <div class="grid gap-4 sm:grid-cols-2">
+            {
+              features.map((f) => (
+                <div class="rounded-xl border-2 border-zinc-200 bg-white p-5 transition-colors hover:border-zinc-400 dark:border-zinc-700/50 dark:bg-zinc-900 dark:hover:border-zinc-500">
+                  <span class="mb-2 block text-2xl">{f.icon}</span>
+                  <h3 class="mb-1 text-base font-black">{f.title}</h3>
+                  <p class="text-sm leading-relaxed font-medium text-neutral-600 dark:text-neutral-400">
+                    {f.description}
+                  </p>
                 </div>
-                <div class="md:col-span-2 space-y-6">
-                    <p
-                        class="text-lg font-medium text-neutral-700 dark:text-neutral-300 leading-relaxed"
-                    >
-                        Intentionally zero-dependency. The entire app is a
-                        single HTML file — no build step, no npm install, no
-                        framework overhead. It runs anywhere a browser exists.
-                    </p>
-                    <div class="grid sm:grid-cols-3 gap-4">
-                        <div
-                            class="p-5 rounded-xl border-2 border-zinc-200 dark:border-zinc-700/50 bg-white dark:bg-zinc-900"
-                        >
-                            <p
-                                class="text-xs font-bold uppercase tracking-widest text-neutral-400 mb-2"
-                            >
-                                Reactivity
-                            </p>
-                            <p class="font-black">Alpine.js 3</p>
-                            <p
-                                class="text-sm text-neutral-500 dark:text-neutral-400 mt-1"
-                            >
-                                CDN · No build
-                            </p>
-                        </div>
-                        <div
-                            class="p-5 rounded-xl border-2 border-zinc-200 dark:border-zinc-700/50 bg-white dark:bg-zinc-900"
-                        >
-                            <p
-                                class="text-xs font-bold uppercase tracking-widest text-neutral-400 mb-2"
-                            >
-                                Styling
-                            </p>
-                            <p class="font-black">Tailwind CSS</p>
-                            <p
-                                class="text-sm text-neutral-500 dark:text-neutral-400 mt-1"
-                            >
-                                CDN · Dark mode
-                            </p>
-                        </div>
-                        <div
-                            class="p-5 rounded-xl border-2 border-zinc-200 dark:border-zinc-700/50 bg-white dark:bg-zinc-900"
-                        >
-                            <p
-                                class="text-xs font-bold uppercase tracking-widest text-neutral-400 mb-2"
-                            >
-                                Server
-                            </p>
-                            <p class="font-black">npx serve</p>
-                            <p
-                                class="text-sm text-neutral-500 dark:text-neutral-400 mt-1"
-                            >
-                                Static · Port 3000
-                            </p>
-                        </div>
-                    </div>
+              ))
+            }
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-                    <!-- Architecture flow diagram -->
-                    <div
-                        class="p-6 rounded-xl bg-zinc-900 dark:bg-black border-2 border-zinc-700 font-mono text-sm overflow-x-auto"
-                    >
-                        <pre
-                            class="text-zinc-300 leading-relaxed whitespace-pre"><span class="text-indigo-400">Form Inputs</span>  ──── Alpine x-model ────▶  <span class="text-green-400">Reactive State</span>
+  <!-- Design Highlights -->
+  <section class="py-20">
+    <div class="px-4 md:px-8">
+      <div class="grid max-w-6xl gap-12 md:grid-cols-3">
+        <div class="md:col-span-1">
+          <p
+            class="mb-3 text-xs font-bold tracking-widest text-neutral-400 uppercase"
+          >
+            Design
+          </p>
+          <h2 class="mb-4 text-3xl font-black">Key Design Decisions</h2>
+        </div>
+        <div class="space-y-8 md:col-span-2">
+          <div class="flex gap-5">
+            <span class="shrink-0 text-3xl">🎨</span>
+            <div>
+              <h3 class="mb-1 text-lg font-black">Premium Dark UI</h3>
+              <p
+                class="leading-relaxed font-medium text-neutral-700 dark:text-neutral-400"
+              >
+                Built with <strong class="text-black dark:text-white"
+                  >Glassmorphism panels</strong
+                >, <strong class="text-black dark:text-white"
+                  >brand gradient accents</strong
+                >, and <strong class="text-black dark:text-white"
+                  >subtle fade-in animations</strong
+                > — the UI feels as considered as the prompts it produces. It's a
+                tool you enjoy using, not just a utility.
+              </p>
+            </div>
+          </div>
+          <div class="flex gap-5">
+            <span class="shrink-0 text-3xl">⚡</span>
+            <div>
+              <h3 class="mb-1 text-lg font-black">Zero-Latency Reactivity</h3>
+              <p
+                class="leading-relaxed font-medium text-neutral-700 dark:text-neutral-400"
+              >
+                Powered by <strong class="text-black dark:text-white"
+                  >Alpine.js</strong
+                >, the prompt preview updates on every keystroke and dropdown
+                change — no submit button, no page reload. The right panel is
+                always in sync with the left, giving instant feedback as the
+                brief takes shape.
+              </p>
+            </div>
+          </div>
+          <div class="flex gap-5">
+            <span class="shrink-0 text-3xl">🔧</span>
+            <div>
+              <h3 class="mb-1 text-lg font-black">Custom Override Pattern</h3>
+              <p
+                class="leading-relaxed font-medium text-neutral-700 dark:text-neutral-400"
+              >
+                Every dropdown includes a <strong
+                  class="text-black dark:text-white"
+                  >"Custom" escape hatch</strong
+                > — when selected, a free-text input slides in, replacing the dropdown.
+                This keeps the interface fast for common cases while remaining fully
+                flexible for edge cases.
+              </p>
+            </div>
+          </div>
+          <div class="flex gap-5">
+            <span class="shrink-0 text-3xl">📋</span>
+            <div>
+              <h3 class="mb-1 text-lg font-black">Collapsible Sections</h3>
+              <p
+                class="leading-relaxed font-medium text-neutral-700 dark:text-neutral-400"
+              >
+                The form is grouped into collapsible accordion panels — Project
+                Basics, Strategy, Design & Vibe, Sections, and Content. Only
+                what's relevant is open, keeping the interface clean and focused
+                without sacrificing depth.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Technical Architecture -->
+  <section class="bg-zinc-50 py-20 dark:bg-neutral-900">
+    <div class="px-4 md:px-8">
+      <div class="grid max-w-6xl gap-12 md:grid-cols-3">
+        <div class="md:col-span-1">
+          <p
+            class="mb-3 text-xs font-bold tracking-widest text-neutral-400 uppercase"
+          >
+            Engineering
+          </p>
+          <h2 class="mb-4 text-3xl font-black">Technical Architecture</h2>
+        </div>
+        <div class="space-y-6 md:col-span-2">
+          <p
+            class="text-lg leading-relaxed font-medium text-neutral-700 dark:text-neutral-300"
+          >
+            Intentionally zero-dependency. The entire app is a single HTML file
+            — no build step, no npm install, no framework overhead. It runs
+            anywhere a browser exists.
+          </p>
+          <div class="grid gap-4 sm:grid-cols-3">
+            <div
+              class="rounded-xl border-2 border-zinc-200 bg-white p-5 dark:border-zinc-700/50 dark:bg-zinc-900"
+            >
+              <p
+                class="mb-2 text-xs font-bold tracking-widest text-neutral-400 uppercase"
+              >
+                Reactivity
+              </p>
+              <p class="font-black">Alpine.js 3</p>
+              <p class="mt-1 text-sm text-neutral-500 dark:text-neutral-400">
+                CDN · No build
+              </p>
+            </div>
+            <div
+              class="rounded-xl border-2 border-zinc-200 bg-white p-5 dark:border-zinc-700/50 dark:bg-zinc-900"
+            >
+              <p
+                class="mb-2 text-xs font-bold tracking-widest text-neutral-400 uppercase"
+              >
+                Styling
+              </p>
+              <p class="font-black">Tailwind CSS</p>
+              <p class="mt-1 text-sm text-neutral-500 dark:text-neutral-400">
+                CDN · Dark mode
+              </p>
+            </div>
+            <div
+              class="rounded-xl border-2 border-zinc-200 bg-white p-5 dark:border-zinc-700/50 dark:bg-zinc-900"
+            >
+              <p
+                class="mb-2 text-xs font-bold tracking-widest text-neutral-400 uppercase"
+              >
+                Server
+              </p>
+              <p class="font-black">npx serve</p>
+              <p class="mt-1 text-sm text-neutral-500 dark:text-neutral-400">
+                Static · Port 3000
+              </p>
+            </div>
+          </div>
+
+          <!-- Architecture flow diagram -->
+          <div
+            class="overflow-x-auto rounded-xl border-2 border-zinc-700 bg-zinc-900 p-6 font-mono text-sm dark:bg-black"
+          >
+            <pre
+              class="leading-relaxed whitespace-pre text-zinc-300"><span class="text-indigo-400">Form Inputs</span>  ──── Alpine x-model ────▶  <span class="text-green-400">Reactive State</span>
                                                      │
                               ┌──────────────────────┤
                               ▼                      ▼
@@ -501,140 +466,132 @@ const problems = [
                               │
                               ▼
                     <span class="text-green-400">Copy to Clipboard</span>  ──▶  AI Tool</pre>
-                    </div>
-                </div>
-            </div>
+          </div>
         </div>
-    </section>
+      </div>
+    </div>
+  </section>
 
-    <!-- Results -->
-    <section class="py-20">
-        <div class="px-4 md:px-8">
-            <div class="grid md:grid-cols-3 gap-12 max-w-6xl">
-                <div class="md:col-span-1">
-                    <p
-                        class="text-xs font-bold uppercase tracking-widest text-neutral-400 mb-3"
-                    >
-                        Impact
-                    </p>
-                    <h2 class="text-3xl font-black mb-4">The Result</h2>
-                </div>
-                <div class="md:col-span-2 space-y-6">
-                    <p
-                        class="text-lg font-medium text-neutral-700 dark:text-neutral-300 leading-relaxed"
-                    >
-                        Design Prompt Builder transforms a fragmented,
-                        memory-dependent task into a structured 30-second
-                        workflow — producing better AI outputs with less effort,
-                        every single time.
-                    </p>
-                    <ul class="space-y-4">
-                        <li
-                            class="flex items-start gap-3 text-neutral-700 dark:text-neutral-300 font-medium text-lg"
-                        >
-                            <span
-                                class="mt-1.5 w-2 h-2 rounded-full bg-green-500 shrink-0"
-                            ></span>
-                            <span
-                                ><strong class="text-black dark:text-white"
-                                    >30 seconds</strong
-                                > from blank form to a complete, AI-ready design prompt.</span
-                            >
-                        </li>
-                        <li
-                            class="flex items-start gap-3 text-neutral-700 dark:text-neutral-300 font-medium text-lg"
-                        >
-                            <span
-                                class="mt-1.5 w-2 h-2 rounded-full bg-green-500 shrink-0"
-                            ></span>
-                            <span
-                                ><strong class="text-black dark:text-white"
-                                    >Consistent structure</strong
-                                > across every project — no more forgotten constraints
-                                or vague tone instructions.</span
-                            >
-                        </li>
-                        <li
-                            class="flex items-start gap-3 text-neutral-700 dark:text-neutral-300 font-medium text-lg"
-                        >
-                            <span
-                                class="mt-1.5 w-2 h-2 rounded-full bg-green-500 shrink-0"
-                            ></span>
-                            <span
-                                ><strong class="text-black dark:text-white"
-                                    >Zero dependencies</strong
-                                > — runs as a static file, served locally via the
-                                Launch Local dashboard.</span
-                            >
-                        </li>
-                    </ul>
-
-                    <div
-                        class="p-6 rounded-xl bg-indigo-50 dark:bg-indigo-950/30 border-l-4 border-indigo-500 mt-4"
-                    >
-                        <p
-                            class="font-bold text-indigo-800 dark:text-indigo-300 text-base"
-                        >
-                            💡 Pro Tip: Keep Design Prompt Builder open as a
-                            pinned tab at the start of every new client brief —
-                            fill it in as you read the brief, and your AI prompt
-                            is ready before you've even opened the AI tool.
-                        </p>
-                    </div>
-                </div>
-            </div>
+  <!-- Results -->
+  <section class="py-20">
+    <div class="px-4 md:px-8">
+      <div class="grid max-w-6xl gap-12 md:grid-cols-3">
+        <div class="md:col-span-1">
+          <p
+            class="mb-3 text-xs font-bold tracking-widest text-neutral-400 uppercase"
+          >
+            Impact
+          </p>
+          <h2 class="mb-4 text-3xl font-black">The Result</h2>
         </div>
-    </section>
-
-    <!-- Last updated -->
-    <section class="pb-12">
-        <div class="px-4 md:px-8">
-            <p
-                class="text-xs font-bold uppercase tracking-widest text-neutral-900 dark:text-white"
+        <div class="space-y-6 md:col-span-2">
+          <p
+            class="text-lg leading-relaxed font-medium text-neutral-700 dark:text-neutral-300"
+          >
+            Design Prompt Builder transforms a fragmented, memory-dependent task
+            into a structured 30-second workflow — producing better AI outputs
+            with less effort, every single time.
+          </p>
+          <ul class="space-y-4">
+            <li
+              class="flex items-start gap-3 text-lg font-medium text-neutral-700 dark:text-neutral-300"
             >
-                Last updated · June 2026
+              <span class="mt-1.5 h-2 w-2 shrink-0 rounded-full bg-green-500"
+              ></span>
+              <span
+                ><strong class="text-black dark:text-white">30 seconds</strong> from
+                blank form to a complete, AI-ready design prompt.</span
+              >
+            </li>
+            <li
+              class="flex items-start gap-3 text-lg font-medium text-neutral-700 dark:text-neutral-300"
+            >
+              <span class="mt-1.5 h-2 w-2 shrink-0 rounded-full bg-green-500"
+              ></span>
+              <span
+                ><strong class="text-black dark:text-white"
+                  >Consistent structure</strong
+                > across every project — no more forgotten constraints or vague tone
+                instructions.</span
+              >
+            </li>
+            <li
+              class="flex items-start gap-3 text-lg font-medium text-neutral-700 dark:text-neutral-300"
+            >
+              <span class="mt-1.5 h-2 w-2 shrink-0 rounded-full bg-green-500"
+              ></span>
+              <span
+                ><strong class="text-black dark:text-white"
+                  >Zero dependencies</strong
+                > — runs as a static file, served locally via the Launch Local dashboard.</span
+              >
+            </li>
+          </ul>
+
+          <div
+            class="mt-4 rounded-xl border-l-4 border-indigo-500 bg-indigo-50 p-6 dark:bg-indigo-950/30"
+          >
+            <p class="text-base font-bold text-indigo-800 dark:text-indigo-300">
+              💡 Pro Tip: Keep Design Prompt Builder open as a pinned tab at the
+              start of every new client brief — fill it in as you read the
+              brief, and your AI prompt is ready before you've even opened the
+              AI tool.
             </p>
+          </div>
         </div>
-    </section>
+      </div>
+    </div>
+  </section>
 
-    <!-- Next / Back nav -->
-    <section class="py-16 border-t-2 border-zinc-100 dark:border-zinc-800">
-        <div
-            class="px-4 md:px-8 flex flex-col sm:flex-row items-center justify-between gap-6"
+  <!-- Last updated -->
+  <section class="pb-12">
+    <div class="px-4 md:px-8">
+      <p
+        class="text-xs font-bold tracking-widest text-neutral-900 uppercase dark:text-white"
+      >
+        Last updated · June 2026
+      </p>
+    </div>
+  </section>
+
+  <!-- Next / Back nav -->
+  <section class="border-t-2 border-zinc-100 py-16 dark:border-zinc-800">
+    <div
+      class="flex flex-col items-center justify-between gap-6 px-4 sm:flex-row md:px-8"
+    >
+      <a
+        href="/case-studies"
+        class="inline-flex items-center gap-2 font-bold text-neutral-500 transition-colors hover:text-black dark:text-neutral-400 dark:hover:text-white"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="18"
+          height="18"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          aria-hidden="true"><path d="m15 18-6-6 6-6"></path></svg
         >
-            <a
-                href="/case-studies"
-                class="inline-flex items-center gap-2 font-bold text-neutral-500 dark:text-neutral-400 hover:text-black dark:hover:text-white transition-colors"
-            >
-                <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="18"
-                    height="18"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2.5"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    aria-hidden="true"><path d="m15 18-6-6 6-6"></path></svg
-                >
-                All case studies
-            </a>
-            <a
-                href="/#contact"
-                class="group relative inline-flex items-center justify-center overflow-hidden h-12 px-8 font-bold text-white bg-black dark:bg-white dark:text-black transition-all duration-300 rounded-md"
-            >
-                <span
-                    class="transform transition-transform duration-300 group-hover:-translate-x-4"
-                >
-                    Get in touch
-                </span>
-                <span
-                    class="absolute right-5 transform -translate-x-4 opacity-0 transition-all duration-300 group-hover:translate-x-0 group-hover:opacity-100"
-                >
-                    &rarr;
-                </span>
-            </a>
-        </div>
-    </section>
+        All case studies
+      </a>
+      <a
+        href="/#contact"
+        class="group relative inline-flex h-12 items-center justify-center overflow-hidden rounded-full bg-black px-8 font-bold text-white transition-all duration-300 dark:bg-white dark:text-black"
+      >
+        <span
+          class="transform transition-transform duration-300 group-hover:-translate-x-4"
+        >
+          Get in touch
+        </span>
+        <span
+          class="absolute right-5 -translate-x-4 transform opacity-0 transition-all duration-300 group-hover:translate-x-0 group-hover:opacity-100"
+        >
+          &rarr;
+        </span>
+      </a>
+    </div>
+  </section>
 </MainLayout>
